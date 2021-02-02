@@ -1,0 +1,154 @@
+:mod:`em_web.web.filters`
+=========================
+
+.. py:module:: em_web.web.filters
+
+.. autoapi-nested-parse::
+
+   Custom Jinja template filters used in html.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   em_web.web.filters.date_hash
+   em_web.web.filters.to_time
+   em_web.web.filters.num_st
+   em_web.web.filters.cron_month
+   em_web.web.filters.intv_name
+   em_web.web.filters.cron_week_day
+   em_web.web.filters.num_str
+   em_web.web.filters.year
+   em_web.web.filters.datetime_format
+   em_web.web.filters.decrypt
+   em_web.web.filters.hide_smb_pass
+   em_web.web.filters.clean_path
+   em_web.web.filters.database_pass
+
+
+.. function:: date_hash(text)
+
+   Get a hash value of the current date.
+
+   :param text: unused
+
+   :returns: hash of the current datetime.
+
+
+.. function:: to_time(my_num)
+
+   Zero pad numbers not greater than 9.
+
+   :param my_num: number
+
+   :returns: zero padded number.
+
+
+.. function:: num_st(my_num)
+
+   Add pronunciation text after number.
+
+   :param my_num: number
+
+   :returns: number with pronunciation text.
+
+
+.. function:: cron_month(text)
+
+   Convert a month number to all full text.
+
+   :param text (str): month number
+
+   :returns: full text of month name.
+
+
+.. function:: intv_name(data)
+
+   Get interval full spelling.
+
+   :param data:[number, incement]
+
+   where increment is w, d, h, m or s.
+
+   :returns: string of number and spelled out incement.
+
+
+.. function:: cron_week_day(text)
+
+   Get spelled out day of week from day number.
+
+   :param text (str): day number of week
+
+   :returns: string of week day with full spelling.
+
+
+.. function:: num_str(num)
+
+   Convert a number to string.
+
+   :param num (int): number to convert to string
+
+   :returns: string representation of the number
+
+
+.. function:: year(unused_var)
+
+   Get current year.
+
+   :param none: empty param
+
+   :returns: the current year.
+
+
+.. function:: datetime_format(my_date)
+
+   Format date string.
+
+   :param my_date (str): stirng to format
+
+   :returns: formatted date string
+
+
+.. function:: decrypt(my_string)
+
+   Decrypt a string.
+
+   :param my_string: string to decrypt.
+
+   :returns: decrypted string.
+
+
+.. function:: hide_smb_pass(my_string)
+
+   Remove password from smb connection string.
+
+   :param my_string: connection string
+
+   :returns: connection string with password removed.
+
+
+.. function:: clean_path(my_path)
+
+   Normalize a path.
+
+   :param my_path: path to cleanup
+
+   :returns: cleanedup path.
+
+
+.. function:: database_pass(my_string)
+
+   Hide password in connection strings.
+
+   :param my_string: connection string
+
+   :returns: connection string with hidden password.
+
+

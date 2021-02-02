@@ -1,0 +1,906 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em_runner.scripts.em_ftp &#8212; Extract Management 2.0</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/icon-512x512.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Extract Management 2.0</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../index.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/dash.html">
+   Dash
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/projects.html">
+   Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/tasks.html">
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/connections.html">
+   Connections
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/admin.html">
+   Admin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/development.html">
+   Development
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../../autoapi/index.html">
+   API Reference
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../autoapi/em_web/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_web
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../autoapi/em_web/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/admin/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.admin
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/assets/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.assets
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/auth/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.auth
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/connection/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.connection
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/dashboard/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.dashboard
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/executors/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.executors
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/project/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.project
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/table/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.table
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/task/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.task
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_web/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_web/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.model
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_web/seed/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.seed
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../autoapi/em_scheduler/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_scheduler
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_scheduler/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.scripts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_scheduler/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_scheduler/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../autoapi/em_runner/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_runner
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../autoapi/em_runner/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.scripts
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_cmd/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_cmd
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_code/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_code
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_date/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_date
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_file/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_file
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_postgres/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_postgres
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_python/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_python
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smb/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smb
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smtp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smtp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sqlserver/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sqlserver
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ssh/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ssh
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_system/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_system
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/runner/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.runner
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/smb_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.smb_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../autoapi/em_runner/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/web/web/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.web
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_runner/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_runner/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <h1>Source code for em_runner.scripts.em_ftp</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;FTP connection manager.&quot;&quot;&quot;</span>
+<span class="c1"># Extract Management 2.0</span>
+<span class="c1"># Copyright (C) 2020  Riverside Healthcare, Kankakee, IL</span>
+
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+
+
+<span class="kn">import</span> <span class="nn">ftplib</span>  <span class="c1"># noqa: S402</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">ftplib</span> <span class="kn">import</span> <span class="n">FTP</span>  <span class="c1"># noqa: S402</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">crypto</span> <span class="kn">import</span> <span class="n">em_decrypt</span>
+<span class="kn">from</span> <span class="nn">em_runner</span> <span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">em_runner.model</span> <span class="kn">import</span> <span class="n">TaskLog</span>
+<span class="kn">from</span> <span class="nn">error_print</span> <span class="kn">import</span> <span class="n">full_stack</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">app</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;/scripts&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Ftp"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/em_ftp/index.html#em_runner.scripts.em_ftp.Ftp">[docs]</a><span class="k">class</span> <span class="nc">Ftp</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;FTP Connection Handler Class.</span>
+
+<span class="sd">    Function takes a file name and source file path</span>
+<span class="sd">    and will upload the file to the fpt location</span>
+<span class="sd">    specified in the task settings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># pylint: disable=too-few-public-methods</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">job_hash</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set up class parameters.</span>
+
+<span class="sd">        :param task: task object</span>
+<span class="sd">        :param connection: connection object</span>
+<span class="sd">        :param int overwrite: value determines if existing files should be overwriten</span>
+<span class="sd">        :param str file_name: name of file in motion</span>
+<span class="sd">        :param str file_path: local file path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=too-many-arguments</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overwrite</span> <span class="o">=</span> <span class="n">overwrite</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">file_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span> <span class="o">=</span> <span class="n">job_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Connecting: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+
+            <span class="c1"># there is no timeout in paramiko so...</span>
+            <span class="c1"># continue to attemp to login during time limit</span>
+            <span class="c1"># if we are getting timeout exceptions</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">3</span>  <span class="c1"># 2 mins from now</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">FTP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>  <span class="c1"># noqa: S321</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span>
+                        <span class="n">user</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">username</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+                        <span class="n">passwd</span><span class="o">=</span><span class="p">(</span>
+                            <span class="n">em_decrypt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;PASS_KEY&quot;</span><span class="p">])</span>
+                            <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+                        <span class="p">),</span>
+                    <span class="p">)</span>
+                    <span class="k">break</span>
+                <span class="k">except</span> <span class="n">ftplib</span><span class="o">.</span><span class="n">error_reply</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="c1"># pylint: disable=no-else-continue</span>
+                    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">timeout</span><span class="p">:</span>
+                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># wait 10 sec before retrying</span>
+                        <span class="k">continue</span>
+                    <span class="k">elif</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
+                        <span class="c1"># pylint: disable=raise-missing-from</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;SFTP Connection timeout.&quot;</span><span class="p">)</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Failed to Connect: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># ftp</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to connect to &lt;a class=&#39;em-link&#39; href=&#39;/connection/&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot;&#39;&gt;&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">name</span>
+                <span class="o">+</span> <span class="s2">&quot;(&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">username</span>
+                <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;@&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">username</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">address</span>
+                <span class="o">+</span> <span class="s2">&quot;)&lt;/a&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Ftp.read"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/em_ftp/index.html#em_runner.scripts.em_ftp.Ftp.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Read a file from FTP server.</span>
+
+<span class="sd">        :returns: file contents as string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Reading File: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+            <span class="n">my_binary</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">def</span> <span class="nf">handle_binary</span><span class="p">(</span><span class="n">more_data</span><span class="p">):</span>
+                <span class="n">my_binary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">more_data</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">retrbinary</span><span class="p">(</span><span class="s2">&quot;RETR &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">handle_binary</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">my_binary</span><span class="p">)</span>
+
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Failed to Read File: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># fpt</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File failed to load file from server: &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+            <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="Ftp.save"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/em_ftp/index.html#em_runner.scripts.em_ftp.Ftp.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Use to copy local file to FTP server.</span>
+
+<span class="sd">        :returns: true if successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Changing Dir: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">cwd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Failed to change Dir: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># ftp</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File failed to change path to : &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">overwrite</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">)</span>
+                <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                    <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                    <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                    <span class="n">status_id</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># ftp</span>
+                    <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File already exists and will not be loaded: &quot;</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span>
+                    <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                <span class="k">return</span> <span class="s2">&quot;File already exists.&quot;</span>
+
+            <span class="c1"># pylint: disable=broad-except</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Saving: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">storbinary</span><span class="p">(</span><span class="s2">&quot;STOR &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+            <span class="c1"># file is now confirmed on server w/ confirm=True flag</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># ftp</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File loaded to server: &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Failed to Save: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># ftp</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File failed to finish loading to server: &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    <span class="k">def</span> <span class="nf">__close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Closing: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;FTP: Failed to Close: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># ftp</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File failed to close connection: &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">name</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+</pre></div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Riverside Healthcare<br/>
+        
+            &copy; Copyright 2020, Riverside Healthcare.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

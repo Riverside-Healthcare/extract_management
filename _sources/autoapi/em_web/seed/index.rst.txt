@@ -1,0 +1,47 @@
+:mod:`em_web.seed`
+==================
+
+.. py:module:: em_web.seed
+
+.. autoapi-nested-parse::
+
+   Extension script to seed EM2's database.
+
+   Database must be seeded on first run of EM2.
+
+   .. code-block:: console
+
+       export FLASK_APP=em_web
+       flask db init
+       flask db migrate
+       flask db upgrade
+       flask seed
+
+       # and for demo
+       flask seed_demo
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   em_web.seed.seed
+   em_web.seed.seed_demo
+
+
+.. function:: seed()
+
+   Insert seed records to database.
+
+
+.. function:: seed_demo()
+
+   Seed info for demo.
+
+

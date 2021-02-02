@@ -1,0 +1,322 @@
+:mod:`em_scheduler`
+===================
+
+.. py:module:: em_scheduler
+
+.. autoapi-nested-parse::
+
+   EM's scheduler module.
+
+   EM's scheduler is a Flask web API running Flask_APScheduler on a single
+   worker process.
+
+   The scheduler should be running on a single worker process and only accessable on localhost.
+
+   Tasks are started and stopped by sending a web request to various URL's.
+
+   * /add/<task_id>
+   * /delete/<task_id>
+   * /run/<task_id>
+
+
+   When the scheduler is ready to run a task it will send an async web request to the runner API
+   with the id of the task to run next.
+
+   Other Urls
+   **********
+
+   * /delete - delete all jobs
+   * /pause - pause all jobs
+   * /resume - resume all paused jobs
+   * /shutdown - gracefully shutdown the scheduler
+   * /kill - kill the scheduler
+   * /jobs - list all id's
+   * /details - list all job details
+   * /scheduled - list id's of scheduled jobs
+   * /delete-orphans - delete all orphaned jobs (jobs that no
+     longer have an associated EM task existing)
+
+   Database Model
+   **************
+
+   Database model should be cloned from `em_web` before running app.
+
+   .. code-block:: console
+
+       cp em_web/model.py em_scheduler/
+
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   scripts/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   extensions/index.rst
+   model/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   em_scheduler.error_message
+   em_scheduler.alive
+   em_scheduler.schedule
+   em_scheduler.add_task
+   em_scheduler.delete_task
+   em_scheduler.run_task
+   em_scheduler.run_task_delay
+   em_scheduler.delete_all_tasks
+   em_scheduler.pause_all_tasks
+   em_scheduler.resume_all_tasks
+   em_scheduler.shutdown
+   em_scheduler.kill
+   em_scheduler.get_jobs
+   em_scheduler.get_jobs_details
+   em_scheduler.get_scheduled_jobs
+   em_scheduler.delete_orphans
+   em_scheduler.scheduler_delete_all_tasks
+   em_scheduler.scheduler_delete_task
+   em_scheduler.scheduler_task_runner
+   em_scheduler.scheduler_add_task
+
+
+.. function:: error_message(error)
+
+   Return error page for 404 and 500 errors including the specific error message.
+
+   :param error: error message
+   :return: json web response with error message:
+
+   .. code-block:: python
+
+       {"error": "messsage"}
+
+
+.. function:: alive()
+
+   Check API status.
+
+   :url: /api/
+   :returns: status alive!
+
+
+.. function:: schedule()
+
+   Build simulated run schedule.
+
+   Build list of hours to show on the chart:
+   ['now', <now + 1>, <now + 2>, etc]
+
+   Build list of schedule for next 24 hours
+
+   Merge two lists and put 0 where needed.
+
+   :url: /api/
+   :returns: status alive!
+
+
+.. function:: add_task(task_id)
+
+   Schedule task to run.
+
+   :url: /api/add/<task_id>
+   :param int task_id: id of task to schedule
+   :returns: json message
+
+   First check for any existing schedules, remove them, then add a new schedule.
+
+
+.. function:: delete_task(task_id)
+
+   Delete tasks schedule.
+
+   :url: /api/delete/<task_id>
+   :param task_id: id of task to delete
+   :returns: json message
+
+
+.. function:: run_task(task_id)
+
+   Run task now.
+
+   :url: /api/run/<task_id>
+   :param task_id: id of task to run
+   :returns: json message
+
+
+.. function:: run_task_delay(task_id, minutes)
+
+   Run task in x minutes.
+
+   :url: /api/run/<task_id>/delay/<minutes>
+   :param task_id: id of task to run
+   :param minutes: minutes from now to run task
+   :returns: json message
+
+
+.. function:: delete_all_tasks()
+
+   Delete all scheduled tasks.
+
+   :url: /api/delete
+   :returns: json message
+
+
+.. function:: pause_all_tasks()
+
+   Pause all tasks.
+
+   :url: /api/pause
+   :returns: json message
+
+
+.. function:: resume_all_tasks()
+
+   Resume all tasks.
+
+   :url: /api/resume
+   :returns: succss message.
+
+
+.. function:: shutdown()
+
+   Gracefully shutdown scheduler.
+
+   :url: /api/shutdown
+   :returns: succss message.
+
+
+.. function:: kill()
+
+   Kill scheduler.
+
+   :url: /api/kill
+   :returns: succss message.
+
+
+.. function:: get_jobs()
+
+   Get list of all job ids.
+
+   :url: /api/jobs
+   :returns: list of job ids.
+
+
+.. function:: get_jobs_details()
+
+   Get list of all jobs with all details.
+
+   :url: /api/details
+   :returns: list of job ids.
+
+
+.. function:: get_scheduled_jobs()
+
+   Get list of all scheduled job ids.
+
+   :url: /api/scheduled
+   :returns: json list of ids for active jobs
+
+
+.. function:: delete_orphans()
+
+   Delete all orphaned jobs.
+
+   :url: /api/delete-orphans
+   :returns: json message
+
+
+.. function:: scheduler_delete_all_tasks()
+
+   Delete all jobs associated with a task from the scheduler.
+
+   :returns: true
+
+
+.. function:: scheduler_delete_task(task_id)
+
+   Delete all jobs associated with a task from the scheduler.
+
+   :param task_id: id of task to delete associated jobs
+   :returns: true
+
+
+.. function:: scheduler_task_runner(task_id)
+
+   Send request to runner api to run task.
+
+   :param task_id: id of task to run
+
+
+.. function:: scheduler_add_task(task_id)
+
+   Create job for task in the scheduler.
+
+   :param task_id: id of task to create a schedule for
+
+   *Parameters for APScheduler*
+
+   :func: function to run
+   :trigger: date, interval or cron
+   :id: used to match job up to db
+   :name: desc of job
+   :misfire_grace_time: seconds a job can run late
+   :coalesce: merge mul into one run
+   :max_instances: max concurrent runs allowed
+   :next_run_time: when to start schedule (None: job paused)
+   :jobstore: alias of jobstore to use
+   :executor: alias of excutor to use
+   :replace_existing: true to replace jobs with same id
+
+   *Parameters for Cron Jobs*
+
+   :year: 4 digit year
+   :month: 1-12
+   :day: 1-31
+   :week: 1-53
+   :day_of_week: 0-6 or mon,tue,wed,thu,fri,sat,sun
+   :hour: 0-23
+   :minute: 0-59
+   :second: 0-59
+   :start_date: (datetime) soonest start
+   :end_date: (datetime) latest run
+
+   *Paramters for Interval Jobs*
+
+   :weeks: (int) number of weeks between runs
+   :days: (int) number of days between runs
+   :hours: (int) number of hours between runs
+   :minutes: (int) number of minutes between runs
+   :seconds: (int) number of seconds between runs
+   :start_date: (datetime) soonest start date
+   :end_date: (datetime) latest run date
+
+   *Parameters for One Off Jobs*
+
+   :run_date: (datetime) when to run
+
+   *Notes*
+
+   If multiple triggers are specified on the task a schedule will be added for each trigger
+   type. So it is possible to have multiple triggers per task. Because of this, the id
+   assigned to the job is project_id-task_id-<time hash>. The tasks id is sent as an arg
+   to the job.
+
+

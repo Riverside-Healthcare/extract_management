@@ -1,0 +1,332 @@
+:mod:`em_runner.model`
+======================
+
+.. py:module:: em_runner.model
+
+.. autoapi-nested-parse::
+
+   Extract Management 2.0 Data Model.
+
+   Model resides in EM Web, but must be copied to :obj:`em_scheduler` and
+   :obj:`em_runner` before running app.
+
+   Database migrations are run through a manager script.
+
+   .. code-block:: console
+
+       export FLASK_APP=em_web
+       flask db migrate
+       flask db upgrade
+
+   Sometimes there is a conflict between flask-migrations (Alembic migrations)
+   and the Postgresql db - Postgres will add some indexes that flask-migrations
+   doesn't think exist yet.
+
+   When this happens just remove the index from the migration file onto the previous
+   migrations file - so flask-migrations think it has already applied the migration.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   em_runner.model.LoginType
+   em_runner.model.Login
+   em_runner.model.User
+   em_runner.model.Project
+   em_runner.model.TaskSourceType
+   em_runner.model.TaskSourceQueryType
+   em_runner.model.TaskProcessingType
+   em_runner.model.TaskStatus
+   em_runner.model.Connection
+   em_runner.model.ConnectionSftp
+   em_runner.model.ConnectionSsh
+   em_runner.model.ConnectionFtp
+   em_runner.model.ConnectionSmb
+   em_runner.model.ConnectionDatabaseType
+   em_runner.model.ConnectionDatabase
+   em_runner.model.TaskDestinationFileType
+   em_runner.model.QuoteLevel
+   em_runner.model.Task
+   em_runner.model.TaskLog
+   em_runner.model.TaskFile
+
+
+
+.. class:: LoginType
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table of user login types.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: Login
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table should contain all login attempts.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: User
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table containing any user-specific information.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: Project
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table containing project details.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: TaskSourceType
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table of task source types.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: TaskSourceQueryType
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table of task query source types.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: TaskProcessingType
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table of task query source types.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: TaskStatus
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table of task status types.
+
+   This table can link back to a task status, or a task log status.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: Connection
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table containing all destination information.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: ConnectionSftp
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table conntaining sftp connection strings.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: ConnectionSsh
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table conntaining sftp connection strings.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: ConnectionFtp
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table conntaining sftp connection strings.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: ConnectionSmb
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table conntaining sftp connection strings.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: ConnectionDatabaseType
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table of task source database types.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: ConnectionDatabase
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   List of task source databases and connection strings.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: TaskDestinationFileType
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table of task destination file types.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: QuoteLevel
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Lookup table for python quote levels.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: Task
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table containing task details.
+
+   .. attribute:: max_retries
+      :annotation: :int
+
+      general information 
+
+
+   .. attribute:: updater_id
+      
+
+      data source 
+
+
+   .. attribute:: source_ssh_id
+      
+
+      processing script source 
+
+
+   .. attribute:: processing_command
+      
+
+      destination 
+
+
+   .. attribute:: destination_quote_level_id
+      
+
+      email 
+
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: TaskLog
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table containing job run history.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
+.. class:: TaskFile
+
+   Bases: :class:`em_runner.extensions.db.Model`
+
+   Table containing paths to task backup files.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+

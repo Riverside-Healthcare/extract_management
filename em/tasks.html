@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks &#8212; Extract Management 2.0</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Connections" href="connections.html" />
+    <link rel="prev" title="Projects" href="projects.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/icon-512x512.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Extract Management 2.0</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dash.html">
+   Dash
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="projects.html">
+   Projects
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="connections.html">
+   Connections
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="admin.html">
+   Admin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="development.html">
+   Development
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../autoapi/index.html">
+   API Reference
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../autoapi/em_web/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_web
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../autoapi/em_web/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/admin/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.admin
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/assets/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.assets
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/auth/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.auth
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/connection/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.connection
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/dashboard/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.dashboard
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/executors/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.executors
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/project/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.project
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/table/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.table
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_web/web/task/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.task
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_web/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_web/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.model
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_web/seed/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.seed
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../autoapi/em_scheduler/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_scheduler
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_scheduler/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.scripts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_scheduler/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_scheduler/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../autoapi/em_runner/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_runner
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../autoapi/em_runner/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.scripts
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_cmd/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_cmd
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_code/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_code
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_date/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_date
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_file/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_file
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_ftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_postgres/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_postgres
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_python/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_python
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_sftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_smb/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smb
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_smtp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smtp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_sqlserver/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sqlserver
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_ssh/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ssh
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/em_system/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_system
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/runner/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.runner
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/scripts/smb_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.smb_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../autoapi/em_runner/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../autoapi/em_runner/web/web/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.web
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_runner/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../autoapi/em_runner/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#task-details">
+   Task Details
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-task">
+   New Task
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retries">
+     Retries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-sources">
+     Data Sources
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#database">
+       Database
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ftp-sftp-smb">
+       FTP/SFTP/SMB
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#python-script">
+       Python Script
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ssh">
+       SSH
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#processing-script">
+     Processing Script
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-destination">
+     Data Destination
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sftp-smb-ftp">
+       SFTP/SMB/FTP
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#email">
+       Email
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="tasks">
+<h1>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
+<p>A task is child to a project and contains the details of the job to be run. A typical task will run a sql query, format the results with a delimiter and then upload the file into a SFTP server.</p>
+<p>Tasks include three primary pages:</p>
+<ul class="simple">
+<li><p>All Tasks. This loads a paginated table of all tasks along with a name cloud of task owners (owners come from the project level), and also a name cloud of the associated projects.</p></li>
+<li><p>My Tasks. This loads a paginated table of all tasks along with a name cloud of the associated projects.</p></li>
+<li><p>Task Details. Summary page of all the task details, a few controls, and the run history.</p></li>
+<li><p>New Task. The page to create or edit tasks.</p></li>
+</ul>
+<img alt="Task List" src="../_images/em2-task.png" />
+<div class="section" id="task-details">
+<span id="id1"></span><h2>Task Details<a class="headerlink" href="#task-details" title="Permalink to this headline">¶</a></h2>
+<p>From the task details a task can be</p>
+<ul class="simple">
+<li><p>Deleted</p></li>
+<li><p>Edited</p></li>
+<li><p>Run Now</p></li>
+<li><p>Rescheduled. This option will remove any existing schedules from the Scheduler API and recreate them.</p></li>
+<li><p>Duplicated. This option will clone the job in a disabled state.</p></li>
+<li><p>Cancel Retry. If the task has failed and and retry has been scheduled the user can click here to prevent the retries. This option cannot be clicked while task is running.</p></li>
+</ul>
+<img alt="Task Details" src="../_images/em2-task-header.png" />
+<p>Following this most task details are listed along with a log, and a listing of historical file outputs.</p>
+<p>The history files can be downloaded or resent to the <em>current</em> destination.</p>
+</div>
+<div class="section" id="new-task">
+<span id="task-new"></span><h2>New Task<a class="headerlink" href="#new-task" title="Permalink to this headline">¶</a></h2>
+<p>There are many options for creating new tasks!</p>
+<div class="section" id="retries">
+<h3>Retries<a class="headerlink" href="#retries" title="Permalink to this headline">¶</a></h3>
+<p>If a task has a non-catastrophic failure, meaning that the app is still running and the error has been logged, we have the option to attempt multiple retries. This is especially useful when uploading files into SFTP’s where you cannot control the upload speeds etc, and may be subject to upload errors.</p>
+<p>In cases like this it is advisable to allow the task to rerun.</p>
+</div>
+<div class="section" id="data-sources">
+<h3>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h3>
+<p>Most of the data source/ destination options are fairly consistent through all the option groups.</p>
+<p>Data sources must first be created in the <a class="reference internal" href="connections.html#connections"><span class="std std-ref">Connections</span></a>.</p>
+<div class="section" id="database">
+<h4>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h4>
+<p>A source organization and database can be selected.</p>
+<p>The option “Include Query Headers” will include/exclude column headings from the output.</p>
+<p>A query location must be chosen. The query can be loaded from SFTP, FTP, SMB, Gitlab, WebURl (for example, github + access token), or can be entered directly into EM2.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Queries will be modified at runtime. A preview of the modifications is available on the Task Details page. For example, “using” statements are not allowed in ODBC, so tables must be fully qualified, or a db specified in the connection. EM2 will automatically remove unauthorized statements in SQL queries.</p>
+</div>
+<p>Query Parameters can be added. These will override what is set at the project level and will follow the same format. See <a class="reference internal" href="projects.html#project-parameters"><span class="std std-ref">Parameters</span></a></p>
+</div>
+<div class="section" id="ftp-sftp-smb">
+<h4>FTP/SFTP/SMB<a class="headerlink" href="#ftp-sftp-smb" title="Permalink to this headline">¶</a></h4>
+<p>These data source options allow a remote file to be loaded and sent to a destination. This is a nice option if a file must be reformatted.</p>
+<p>For example a csv can be loaded and changed to a pipe delimited file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>wildcards can be used in filenames. For example: “*this.csv” will match “and_this.csv”. Use with caution as only a single file will be loaded even if there are multiple matches.</p>
+</div>
+</div>
+<div class="section" id="python-script">
+<h4>Python Script<a class="headerlink" href="#python-script" title="Permalink to this headline">¶</a></h4>
+<p>While a python script can be run as an add-on to any data source (through <a class="reference internal" href="#processing-script">Processing Script</a>), if you only wish to run a python script and not have any other data source you can choose this option.</p>
+</div>
+<div class="section" id="ssh">
+<h4>SSH<a class="headerlink" href="#ssh" title="Permalink to this headline">¶</a></h4>
+<p>If you only need to schedule a command to run on a remote server this is the option to use.</p>
+<p>It will attempt to connect to a remote server through SSH and run whatever command you specify.</p>
+<p>The commands can be loaded from an exteral script (through SFTP, FTP, SMB, Gitlab or web url), or internally through the code editor.</p>
+</div>
+</div>
+<div class="section" id="processing-script">
+<h3>Processing Script<a class="headerlink" href="#processing-script" title="Permalink to this headline">¶</a></h3>
+<p>Data from the source is passed into a local file and can be modified with a python script.</p>
+<p>Also, if you choose <a class="reference internal" href="#python-script">Python Script</a> you can run a python script without input.</p>
+<p>If there is a data source selected it will be passed into your python script as parameter 1.</p>
+<p>A script like this will pick up that file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span>
+<span class="nn">input_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>All processing scripts are run in their own environment and dependencies are automatically installed as needed.</p>
+<p>The Processing Script can be loaded from a multitude of places. You can load a multi file package and choose what file to run as well.</p>
+</div>
+<div class="section" id="data-destination">
+<h3>Data Destination<a class="headerlink" href="#data-destination" title="Permalink to this headline">¶</a></h3>
+<p>Once data is gather is can be sent out!</p>
+<p>First set the output file type and name. The file name can use python type data parameters. They also support additional manipulations that are not part of the standard python syntax.</p>
+<p>For example, if you want to include the day yesterday in your filename you can do</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nice_name_yesterday_</span><span class="o">%</span><span class="n">d</span><span class="o">-</span><span class="mf">1.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>The ‘%d-1’ will parse out to the day number yesterday.</p>
+<p>If needed, the file can be sent inside a zip folder.</p>
+<div class="section" id="sftp-smb-ftp">
+<h4>SFTP/SMB/FTP<a class="headerlink" href="#sftp-smb-ftp" title="Permalink to this headline">¶</a></h4>
+<p>The output file can be loaded into an existing connection.</p>
+<p>There is an option to attempt to replace existing files with the same name, however this option is also set on the SFTP server level and may conflict.</p>
+</div>
+<div class="section" id="email">
+<h4>Email<a class="headerlink" href="#email" title="Permalink to this headline">¶</a></h4>
+<p>Getting a success/failure email from the extract can be useful. You have the option to attach or embed the output file to the email as well. Use with caution if you are querying sensitive data, or have a file that may exceed or email size limit.</p>
+<p>Finally,</p>
+<p>There is an option to enable the task immediately. If this is checked then the task will be picked up an run next time the project is triggered by the Scheduler API.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="projects.html" title="previous page">Projects</a>
+    <a class='right-next' id="next-link" href="connections.html" title="next page">Connections</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Riverside Healthcare<br/>
+        
+            &copy; Copyright 2020, Riverside Healthcare.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

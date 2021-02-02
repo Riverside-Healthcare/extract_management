@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em_runner.scripts.em_smb &#8212; Extract Management 2.0</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/icon-512x512.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Extract Management 2.0</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../index.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/dash.html">
+   Dash
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/projects.html">
+   Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/tasks.html">
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/connections.html">
+   Connections
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/admin.html">
+   Admin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../em/development.html">
+   Development
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../../autoapi/index.html">
+   API Reference
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../autoapi/em_web/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_web
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../autoapi/em_web/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/admin/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.admin
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/assets/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.assets
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/auth/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.auth
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/connection/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.connection
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/dashboard/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.dashboard
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/executors/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.executors
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/project/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.project
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/table/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.table
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_web/web/task/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.task
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_web/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_web/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.model
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_web/seed/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.seed
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../autoapi/em_scheduler/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_scheduler
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_scheduler/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.scripts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_scheduler/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_scheduler/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../autoapi/em_runner/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_runner
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../autoapi/em_runner/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.scripts
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_cmd/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_cmd
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_code/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_code
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_date/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_date
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_file/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_file
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_postgres/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_postgres
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_python/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_python
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smb/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smb
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smtp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smtp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sqlserver/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sqlserver
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ssh/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ssh
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_system/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_system
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/runner/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.runner
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/scripts/smb_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.smb_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../autoapi/em_runner/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../autoapi/em_runner/web/web/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.web
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_runner/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../autoapi/em_runner/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <h1>Source code for em_runner.scripts.em_smb</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;SMB Connection Manager.&quot;&quot;&quot;</span>
+<span class="c1"># Extract Management 2.0</span>
+<span class="c1"># Copyright (C) 2020  Riverside Healthcare, Kankakee, IL</span>
+
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">crypto</span> <span class="kn">import</span> <span class="n">em_decrypt</span>
+<span class="kn">from</span> <span class="nn">em_runner</span> <span class="kn">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">redis_client</span>
+<span class="kn">from</span> <span class="nn">em_runner.model</span> <span class="kn">import</span> <span class="n">TaskLog</span>
+<span class="kn">from</span> <span class="nn">em_runner.scripts.smb_fix</span> <span class="kn">import</span> <span class="n">SMBHandler</span>
+<span class="kn">from</span> <span class="nn">error_print</span> <span class="kn">import</span> <span class="n">full_stack</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">smb.base</span> <span class="kn">import</span> <span class="n">SMBTimeout</span>
+<span class="kn">from</span> <span class="nn">smb.SMBConnection</span> <span class="kn">import</span> <span class="n">SMBConnection</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;/scripts&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Smb"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/em_smb/index.html#em_runner.scripts.em_smb.Smb">[docs]</a><span class="k">class</span> <span class="nc">Smb</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;SMB Connection Handler Class.</span>
+
+<span class="sd">    smb.read = returns contents of a network file</span>
+<span class="sd">    smb.save = save contents of local file to network file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># pylint: disable=too-many-instance-attributes</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">job_hash</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set up class parameters.</span>
+
+<span class="sd">        :param task: task object</span>
+<span class="sd">        :param connection: connection object</span>
+<span class="sd">        :param int overwrite: value determines if existing files should be overwriten</span>
+<span class="sd">        :param str file_name: name of file in motion</span>
+<span class="sd">        :param str file_path: local file path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=too-many-arguments</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">task</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">connection</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overwrite</span> <span class="o">=</span> <span class="n">overwrite</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="n">file_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span> <span class="o">=</span> <span class="n">job_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">file_path</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">connection</span> <span class="o">==</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SMB_DEFAULT_SHARE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SMB_USERNAME&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SMB_PASSWORD&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SMB_SERVER_IP&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SMB_SERVER_NAME&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">name</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">share_name</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
+                <span class="k">else</span> <span class="s2">&quot;Error&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">username</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="k">else</span> <span class="s2">&quot;Error&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">password</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="k">else</span> <span class="s2">&quot;Error&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">server_ip</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="k">else</span> <span class="s2">&quot;Error&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">server_name</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="k">else</span> <span class="s2">&quot;Error&quot;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
+                <span class="k">else</span> <span class="s2">&quot;Error&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Connect to SMB server.</span>
+
+<span class="sd">        After making a connection we save it to redis. Next time we need a connection</span>
+<span class="sd">        we can grab if from redis and attempt to use. If it is no longer connected</span>
+<span class="sd">        then reconnect.</span>
+
+<span class="sd">        Because we want to use existing connection we will not close them...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">connect</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">SMBConnection</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+                    <span class="n">em_decrypt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;PASS_KEY&quot;</span><span class="p">]),</span>
+                    <span class="s2">&quot;EM2.0 Webapp&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span><span class="p">,</span>
+                    <span class="n">use_ntlm_v2</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="n">redis_client</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
+                    <span class="s2">&quot;smb_connection_&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span><span class="p">,</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Connecting: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+
+            <span class="n">smb_connection</span> <span class="o">=</span> <span class="n">redis_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;smb_connection_&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">smb_connection</span><span class="p">)</span> <span class="k">if</span> <span class="n">smb_connection</span> <span class="k">else</span> <span class="kc">None</span>
+
+            <span class="c1"># there is no timeout in paramiko so...</span>
+            <span class="c1"># continue to attemp to login during time limit</span>
+            <span class="c1"># if we are getting timeout exceptions</span>
+            <span class="n">connect</span><span class="p">()</span>
+
+            <span class="c1"># make connection is not already connected.</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">3</span>  <span class="c1"># 3 mins from now</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">connected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span><span class="p">,</span> <span class="mi">139</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">connected</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">()</span>
+                    <span class="k">break</span>
+
+                <span class="k">except</span> <span class="p">(</span><span class="ne">AssertionError</span><span class="p">,</span> <span class="ne">ConnectionResetError</span><span class="p">,</span> <span class="n">SMBTimeout</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="c1"># pylint: disable=no-else-continue</span>
+                    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">timeout</span><span class="p">:</span>
+                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># wait 30 sec before retrying</span>
+                        <span class="c1"># recreate login</span>
+                        <span class="n">connect</span><span class="p">()</span>
+                        <span class="k">continue</span>
+                    <span class="k">elif</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
+                        <span class="c1"># pylint: disable=raise-missing-from</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;SMB Connection failed after timeout.&quot;</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Failed to Connect: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB Error</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to connect to &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+                <span class="o">+</span> <span class="s2">&quot;@&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span>
+                <span class="o">+</span> <span class="s2">&quot; (&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span>
+                <span class="o">+</span> <span class="s2">&quot;) /&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span>
+                <span class="o">+</span> <span class="s2">&quot;/ </span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Smb.list_dir"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/em_smb/index.html#em_runner.scripts.em_smb.Smb.list_dir">[docs]</a>    <span class="k">def</span> <span class="nf">list_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get list of directory contents.</span>
+
+<span class="sd">        :returns: list of all directory contents.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Listing Dir: </span><span class="si">%s</span><span class="s2">, path: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">),</span>
+            <span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># verify that it is actually existing. if not exising</span>
+                <span class="c1"># return empty list.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">getAttributes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span>
+
+            <span class="c1"># pylint: disable=broad-except</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[]</span>
+
+            <span class="n">my_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">listPath</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="n">search</span><span class="o">=</span><span class="mi">65591</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">my_list</span>
+
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Failed to list Dir: </span><span class="si">%s</span><span class="s2">, path: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB Error</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to get Dir listing to &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span>
+                <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+                <span class="o">+</span> <span class="s2">&quot; </span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="Smb.read"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/em_smb/index.html#em_runner.scripts.em_smb.Smb.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return file contents of network file path.</span>
+
+<span class="sd">        :returns: Contents of file specified.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Reading: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+
+            <span class="c1"># if there is a wildcard in the filename</span>
+            <span class="k">if</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">()</span>
+
+                <span class="n">parent_folder</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="ow">or</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+                    <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                <span class="p">)</span>
+                <span class="n">my_file</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="ow">or</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+                    <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+                <span class="p">)</span>
+
+                <span class="n">my_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">listPath</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">,</span>
+                    <span class="n">parent_folder</span><span class="p">,</span>
+                    <span class="n">search</span><span class="o">=</span><span class="mi">65591</span><span class="p">,</span>
+                    <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                    <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="c1"># convert search to regex and check for matching names.</span>
+                <span class="n">re_name</span> <span class="o">=</span> <span class="n">my_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;.+?&quot;</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">my_file</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">my_file</span><span class="o">.</span><span class="n">isDirectory</span> <span class="ow">is</span> <span class="kc">False</span>
+                        <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">re_name</span><span class="p">,</span> <span class="n">my_file</span><span class="o">.</span><span class="n">filename</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span>
+                    <span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">parent_folder</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">my_file</span><span class="o">.</span><span class="n">filename</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># failed to find matching file</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                        <span class="s2">&quot;SMB: Reading: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">, </span><span class="se">\</span>
+<span class="s2">                        failed to find matching file on server with pattern </span><span class="si">%s</span><span class="s2">.&quot;</span><span class="p">,</span>
+                        <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                        <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">parent_folder</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">re_name</span><span class="p">),</span>
+                    <span class="p">)</span>
+                    <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                        <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                        <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                        <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB</span>
+                        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to find matching file on server with pattern </span><span class="si">%s</span><span class="s2">&quot;</span>
+                        <span class="o">%</span> <span class="n">parent_folder</span>
+                        <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                        <span class="o">+</span> <span class="n">re_name</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+                    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                    <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="n">director</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">SMBHandler</span><span class="p">)</span>
+
+            <span class="n">file_path</span> <span class="o">=</span> <span class="n">director</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+                <span class="sa">u</span><span class="s2">&quot;smb://&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+                <span class="o">+</span> <span class="s2">&quot;:&quot;</span>
+                <span class="o">+</span> <span class="n">em_decrypt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;PASS_KEY&quot;</span><span class="p">])</span>
+                <span class="o">+</span> <span class="s2">&quot;@&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span>
+                <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+            <span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">file_obj</span><span class="p">):</span>
+                <span class="k">with</span> <span class="n">file_obj</span> <span class="k">as</span> <span class="n">this_file</span><span class="p">:</span>
+                    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">data</span> <span class="o">=</span> <span class="n">this_file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+                            <span class="k">break</span>
+                        <span class="k">yield</span> <span class="n">data</span>
+
+            <span class="c1"># send back contents</span>
+            <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;wb&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">temp</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">load_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+                    <span class="n">temp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+            <span class="n">file_path</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File succefully loaded from server &quot;</span>
+                <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;:.+?(?=@)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="n">temp</span><span class="o">.</span><span class="n">name</span>
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Failed to Read File: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to load file from server &quot;</span>
+                <span class="o">+</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;:.+?(?=@)&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">e</span></div>
+
+<div class="viewcode-block" id="Smb.save"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/em_smb/index.html#em_runner.scripts.em_smb.Smb.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load data into network file path, creating location if not existing.</span>
+
+<span class="sd">        :returns: True if successful.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Saving: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">()</span>
+
+            <span class="c1"># path must be created one folder at a time.. the docs say the path will all be</span>
+            <span class="c1"># created if not existing, but it doesn&#39;t seem to be the case :)</span>
+            <span class="n">my_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">path_builder</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>
+            <span class="k">for</span> <span class="n">my_path</span> <span class="ow">in</span> <span class="n">my_dir</span><span class="p">:</span>
+                <span class="n">path_builder</span> <span class="o">+=</span> <span class="n">my_path</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">listPath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">,</span> <span class="n">path_builder</span><span class="p">)</span>
+                <span class="c1"># pylint: disable=broad-except</span>
+                <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">createDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">,</span> <span class="n">path_builder</span><span class="p">)</span>
+
+            <span class="c1"># pylint: disable=useless-else-on-loop</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">overwrite</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># try to get security of the file. if it doesn&#39;t exist,</span>
+                        <span class="c1"># we crash and then can create the file.</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">getSecurity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span><span class="p">)</span>
+                        <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                            <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                            <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                            <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                            <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File already exists and will not be loaded: &quot;</span>
+                            <span class="o">+</span> <span class="s2">&quot;smb://&quot;</span>
+                            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+                            <span class="o">+</span> <span class="s2">&quot;@&quot;</span>
+                            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span>
+                            <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+                            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span>
+                            <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span>
+                            <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+                        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">__close</span><span class="p">()</span>
+                        <span class="k">return</span> <span class="s2">&quot;File already exists&quot;</span>
+                    <span class="c1"># pylint: disable=broad-except</span>
+                    <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                        <span class="k">pass</span>
+
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">,</span> <span class="n">buffering</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_obj</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">storeFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">share_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span><span class="p">,</span> <span class="n">file_obj</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">__close</span><span class="p">()</span>
+
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;File saved: &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+                <span class="o">+</span> <span class="s2">&quot; to &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+                <span class="o">+</span> <span class="s2">&quot;@&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span>
+                <span class="o">+</span> <span class="s2">&quot; (&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span>
+                <span class="o">+</span> <span class="s2">&quot;) /&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span>
+
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Failed to Save: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to load file &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
+                <span class="o">+</span> <span class="s2">&quot; to &quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+                <span class="o">+</span> <span class="s2">&quot;@&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_name</span>
+                <span class="o">+</span> <span class="s2">&quot; (&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_ip</span>
+                <span class="o">+</span> <span class="s2">&quot;) /&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">share_name</span>
+                <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest_path</span>
+                <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    <span class="k">def</span> <span class="nf">__close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Closing: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="c1"># pylint: disable=broad-except</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;SMB: Failed to Close: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
+                <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+                <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">status_id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># 10 = SMB</span>
+                <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to close connection&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+            <span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+</pre></div>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Riverside Healthcare<br/>
+        
+            &copy; Copyright 2020, Riverside Healthcare.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

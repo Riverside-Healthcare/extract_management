@@ -1,0 +1,75 @@
+:mod:`em_web`
+=============
+
+.. py:module:: em_web
+
+.. autoapi-nested-parse::
+
+   EM Web Startup.
+
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   web/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   extensions/index.rst
+   model/index.rst
+   seed/index.rst
+
+
+Package Contents
+----------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   em_web.create_app
+   em_web.db_seed
+   em_web.db_seed_demo
+   em_web.error_message
+
+
+.. function:: create_app()
+
+   Create app.
+
+   :returns: app.
+
+
+.. function:: db_seed()
+
+   Add command to seed the database.
+
+
+.. function:: db_seed_demo()
+
+   Add command to seed the database for a demo.
+
+
+.. function:: error_message(error)
+
+   Return error page for 404 and 500 errors including the specific error message.
+
+   :param error: error message
+   :return: json web response with error message:
+
+   .. code-block:: python
+
+       {"error": "messsage"}
+
+

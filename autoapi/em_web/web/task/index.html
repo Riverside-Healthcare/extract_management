@@ -1,0 +1,1662 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em_web.web.task &#8212; Extract Management 2.0</title>
+    
+  <link rel="stylesheet" href="../../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../../index.html">
+  
+  <img src="../../../../_static/icon-512x512.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Extract Management 2.0</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../index.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/dash.html">
+   Dash
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/projects.html">
+   Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/tasks.html">
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/connections.html">
+   Connections
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/admin.html">
+   Admin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/development.html">
+   Development
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../../../index.html">
+   API Reference
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="../../index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_web
+      </span>
+     </code>
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3 current active collapsible-parent">
+      <a class="reference internal" href="../index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.web
+        </span>
+       </code>
+      </a>
+      <ul class="current collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../admin/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.admin
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../assets/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.assets
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../auth/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.auth
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../connection/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.connection
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../dashboard/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.dashboard
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../executors/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.executors
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../project/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.project
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../table/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.table
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.task
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.model
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../seed/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.seed
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../em_scheduler/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_scheduler
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_scheduler/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.scripts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_scheduler/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_scheduler/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../em_runner/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_runner
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../em_runner/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.scripts
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_cmd/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_cmd
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_code/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_code
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_date/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_date
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_file/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_file
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_ftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_postgres/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_postgres
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_python/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_python
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_sftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_smb/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smb
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_smtp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smtp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_sqlserver/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sqlserver
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_ssh/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ssh
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/em_system/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_system
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/runner/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.runner
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/scripts/smb_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.smb_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../em_runner/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_runner/web/web/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.web
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_runner/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_runner/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-contents">
+   Module Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_endretry">
+       task_endretry
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_duplicate">
+       task_duplicate
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_hello">
+       task_hello
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_delete">
+       task_delete
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_all">
+       task_all
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_mine">
+       task_mine
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_user">
+       task_user
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_new">
+       task_new
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task">
+       get_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_edit_get">
+       task_edit_get
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_get_git_code">
+       task_get_git_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_get_source_code">
+       task_get_source_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_get_url_code">
+       task_get_url_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_get_processing_git_code">
+       task_get_processing_git_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_get_processing_url_code">
+       task_get_processing_url_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_edit_post">
+       task_edit_post
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.run_task_now">
+       run_task_now
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.schedule_task">
+       schedule_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.enable_task">
+       enable_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.disable_task">
+       disable_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task_run">
+       get_task_run
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task_file_send_sftp">
+       get_task_file_send_sftp
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task_file_send_ftp">
+       get_task_file_send_ftp
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task_file_send_smb">
+       get_task_file_send_smb
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task_file_send_email">
+       get_task_file_send_email
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task_file_download">
+       get_task_file_download
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.get_task_run_log">
+       get_task_run_log
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_sftp_dest">
+       task_sftp_dest
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_sftp_source">
+       task_sftp_source
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_ssh_source">
+       task_ssh_source
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_sftp_query">
+       task_sftp_query
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_sftp_processing">
+       task_sftp_processing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_ftp_dest">
+       task_ftp_dest
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_ftp_source">
+       task_ftp_source
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_ftp_processing">
+       task_ftp_processing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_ftp_query">
+       task_ftp_query
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_smb_source">
+       task_smb_source
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_smb_dest">
+       task_smb_dest
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_smb_query">
+       task_smb_query
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_smb_processing">
+       task_smb_processing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_database_source">
+       task_database_source
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_web.web.task.task_reset">
+       task_reset
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="module-em_web.web.task">
+<span id="em-web-web-task"></span><h1><a class="reference internal" href="#module-em_web.web.task" title="em_web.web.task"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.task</span></code></a><a class="headerlink" href="#module-em_web.web.task" title="Permalink to this headline">¶</a></h1>
+<p>Task web views.</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_endretry" title="em_web.web.task.task_endretry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_endretry</span></code></a>(task_id)</p></td>
+<td><p>Stop a task from performing the scheduled retry.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_duplicate" title="em_web.web.task.task_duplicate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_duplicate</span></code></a>(task_id)</p></td>
+<td><p>Duplicate a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_hello" title="em_web.web.task.task_hello"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_hello</span></code></a>(task_id)</p></td>
+<td><p>Get basic task info.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_delete" title="em_web.web.task.task_delete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_delete</span></code></a>(task_id)</p></td>
+<td><p>Delete a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_all" title="em_web.web.task.task_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_all</span></code></a>()</p></td>
+<td><p>Page for all tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_mine" title="em_web.web.task.task_mine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_mine</span></code></a>()</p></td>
+<td><p>Page for my tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_user" title="em_web.web.task.task_user"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_user</span></code></a>(user_id)</p></td>
+<td><p>Page for tasks for a specific user.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_new" title="em_web.web.task.task_new"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_new</span></code></a>(project_id)</p></td>
+<td><p>Create a new task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.get_task" title="em_web.web.task.get_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task</span></code></a>(task_id)</p></td>
+<td><p>Get task details page.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_edit_get" title="em_web.web.task.task_edit_get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_edit_get</span></code></a>(task_id)</p></td>
+<td><p>Task edit page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_get_git_code" title="em_web.web.task.task_get_git_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_git_code</span></code></a>(task_id)</p></td>
+<td><p>Get git code for a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_get_source_code" title="em_web.web.task.task_get_source_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_source_code</span></code></a>(task_id)</p></td>
+<td><p>Get git code for a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_get_url_code" title="em_web.web.task.task_get_url_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_url_code</span></code></a>(task_id)</p></td>
+<td><p>Get non-git source code for a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_get_processing_git_code" title="em_web.web.task.task_get_processing_git_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_processing_git_code</span></code></a>(task_id)</p></td>
+<td><p>Get git code for a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_get_processing_url_code" title="em_web.web.task.task_get_processing_url_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_processing_url_code</span></code></a>(task_id)</p></td>
+<td><p>Get non-git code for a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_edit_post" title="em_web.web.task.task_edit_post"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_edit_post</span></code></a>(task_id)</p></td>
+<td><p>Save task edits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.run_task_now" title="em_web.web.task.run_task_now"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_task_now</span></code></a>(task_id)</p></td>
+<td><p>Run a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.schedule_task" title="em_web.web.task.schedule_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schedule_task</span></code></a>(task_id)</p></td>
+<td><p>Add a task to scheduler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.enable_task" title="em_web.web.task.enable_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enable_task</span></code></a>(task_id)</p></td>
+<td><p>Enable a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.disable_task" title="em_web.web.task.disable_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disable_task</span></code></a>(task_id)</p></td>
+<td><p>Disable a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.get_task_run" title="em_web.web.task.get_task_run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_run</span></code></a>(task_id, run_id)</p></td>
+<td><p>Get task run details.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.get_task_file_send_sftp" title="em_web.web.task.get_task_file_send_sftp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_file_send_sftp</span></code></a>(task_id, file_id)</p></td>
+<td><p>Reload task SFTP output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.get_task_file_send_ftp" title="em_web.web.task.get_task_file_send_ftp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_file_send_ftp</span></code></a>(task_id, file_id)</p></td>
+<td><p>Reload task FTP output.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.get_task_file_send_smb" title="em_web.web.task.get_task_file_send_smb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_file_send_smb</span></code></a>(task_id, file_id)</p></td>
+<td><p>Reload task SMB output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.get_task_file_send_email" title="em_web.web.task.get_task_file_send_email"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_file_send_email</span></code></a>(task_id, file_id)</p></td>
+<td><p>Resend task email output.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.get_task_file_download" title="em_web.web.task.get_task_file_download"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_file_download</span></code></a>(file_id)</p></td>
+<td><p>Download task backup file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.get_task_run_log" title="em_web.web.task.get_task_run_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_run_log</span></code></a>(task_id, run_id)</p></td>
+<td><p>Build json dataset for ajax tables of tasklog.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_sftp_dest" title="em_web.web.task.task_sftp_dest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_sftp_dest</span></code></a>()</p></td>
+<td><p>Template to add sftp destination to a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_sftp_source" title="em_web.web.task.task_sftp_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_sftp_source</span></code></a>()</p></td>
+<td><p>Template to add sftp source to a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_ssh_source" title="em_web.web.task.task_ssh_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_ssh_source</span></code></a>()</p></td>
+<td><p>Template to add ssh source to a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_sftp_query" title="em_web.web.task.task_sftp_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_sftp_query</span></code></a>()</p></td>
+<td><p>Template to add sftp query source to a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_sftp_processing" title="em_web.web.task.task_sftp_processing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_sftp_processing</span></code></a>()</p></td>
+<td><p>Template to add sftp processing source to a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_ftp_dest" title="em_web.web.task.task_ftp_dest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_ftp_dest</span></code></a>()</p></td>
+<td><p>Template to add ftp destination to a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_ftp_source" title="em_web.web.task.task_ftp_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_ftp_source</span></code></a>()</p></td>
+<td><p>Template to add ftp source to a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_ftp_processing" title="em_web.web.task.task_ftp_processing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_ftp_processing</span></code></a>()</p></td>
+<td><p>Template to add ftp processing source to a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_ftp_query" title="em_web.web.task.task_ftp_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_ftp_query</span></code></a>()</p></td>
+<td><p>Template to add ftp query source to a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_smb_source" title="em_web.web.task.task_smb_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_smb_source</span></code></a>()</p></td>
+<td><p>Template to add smb source to a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_smb_dest" title="em_web.web.task.task_smb_dest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_smb_dest</span></code></a>()</p></td>
+<td><p>Template to add smb destination to a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_smb_query" title="em_web.web.task.task_smb_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_smb_query</span></code></a>()</p></td>
+<td><p>Template to add smb query source to a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_smb_processing" title="em_web.web.task.task_smb_processing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_smb_processing</span></code></a>()</p></td>
+<td><p>Template to add smb processing source to a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.task.task_database_source" title="em_web.web.task.task_database_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_database_source</span></code></a>()</p></td>
+<td><p>Template to add database source to a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.task.task_reset" title="em_web.web.task.task_reset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_reset</span></code></a>(task_id)</p></td>
+<td><p>Reset a task status to completed.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="em_web.web.task.task_endretry">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_endretry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_endretry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop a task from performing the scheduled retry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – id of task to stop</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>redirect to task details</p>
+</dd>
+</dl>
+<p>First, remove the redis key for reruns
+Then, force the task to reschedule, which will
+clear any scheduled jobs that do not belong to
+the primary schedule.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_duplicate">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_duplicate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_duplicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duplicate a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/duplicate</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task to duplicate</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html view of new task.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_hello">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_hello</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_hello" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get basic task info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – id of task to query</p>
+</dd>
+</dl>
+<p>:returns json of task details</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_delete">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_delete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/delete</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task to delete</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirects back to project or dashboard.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_all">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Page for all tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html of task page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_mine">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_mine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_mine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Page for my tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/mine</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html of task page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_user">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_user</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Page for tasks for a specific user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/user/&lt;user_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>user_id</strong> – id of task owner</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html of task page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_new">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_new</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/project/&lt;project_id&gt;/task/new</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>project_id</strong> – id of project owning the new task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirects to task page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get task details page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of the task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html for task page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_edit_get">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_edit_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_edit_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Task edit page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/edit</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of project owning the tasks</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirects to the project details page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_get_git_code">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_get_git_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_get_git_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get git code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/git</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_get_source_code">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_get_source_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_get_source_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get git code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/git</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_get_url_code">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_get_url_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_get_url_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get non-git source code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/url</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_get_processing_git_code">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_get_processing_git_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_get_processing_git_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get git code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/processing_git</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_get_processing_url_code">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_get_processing_url_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_get_processing_url_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get non-git code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/processing_url</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_edit_post">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_edit_post</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_edit_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save task edits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/edit</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.run_task_now">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">run_task_now</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.run_task_now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/run</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.schedule_task">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">schedule_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.schedule_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a task to scheduler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/schedule</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.enable_task">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">enable_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.enable_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/enable</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.disable_task">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">disable_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.disable_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/disable</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task_run">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task_run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">run_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get task run details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/log/&lt;run_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the tasklog</p></li>
+<li><p><strong>run_id</strong> – id of the run</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html of run details</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task_file_send_sftp">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task_file_send_sftp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task_file_send_sftp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload task SFTP output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/file/&lt;run_id&gt;/&lt;file_id&gt;/sendSftp</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the tasklog</p></li>
+<li><p><strong>run_id</strong> – id of the run</p></li>
+<li><p><strong>file_id</strong> – id of file to load</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task_file_send_ftp">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task_file_send_ftp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task_file_send_ftp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload task FTP output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/file/&lt;run_id&gt;/&lt;file_id&gt;/sendFtp</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the tasklog</p></li>
+<li><p><strong>run_id</strong> – id of the run</p></li>
+<li><p><strong>file_id</strong> – id of file to load</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task_file_send_smb">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task_file_send_smb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task_file_send_smb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload task SMB output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/file/&lt;run_id&gt;/&lt;file_id&gt;/sendSmb</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task owning the tasklog
+run_id: id of the run
+file_id: id of file to load</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task_file_send_email">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task_file_send_email</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task_file_send_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resend task email output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/file/&lt;run_id&gt;/&lt;file_id&gt;/sendEmail</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the tasklog</p></li>
+<li><p><strong>run_id</strong> – id of the run</p></li>
+<li><p><strong>file_id</strong> – id of file to load</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task_file_download">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task_file_download</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task_file_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download task backup file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/file/&lt;run_id&gt;/&lt;file_id&gt;/download</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the tasklog</p></li>
+<li><p><strong>run_id</strong> – id of the run</p></li>
+<li><p><strong>file_id</strong> – id of file to load</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirect to task details.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.get_task_run_log">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">get_task_run_log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">run_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.get_task_run_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build json dataset for ajax tables of tasklog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/runlog/&lt;run_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task</p></li>
+<li><p><strong>run_id</strong> – id of run</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json for ajax table.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_sftp_dest">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_sftp_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_sftp_dest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add sftp destination to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/sftp-dest</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_sftp_source">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_sftp_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_sftp_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add sftp source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/sftp-source</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_ssh_source">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_ssh_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_ssh_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add ssh source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/ssh-source</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_sftp_query">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_sftp_query</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_sftp_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add sftp query source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/sftp-query</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_sftp_processing">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_sftp_processing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_sftp_processing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add sftp processing source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/sftp-processing</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_ftp_dest">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_ftp_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_ftp_dest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add ftp destination to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/ftp-dest</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_ftp_source">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_ftp_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_ftp_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add ftp source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/ftp-source</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_ftp_processing">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_ftp_processing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_ftp_processing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add ftp processing source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/ftp-processing</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_ftp_query">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_ftp_query</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_ftp_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add ftp query source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/ftp-query</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_smb_source">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_smb_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_smb_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add smb source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/smb-source</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_smb_dest">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_smb_dest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_smb_dest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add smb destination to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/smb-dest</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_smb_query">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_smb_query</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_smb_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add smb query source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/smb-query</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_smb_processing">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_smb_processing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_smb_processing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add smb processing source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/smb-processing</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_database_source">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_database_source</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_database_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Template to add database source to a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/database-source</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>html page.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_web.web.task.task_reset">
+<code class="sig-prename descclassname">em_web.web.task.</code><code class="sig-name descname">task_reset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#em_web.web.task.task_reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset a task status to completed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/task/&lt;task_id&gt;/reset</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task to reset</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>redirects to task details.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Riverside Healthcare<br/>
+        
+            &copy; Copyright 2020, Riverside Healthcare.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

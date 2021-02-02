@@ -1,0 +1,1009 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em_runner.web.web &#8212; Extract Management 2.0</title>
+    
+  <link rel="stylesheet" href="../../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../../index.html">
+  
+  <img src="../../../../_static/icon-512x512.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Extract Management 2.0</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../index.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/dash.html">
+   Dash
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/projects.html">
+   Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/tasks.html">
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/connections.html">
+   Connections
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/admin.html">
+   Admin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../em/development.html">
+   Development
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../../../index.html">
+   API Reference
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../em_web/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_web
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../../em_web/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/admin/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.admin
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/assets/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.assets
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/auth/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.auth
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/connection/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.connection
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/dashboard/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.dashboard
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/executors/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.executors
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/project/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.project
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/table/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.table
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../../em_web/web/task/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.task
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_web/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_web/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.model
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_web/seed/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.seed
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../../../em_scheduler/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_scheduler
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_scheduler/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.scripts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_scheduler/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../../em_scheduler/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="../../index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_runner
+      </span>
+     </code>
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../../scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.scripts
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_cmd/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_cmd
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_code/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_code
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_date/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_date
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_file/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_file
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_ftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_postgres/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_postgres
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_python/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_python
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_sftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_smb/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smb
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_smtp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smtp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_sqlserver/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sqlserver
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_ssh/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ssh
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/em_system/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_system
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/runner/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.runner
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../../scripts/smb_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.smb_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3 current active collapsible-parent">
+      <a class="reference internal" href="../index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.web
+        </span>
+       </code>
+      </a>
+      <ul class="current collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4 current active">
+        <a class="current reference internal" href="#">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.web
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-contents">
+   Module Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.send_ftp">
+       send_ftp
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.send_sftp">
+       send_sftp
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.send_smb">
+       send_smb
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.send_email">
+       send_email
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.whoami">
+       whoami
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.reload_daemon">
+       reload_daemon
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.restart_daemon">
+       restart_daemon
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.run">
+       run
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.task_get_git_code">
+       task_get_git_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.task_get_url_code">
+       task_get_url_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.task_get_source_code">
+       task_get_source_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.task_get_processing_git_code">
+       task_get_processing_git_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.task_get_processing_url_code">
+       task_get_processing_url_code
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_runner.web.web.get_task_file_download">
+       get_task_file_download
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="module-em_runner.web.web">
+<span id="em-runner-web-web"></span><h1><a class="reference internal" href="#module-em_runner.web.web" title="em_runner.web.web"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.web.web</span></code></a><a class="headerlink" href="#module-em_runner.web.web" title="Permalink to this headline">¶</a></h1>
+<p>EM Runner API routes.</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_runner.web.web.send_ftp" title="em_runner.web.web.send_ftp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_ftp</span></code></a>(task_id, run_id, file_id)</p></td>
+<td><p>Send file to FPT server specified in the task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_runner.web.web.send_sftp" title="em_runner.web.web.send_sftp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_sftp</span></code></a>(task_id, run_id, file_id)</p></td>
+<td><p>Send file to SFPT server specified in the task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_runner.web.web.send_smb" title="em_runner.web.web.send_smb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_smb</span></code></a>(task_id, run_id, file_id)</p></td>
+<td><p>Send file to SMB server specified in the task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_runner.web.web.send_email" title="em_runner.web.web.send_email"><code class="xref py py-obj docutils literal notranslate"><span class="pre">send_email</span></code></a>(task_id, run_id, file_id)</p></td>
+<td><p>Send file to email address specified in the task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_runner.web.web.whoami" title="em_runner.web.web.whoami"><code class="xref py py-obj docutils literal notranslate"><span class="pre">whoami</span></code></a>()</p></td>
+<td><p>Run <cite>whoami</cite> command on host server.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_runner.web.web.reload_daemon" title="em_runner.web.web.reload_daemon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reload_daemon</span></code></a>()</p></td>
+<td><p>Reload server service daemons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_runner.web.web.restart_daemon" title="em_runner.web.web.restart_daemon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restart_daemon</span></code></a>()</p></td>
+<td><p>Restart server service daemons.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_runner.web.web.run" title="em_runner.web.web.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(task_id)</p></td>
+<td><p>Run specified task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_runner.web.web.task_get_git_code" title="em_runner.web.web.task_get_git_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_git_code</span></code></a>(task_id)</p></td>
+<td><p>Get git code for a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_runner.web.web.task_get_url_code" title="em_runner.web.web.task_get_url_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_url_code</span></code></a>(task_id)</p></td>
+<td><p>Get non-git source code for a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_runner.web.web.task_get_source_code" title="em_runner.web.web.task_get_source_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_source_code</span></code></a>(task_id)</p></td>
+<td><p>Get source code for a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_runner.web.web.task_get_processing_git_code" title="em_runner.web.web.task_get_processing_git_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_processing_git_code</span></code></a>(task_id)</p></td>
+<td><p>Get git code for a task.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_runner.web.web.task_get_processing_url_code" title="em_runner.web.web.task_get_processing_url_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_get_processing_url_code</span></code></a>(task_id)</p></td>
+<td><p>Get non-git code for a task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_runner.web.web.get_task_file_download" title="em_runner.web.web.get_task_file_download"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_task_file_download</span></code></a>(file_id)</p></td>
+<td><p>Download file from SMB backup server.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="em_runner.web.web.send_ftp">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">send_ftp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">run_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#send_ftp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.send_ftp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send file to FPT server specified in the task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/send_ftp/&lt;task_id&gt;/&lt;run_id&gt;/&lt;file_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the connection</p></li>
+<li><p><strong>run_id</strong> – id of the run associated with the file</p></li>
+<li><p><strong>file_id</strong> – id of the file to send</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message or error</p>
+</dd>
+</dl>
+<p>File is loaded from the backup SMB file server into a tempfile.
+The tempfile is deposited into the FTP location.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.send_sftp">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">send_sftp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">run_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#send_sftp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.send_sftp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send file to SFPT server specified in the task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/send_sftp/&lt;task_id&gt;/&lt;run_id&gt;/&lt;file_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the connection</p></li>
+<li><p><strong>run_id</strong> – id of the run associated with the file</p></li>
+<li><p><strong>file_id</strong> – id of the file to send</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message or error</p>
+</dd>
+</dl>
+<p>File is loaded from the backup SMB file server into a tempfile.
+The tempfile is deposited into the SFTP location.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.send_smb">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">send_smb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">run_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#send_smb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.send_smb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send file to SMB server specified in the task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/send_smb/&lt;task_id&gt;/&lt;run_id&gt;/&lt;file_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the connection</p></li>
+<li><p><strong>run_id</strong> – id of the run associated with the file</p></li>
+<li><p><strong>file_id</strong> – id of the file to send</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message or error</p>
+</dd>
+</dl>
+<p>File is loaded from the backup SMB file server into a tempfile.
+The tempfile is deposited into the SMB location.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.send_email">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">send_email</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">run_id</span></em>, <em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#send_email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.send_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send file to email address specified in the task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/send_email/&lt;task_id&gt;/&lt;run_id&gt;/&lt;file_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the connection</p></li>
+<li><p><strong>run_id</strong> – id of the run associated with the file</p></li>
+<li><p><strong>file_id</strong> – id of the file to send</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message or error</p>
+</dd>
+</dl>
+<p>File is loaded from the backup SMB file server into a tempfile.
+The tempfile is sent as an email attachment.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.whoami">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">whoami</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#whoami"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.whoami" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run <cite>whoami</cite> command on host server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/whoami</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json message: who the owner server user is, or error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.reload_daemon">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">reload_daemon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#reload_daemon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.reload_daemon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reload server service daemons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/reloadDaemon</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json message or error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.restart_daemon">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">restart_daemon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#restart_daemon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.restart_daemon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restart server service daemons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/restartDaemon</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json message or error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.run">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run specified task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/&lt;task_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task to run</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>completion message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.task_get_git_code">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">task_get_git_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#task_get_git_code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.task_get_git_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get git code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/&lt;task_id&gt;/git</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.task_get_url_code">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">task_get_url_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#task_get_url_code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.task_get_url_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get non-git source code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/&lt;task_id&gt;/url</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.task_get_source_code">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">task_get_source_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#task_get_source_code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.task_get_source_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get source code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/&lt;task_id&gt;/source</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.task_get_processing_git_code">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">task_get_processing_git_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#task_get_processing_git_code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.task_get_processing_git_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get git code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/&lt;task_id&gt;/processing_git</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.task_get_processing_url_code">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">task_get_processing_url_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#task_get_processing_url_code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.task_get_processing_url_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get non-git code for a task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/&lt;task_id&gt;/processing_url</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>html page with source code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_runner.web.web.get_task_file_download">
+<code class="sig-prename descclassname">em_runner.web.web.</code><code class="sig-name descname">get_task_file_download</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_runner/web/web.html#get_task_file_download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_runner.web.web.get_task_file_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file from SMB backup server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/&lt;task_id&gt;/file/&lt;run_id&gt;/&lt;file_id&gt;/download</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task owning the file</p></li>
+<li><p><strong>run_id</strong> – id of the run owning the file</p></li>
+<li><p><strong>file_id</strong> – id of the file to download</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>file</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Riverside Healthcare<br/>
+        
+            &copy; Copyright 2020, Riverside Healthcare.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

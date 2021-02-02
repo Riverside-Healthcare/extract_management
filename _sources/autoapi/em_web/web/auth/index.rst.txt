@@ -1,0 +1,55 @@
+:mod:`em_web.web.auth`
+======================
+
+.. py:module:: em_web.web.auth
+
+.. autoapi-nested-parse::
+
+   Login/Logout web views.
+
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   em_web.web.auth.before_request
+   em_web.web.auth.login
+   em_web.web.auth.logout
+   em_web.web.auth.log_login
+
+
+.. function:: before_request()
+
+   Validate user and reloads auth before each request.
+
+
+.. function:: login()
+
+   User login page.
+
+   :url: /login
+   :returns: webpage
+
+
+.. function:: logout()
+
+   User logout page.
+
+   :url: /logout
+   :returns: webpage
+
+
+.. function:: log_login(name, type_id)
+
+   Log all login/logout attempts.
+
+   :param name (str): name of user performing action
+   :param type_id (int): id of event type
+
+

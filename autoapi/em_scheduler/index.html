@@ -1,0 +1,1268 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>em_scheduler &#8212; Extract Management 2.0</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/icon-512x512.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Extract Management 2.0</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../index.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../em/dash.html">
+   Dash
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../em/projects.html">
+   Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../em/tasks.html">
+   Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../em/connections.html">
+   Connections
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../em/admin.html">
+   Admin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../em/development.html">
+   Development
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../index.html">
+   API Reference
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../em_web/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_web
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../em_web/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/admin/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.admin
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/assets/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.assets
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/auth/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.auth
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/connection/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.connection
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/dashboard/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.dashboard
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/executors/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.executors
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/project/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.project
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/table/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.table
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_web/web/task/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_web.web.task
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../em_web/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../em_web/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.model
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../em_web/seed/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_web.seed
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="current reference internal" href="#">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_scheduler
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.scripts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_scheduler.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../em_runner/index.html">
+     <code class="xref py py-mod docutils literal notranslate">
+      <span class="pre">
+       em_runner
+      </span>
+     </code>
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../em_runner/scripts/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.scripts
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_cmd/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_cmd
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_code/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_code
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_date/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_date
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_file/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_file
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_ftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_postgres/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_postgres
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_python/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_python
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_sftp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sftp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_smb/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smb
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_smtp/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_smtp
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_sqlserver/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_sqlserver
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_ssh/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_ssh
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/em_system/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.em_system
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/runner/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.runner
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/scripts/smb_fix/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.scripts.smb_fix
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3 collapsible-parent">
+      <a class="reference internal" href="../em_runner/web/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.web
+        </span>
+       </code>
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/web/filters/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.filters
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l4">
+        <a class="reference internal" href="../em_runner/web/web/index.html">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           em_runner.web.web
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../em_runner/extensions/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.extensions
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../em_runner/model/index.html">
+       <code class="xref py py-mod docutils literal notranslate">
+        <span class="pre">
+         em_runner.model
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-urls">
+   Other Urls
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#database-model">
+   Database Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subpackages">
+   Subpackages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#package-contents">
+   Package Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.error_message">
+       error_message
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.alive">
+       alive
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.schedule">
+       schedule
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.add_task">
+       add_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.delete_task">
+       delete_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.run_task">
+       run_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.run_task_delay">
+       run_task_delay
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.delete_all_tasks">
+       delete_all_tasks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.pause_all_tasks">
+       pause_all_tasks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.resume_all_tasks">
+       resume_all_tasks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.shutdown">
+       shutdown
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.kill">
+       kill
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.get_jobs">
+       get_jobs
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.get_jobs_details">
+       get_jobs_details
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.get_scheduled_jobs">
+       get_scheduled_jobs
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.delete_orphans">
+       delete_orphans
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.scheduler_delete_all_tasks">
+       scheduler_delete_all_tasks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.scheduler_delete_task">
+       scheduler_delete_task
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.scheduler_task_runner">
+       scheduler_task_runner
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#em_scheduler.scheduler_add_task">
+       scheduler_add_task
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="module-em_scheduler">
+<span id="em-scheduler"></span><h1><a class="reference internal" href="#module-em_scheduler" title="em_scheduler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler</span></code></a><a class="headerlink" href="#module-em_scheduler" title="Permalink to this headline">¶</a></h1>
+<p>EM’s scheduler module.</p>
+<p>EM’s scheduler is a Flask web API running Flask_APScheduler on a single
+worker process.</p>
+<p>The scheduler should be running on a single worker process and only accessable on localhost.</p>
+<p>Tasks are started and stopped by sending a web request to various URL’s.</p>
+<ul class="simple">
+<li><p>/add/&lt;task_id&gt;</p></li>
+<li><p>/delete/&lt;task_id&gt;</p></li>
+<li><p>/run/&lt;task_id&gt;</p></li>
+</ul>
+<p>When the scheduler is ready to run a task it will send an async web request to the runner API
+with the id of the task to run next.</p>
+<div class="section" id="other-urls">
+<h2>Other Urls<a class="headerlink" href="#other-urls" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>/delete - delete all jobs</p></li>
+<li><p>/pause - pause all jobs</p></li>
+<li><p>/resume - resume all paused jobs</p></li>
+<li><p>/shutdown - gracefully shutdown the scheduler</p></li>
+<li><p>/kill - kill the scheduler</p></li>
+<li><p>/jobs - list all id’s</p></li>
+<li><p>/details - list all job details</p></li>
+<li><p>/scheduled - list id’s of scheduled jobs</p></li>
+<li><p>/delete-orphans - delete all orphaned jobs (jobs that no
+longer have an associated EM task existing)</p></li>
+</ul>
+</div>
+<div class="section" id="database-model">
+<h2>Database Model<a class="headerlink" href="#database-model" title="Permalink to this headline">¶</a></h2>
+<p>Database model should be cloned from <cite>em_web</cite> before running app.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cp em_web/model.py em_scheduler/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="scripts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.scripts</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.error_message" title="em_scheduler.error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error_message</span></code></a>(error)</p></td>
+<td><p>Return error page for 404 and 500 errors including the specific error message.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.alive" title="em_scheduler.alive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alive</span></code></a>()</p></td>
+<td><p>Check API status.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.schedule" title="em_scheduler.schedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schedule</span></code></a>()</p></td>
+<td><p>Build simulated run schedule.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.add_task" title="em_scheduler.add_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_task</span></code></a>(task_id)</p></td>
+<td><p>Schedule task to run.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.delete_task" title="em_scheduler.delete_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_task</span></code></a>(task_id)</p></td>
+<td><p>Delete tasks schedule.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.run_task" title="em_scheduler.run_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_task</span></code></a>(task_id)</p></td>
+<td><p>Run task now.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.run_task_delay" title="em_scheduler.run_task_delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_task_delay</span></code></a>(task_id, minutes)</p></td>
+<td><p>Run task in x minutes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.delete_all_tasks" title="em_scheduler.delete_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all_tasks</span></code></a>()</p></td>
+<td><p>Delete all scheduled tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.pause_all_tasks" title="em_scheduler.pause_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause_all_tasks</span></code></a>()</p></td>
+<td><p>Pause all tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.resume_all_tasks" title="em_scheduler.resume_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resume_all_tasks</span></code></a>()</p></td>
+<td><p>Resume all tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.shutdown" title="em_scheduler.shutdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shutdown</span></code></a>()</p></td>
+<td><p>Gracefully shutdown scheduler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.kill" title="em_scheduler.kill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kill</span></code></a>()</p></td>
+<td><p>Kill scheduler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.get_jobs" title="em_scheduler.get_jobs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_jobs</span></code></a>()</p></td>
+<td><p>Get list of all job ids.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.get_jobs_details" title="em_scheduler.get_jobs_details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_jobs_details</span></code></a>()</p></td>
+<td><p>Get list of all jobs with all details.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.get_scheduled_jobs" title="em_scheduler.get_scheduled_jobs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scheduled_jobs</span></code></a>()</p></td>
+<td><p>Get list of all scheduled job ids.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.delete_orphans" title="em_scheduler.delete_orphans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_orphans</span></code></a>()</p></td>
+<td><p>Delete all orphaned jobs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.scheduler_delete_all_tasks" title="em_scheduler.scheduler_delete_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_delete_all_tasks</span></code></a>()</p></td>
+<td><p>Delete all jobs associated with a task from the scheduler.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.scheduler_delete_task" title="em_scheduler.scheduler_delete_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_delete_task</span></code></a>(task_id)</p></td>
+<td><p>Delete all jobs associated with a task from the scheduler.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.scheduler_task_runner" title="em_scheduler.scheduler_task_runner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_task_runner</span></code></a>(task_id)</p></td>
+<td><p>Send request to runner api to run task.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.scheduler_add_task" title="em_scheduler.scheduler_add_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_add_task</span></code></a>(task_id)</p></td>
+<td><p>Create job for task in the scheduler.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt id="em_scheduler.error_message">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">error_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">error</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#error_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.error_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return error page for 404 and 500 errors including the specific error message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> – error message</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json web response with error message:</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;messsage&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.alive">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">alive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#alive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.alive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check API status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status alive!</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.schedule">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">schedule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#schedule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build simulated run schedule.</p>
+<p>Build list of hours to show on the chart:
+[‘now’, &lt;now + 1&gt;, &lt;now + 2&gt;, etc]</p>
+<p>Build list of schedule for next 24 hours</p>
+<p>Merge two lists and put 0 where needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status alive!</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.add_task">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">add_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#add_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.add_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Schedule task to run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/add/&lt;task_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> (<em>int</em>) – id of task to schedule</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message</p>
+</dd>
+</dl>
+<p>First check for any existing schedules, remove them, then add a new schedule.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.delete_task">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">delete_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#delete_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.delete_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete tasks schedule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/delete/&lt;task_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task to delete</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.run_task">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">run_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#run_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.run_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run task now.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/run/&lt;task_id&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>task_id</strong> – id of task to run</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.run_task_delay">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">run_task_delay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em>, <em class="sig-param"><span class="n">minutes</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#run_task_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.run_task_delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run task in x minutes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/run/&lt;task_id&gt;/delay/&lt;minutes&gt;</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>task_id</strong> – id of task to run</p></li>
+<li><p><strong>minutes</strong> – minutes from now to run task</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>json message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.delete_all_tasks">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">delete_all_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#delete_all_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.delete_all_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all scheduled tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/delete</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.pause_all_tasks">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">pause_all_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#pause_all_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.pause_all_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pause all tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/pause</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.resume_all_tasks">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">resume_all_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#resume_all_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.resume_all_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resume all tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/resume</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>succss message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.shutdown">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#shutdown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gracefully shutdown scheduler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/shutdown</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>succss message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.kill">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">kill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#kill"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.kill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Kill scheduler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/kill</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>succss message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.get_jobs">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">get_jobs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#get_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.get_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of all job ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/jobs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of job ids.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.get_jobs_details">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">get_jobs_details</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#get_jobs_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.get_jobs_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of all jobs with all details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/details</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of job ids.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.get_scheduled_jobs">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">get_scheduled_jobs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#get_scheduled_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.get_scheduled_jobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of all scheduled job ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/scheduled</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json list of ids for active jobs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.delete_orphans">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">delete_orphans</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#delete_orphans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.delete_orphans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all orphaned jobs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Url</dt>
+<dd class="field-odd"><p>/api/delete-orphans</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.scheduler_delete_all_tasks">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">scheduler_delete_all_tasks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#scheduler_delete_all_tasks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.scheduler_delete_all_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all jobs associated with a task from the scheduler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>true</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.scheduler_delete_task">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">scheduler_delete_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#scheduler_delete_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.scheduler_delete_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all jobs associated with a task from the scheduler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – id of task to delete associated jobs</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.scheduler_task_runner">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">scheduler_task_runner</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#scheduler_task_runner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.scheduler_task_runner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send request to runner api to run task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – id of task to run</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="em_scheduler.scheduler_add_task">
+<code class="sig-prename descclassname">em_scheduler.</code><code class="sig-name descname">scheduler_add_task</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task_id</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#scheduler_add_task"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#em_scheduler.scheduler_add_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create job for task in the scheduler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>task_id</strong> – id of task to create a schedule for</p>
+</dd>
+</dl>
+<p><em>Parameters for APScheduler</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Func</dt>
+<dd class="field-odd"><p>function to run</p>
+</dd>
+<dt class="field-even">Trigger</dt>
+<dd class="field-even"><p>date, interval or cron</p>
+</dd>
+<dt class="field-odd">Id</dt>
+<dd class="field-odd"><p>used to match job up to db</p>
+</dd>
+<dt class="field-even">Name</dt>
+<dd class="field-even"><p>desc of job</p>
+</dd>
+<dt class="field-odd">Misfire_grace_time</dt>
+<dd class="field-odd"><p>seconds a job can run late</p>
+</dd>
+<dt class="field-even">Coalesce</dt>
+<dd class="field-even"><p>merge mul into one run</p>
+</dd>
+<dt class="field-odd">Max_instances</dt>
+<dd class="field-odd"><p>max concurrent runs allowed</p>
+</dd>
+<dt class="field-even">Next_run_time</dt>
+<dd class="field-even"><p>when to start schedule (None: job paused)</p>
+</dd>
+<dt class="field-odd">Jobstore</dt>
+<dd class="field-odd"><p>alias of jobstore to use</p>
+</dd>
+<dt class="field-even">Executor</dt>
+<dd class="field-even"><p>alias of excutor to use</p>
+</dd>
+<dt class="field-odd">Replace_existing</dt>
+<dd class="field-odd"><p>true to replace jobs with same id</p>
+</dd>
+</dl>
+<p><em>Parameters for Cron Jobs</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Year</dt>
+<dd class="field-odd"><p>4 digit year</p>
+</dd>
+<dt class="field-even">Month</dt>
+<dd class="field-even"><p>1-12</p>
+</dd>
+<dt class="field-odd">Day</dt>
+<dd class="field-odd"><p>1-31</p>
+</dd>
+<dt class="field-even">Week</dt>
+<dd class="field-even"><p>1-53</p>
+</dd>
+<dt class="field-odd">Day_of_week</dt>
+<dd class="field-odd"><p>0-6 or mon,tue,wed,thu,fri,sat,sun</p>
+</dd>
+<dt class="field-even">Hour</dt>
+<dd class="field-even"><p>0-23</p>
+</dd>
+<dt class="field-odd">Minute</dt>
+<dd class="field-odd"><p>0-59</p>
+</dd>
+<dt class="field-even">Second</dt>
+<dd class="field-even"><p>0-59</p>
+</dd>
+<dt class="field-odd">Start_date</dt>
+<dd class="field-odd"><p>(datetime) soonest start</p>
+</dd>
+<dt class="field-even">End_date</dt>
+<dd class="field-even"><p>(datetime) latest run</p>
+</dd>
+</dl>
+<p><em>Paramters for Interval Jobs</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Weeks</dt>
+<dd class="field-odd"><p>(int) number of weeks between runs</p>
+</dd>
+<dt class="field-even">Days</dt>
+<dd class="field-even"><p>(int) number of days between runs</p>
+</dd>
+<dt class="field-odd">Hours</dt>
+<dd class="field-odd"><p>(int) number of hours between runs</p>
+</dd>
+<dt class="field-even">Minutes</dt>
+<dd class="field-even"><p>(int) number of minutes between runs</p>
+</dd>
+<dt class="field-odd">Seconds</dt>
+<dd class="field-odd"><p>(int) number of seconds between runs</p>
+</dd>
+<dt class="field-even">Start_date</dt>
+<dd class="field-even"><p>(datetime) soonest start date</p>
+</dd>
+<dt class="field-odd">End_date</dt>
+<dd class="field-odd"><p>(datetime) latest run date</p>
+</dd>
+</dl>
+<p><em>Parameters for One Off Jobs</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Run_date</dt>
+<dd class="field-odd"><p>(datetime) when to run</p>
+</dd>
+</dl>
+<p><em>Notes</em></p>
+<p>If multiple triggers are specified on the task a schedule will be added for each trigger
+type. So it is possible to have multiple triggers per task. Because of this, the id
+assigned to the job is project_id-task_id-&lt;time hash&gt;. The tasks id is sent as an arg
+to the job.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Riverside Healthcare<br/>
+        
+            &copy; Copyright 2020, Riverside Healthcare.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
