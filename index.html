@@ -658,8 +658,7 @@
 <div class="section" id="extract-management-2-0">
 <h1>Extract Management 2.0<a class="headerlink" href="#extract-management-2-0" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="_images/em2.png"><img alt="Demo Image" src="_images/em2.png" style="width: 100%;" /></a>
-<p>Extract Management 2.0 is a task scheduling tool for getting data from a
-source and depositing it in a destination - sql servers to SFTP servers.</p>
+<p>Extract Management 2.0 is a task scheduling tool for getting data from a source and depositing it in a destination - sql servers to SFTP servers.</p>
 <p>Tasks can run at any time and on any schedule.</p>
 <p>Checkout the <a class="reference external" href="https://extract-management.herokuapp.com">demo site</a>!
 Or, you can run your own docker image:</p>
@@ -675,36 +674,20 @@ Or, you can run your own docker image:</p>
 <li><p>scheduler</p></li>
 <li><p>job runner</p></li>
 </ul>
-<p>EM2 runs with Nginx + Gunicorn. Three individual web services are
-created, the web app is the public web site and the other two (scheduler
-and runner) are internal API’s running on the web server.</p>
+<p>EM2 runs with Nginx + Gunicorn. Three individual web services are created, the web app is the public web site and the other two (scheduler and runner) are internal API’s running on the web server.</p>
 <div class="section" id="prerequisites">
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Currently EM2 is setup to install on an Ubunut server, however with a</dt><dd><p>few tweaks to the install script it will work well on most Linux.</p>
-</dd>
-</dl>
-</li>
+<li><p>Currently EM2 is setup to install on an Ubuntu server, however with a few tweaks to the install script it will work well on most Linux.</p></li>
 <li><p>curl or wget should be installed</p></li>
-<li><dl class="simple">
-<dt>Ideally, you will have your own git repository, holding updated</dt><dd><p>config files, and will publish from there.</p>
-</dd>
-</dl>
-</li>
+<li><p>Ideally, you will have your own git repository, holding updated config files, and will publish from there.</p></li>
 </ul>
 </div>
 <div class="section" id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
-<p>An install script is provided to easily install EM2 onto your Ubuntu
-server. Update the <code class="docutils literal notranslate"><span class="pre">publish/install.sh</span></code> file “dns” value to be the dns
-of your server, and the “remote” to point to your repo path. If you plan
-to use ssl you can add the certs into the <code class="docutils literal notranslate"><span class="pre">publish</span></code> folder as well.
-Use names “cert.crt” and “cert.key”.</p>
-<p>The publish takes place over SSH from a git server. It is possible to
-use an accesskey when publishing from fabric.</p>
-<p>Update username and hostname with your planned login. Commands require
-sudo. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash...</span></code></p>
+<p>An install script is provided to easily install EM2 onto your Ubuntu server. Update the <code class="docutils literal notranslate"><span class="pre">publish/install.sh</span></code> file “dns” value to be the dns of your server, and the “remote” to point to your repo path. If you plan to use ssl you can add the certs into the <code class="docutils literal notranslate"><span class="pre">publish</span></code> folder as well. Use names “cert.crt” and “cert.key”.</p>
+<p>The publish takes place over SSH from a git server. It is possible to use an accesskey when publishing from fabric.</p>
+<p>Update username and hostname with your planned login. Commands require sudo. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash...</span></code></p>
 <table class="table">
 <colgroup>
 <col style="width: 7%" />
@@ -727,13 +710,11 @@ sudo. <code class="docutils literal notranslate"><span class="pre">sudo</span> <
 </tr>
 </tbody>
 </table>
-<p>After cloning the repo the <code class="docutils literal notranslate"><span class="pre">install.sh</span></code> script will install all
-packages necessary to start up the app.</p>
+<p>After cloning the repo the <code class="docutils literal notranslate"><span class="pre">install.sh</span></code> script will install all packages necessary to start up the app.</p>
 </div>
 <div class="section" id="running-em2-locally">
 <h3>Running EM2 Locally<a class="headerlink" href="#running-em2-locally" title="Permalink to this headline">¶</a></h3>
-<p>EM2 can be run locally. We use pyenv and poetry to manage the project
-dependencies. Assuming you will too -</p>
+<p>EM2 can be run locally. We use pyenv and poetry to manage the project dependencies. Assuming you will too -</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pyenv <span class="nb">local</span> <span class="m">3</span>.9.0
 poetry install
 
@@ -747,8 +728,7 @@ flask seed
 flask seed_demo
 </pre></div>
 </div>
-<p>Finally, to run the three site, you will need to run each command in a
-separate termimal session:</p>
+<p>Finally, to run the three site, you will need to run each command in a separate termimal session:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">FLASK_ENV</span><span class="o">=</span>development <span class="o">&amp;&amp;</span> <span class="nv">FLASK_DEBUG</span><span class="o">=</span><span class="m">1</span> <span class="o">&amp;&amp;</span> <span class="nv">FLASK_APP</span><span class="o">=</span>em_web <span class="o">&amp;&amp;</span> flask run
 <span class="nv">FLASK_ENV</span><span class="o">=</span>development <span class="o">&amp;&amp;</span> <span class="nv">FLASK_DEBUG</span><span class="o">=</span><span class="m">1</span> <span class="o">&amp;&amp;</span> <span class="nv">FLASK_APP</span><span class="o">=</span>em_scheduler <span class="o">&amp;&amp;</span> flask run --port<span class="o">=</span><span class="m">5001</span>
 <span class="nv">FLASK_ENV</span><span class="o">=</span>development <span class="o">&amp;&amp;</span> <span class="nv">FLASK_DEBUG</span><span class="o">=</span><span class="m">1</span> <span class="o">&amp;&amp;</span> <span class="nv">FLASK_APP</span><span class="o">=</span>em_runner <span class="o">&amp;&amp;</span> flask run --port<span class="o">=</span><span class="m">5002</span>
@@ -757,43 +737,30 @@ separate termimal session:</p>
 </div>
 <div class="section" id="other-configuration-tips">
 <h3>Other Configuration Tips<a class="headerlink" href="#other-configuration-tips" title="Permalink to this headline">¶</a></h3>
-<p>If you use hostnames vs IP addresses in your config files be sure to
-update hosts file <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">/etc/hosts</span></code> to include the ip address of any
-internal domain hosts you will use. For example, LDAP server, GIT
-server, any databases you plan to query, etc.</p>
+<p>If you use hostnames vs IP addresses in your config files be sure to update hosts file <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">/etc/hosts</span></code> to include the ip address of any internal domain hosts you will use. For example, LDAP server, GIT server, any databases you plan to query, etc.</p>
 </div>
 </div>
 <div class="section" id="about-the-app">
 <h2>About the App<a class="headerlink" href="#about-the-app" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-login-works">
 <h3>How Login Works<a class="headerlink" href="#how-login-works" title="Permalink to this headline">¶</a></h3>
-<p>Login is done through LDAP and follows this basic process Note: the
-python package python-simpleldap has been customized slightly to work
-with our ldap setup.</p>
+<p>Login is done through LDAP and follows this basic process Note: the python package python-simpleldap has been customized slightly to work with our ldap setup.</p>
 <ol class="arabic simple">
-<li><p>config.py file holds the general connection info. A connection to the
-ldap server is made with the user credentials supplied in the config
-file.</p></li>
-<li><p>Once a connection is established and a user attempts to access the
-site the simpleldap package first verifies that the user exists, by
-doin a search for the user. If the user exists we save their details
-and groups.</p></li>
-<li><p>If the user exists then we attempt to log them in.. this returns true
-if they had a valid username/pass.</p></li>
-<li><p>Finally, as this site is restricted to Analytics group users, we only
-allow users that have the “Analytics” group on their profile.</p></li>
+<li><p>config.py file holds the general connection info. A connection to the ldap server is made with the user credentials supplied in the config file.</p></li>
+<li><p>Once a connection is established and a user attempts to access the site the simpleldap package first verifies that the user exists, by doing a search for the user. If the user exists we save their details and groups.</p></li>
+<li><p>If the user exists then we attempt to log them in.. this returns true if they had a valid username/pass.</p></li>
+<li><p>Finally, as this site is restricted to Analytics group users, we only allow users that have the “Analytics” group on their profile.</p></li>
 </ol>
-<p>Note: once logged in the user_id is kept in the server “session”. When
-a user logs out we just drop the user_id from the session.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>once logged in the user_id is kept in the server “session”. When a user logs out we just drop the user_id from the session.</p>
+</div>
 </div>
 <div class="section" id="data-flow">
 <h3>Data Flow<a class="headerlink" href="#data-flow" title="Permalink to this headline">¶</a></h3>
-<p>Project name and schedule are created &gt; tasks can be added to the
-project.</p>
-<p>Task are completely independent, the order of tasks is not respected and
-tasks may run in parallel. The purpose of allowing multiple tasks is to
-keep a clean grouping of tasks that belong to the same data project.</p>
-<p>The tasks in a job can indivitually be started or stopped.</p>
+<p>Project name and schedule are created &gt; tasks can be added to the project.</p>
+<p>Task are completely independent, the order of tasks is not respected and tasks may run in parallel. The purpose of allowing multiple tasks is to keep a clean grouping of tasks that belong to the same data project.</p>
+<p>The tasks in a job can individually be started or stopped.</p>
 </div>
 <div class="section" id="testing">
 <h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
@@ -807,16 +774,10 @@ keep a clean grouping of tasks that belong to the same data project.</p>
 <p>EM2 uses three web services for a few reasons -</p>
 <ul class="simple">
 <li><p>Splitting the UI from the running tasks improves the user experience</p></li>
-<li><dl class="simple">
-<dt>The scheduler must run on only 1 web worker, while we would like as</dt><dd><p>many workers as possible for the runner.</p>
-</dd>
-</dl>
-</li>
+<li><p>The scheduler must run on only 1 web worker, while we would like as many workers as possible for the runner.</p></li>
 <li><p>API’s are cool.</p></li>
 </ul>
-<p>In the EM2 admin screen there is an option to retart the web services.
-For this option to work you may need to give you webapp user sudo
-permission, or:</p>
+<p>In the EM2 admin screen there is an option to retart the web services. For this option to work you may need to give you webapp user sudo permission, or:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo visudo
 
 <span class="c1"># add this line to the end.. assuming the webapp usergroup is &quot;webapp&quot;</span>
@@ -824,9 +785,7 @@ permission, or:</p>
 %webapp <span class="nv">ALL</span><span class="o">=</span>NOPASSWD: /bin/systemctl restart *
 </pre></div>
 </div>
-<p>If you will have “long running” tasks, it may be wise to increase the
-nginx timeout. (Gunicorn timeouts are already increased in the app
-install files.)</p>
+<p>If you will have “long running” tasks, it may be wise to increase the nginx timeout. (Gunicorn timeouts are already increased in the app install files.)</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># open nginx config</span>
 sudo nano /etc/nginx/nginx.conf
 
