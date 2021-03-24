@@ -330,17 +330,24 @@
             <span class="n">status_icon</span> <span class="o">=</span> <span class="s1">'&lt;i class="em-icon em-successIcon"&gt;&lt;/i&gt;'</span>
 
         <span class="n">enabled</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="nb">str</span><span class="p">(</span><span class="n">proj</span><span class="p">[</span><span class="s2">"Enabled Tasks"</span><span class="p">])</span> <span class="o">+</span> <span class="s2">" enabled,"</span> <span class="k">if</span> <span class="n">proj</span><span class="p">[</span><span class="s2">"Enabled Tasks"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">""</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">proj</span><span class="p">[</span><span class="s2">"Enabled Tasks"</span><span class="p">])</span> <span class="o">+</span> <span class="s2">" enabled"</span> <span class="k">if</span> <span class="n">proj</span><span class="p">[</span><span class="s2">"Enabled Tasks"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">""</span>
         <span class="p">)</span>
         <span class="n">running</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="nb">str</span><span class="p">(</span><span class="n">proj</span><span class="p">[</span><span class="s2">"Running Tasks"</span><span class="p">])</span> <span class="o">+</span> <span class="s2">" running,"</span> <span class="k">if</span> <span class="n">proj</span><span class="p">[</span><span class="s2">"Running Tasks"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">""</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">proj</span><span class="p">[</span><span class="s2">"Running Tasks"</span><span class="p">])</span> <span class="o">+</span> <span class="s2">" running"</span> <span class="k">if</span> <span class="n">proj</span><span class="p">[</span><span class="s2">"Running Tasks"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">""</span>
         <span class="p">)</span>
         <span class="n">errored</span> <span class="o">=</span> <span class="p">(</span>
             <span class="nb">str</span><span class="p">(</span><span class="n">proj</span><span class="p">[</span><span class="s2">"Errored Tasks"</span><span class="p">])</span> <span class="o">+</span> <span class="s2">" errored"</span> <span class="k">if</span> <span class="n">proj</span><span class="p">[</span><span class="s2">"Errored Tasks"</span><span class="p">]</span> <span class="k">else</span> <span class="s2">""</span>
         <span class="p">)</span>
 
         <span class="n">task_message</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">"- "</span> <span class="o">+</span> <span class="n">enabled</span> <span class="o">+</span> <span class="n">running</span> <span class="o">+</span> <span class="n">errored</span> <span class="k">if</span> <span class="n">enabled</span> <span class="ow">or</span> <span class="n">running</span> <span class="ow">or</span> <span class="n">errored</span> <span class="k">else</span> <span class="s2">""</span>
+            <span class="s2">"- "</span>
+            <span class="o">+</span> <span class="n">enabled</span>
+            <span class="o">+</span> <span class="p">(</span><span class="s2">", "</span> <span class="k">if</span> <span class="n">enabled</span> <span class="ow">and</span> <span class="n">running</span> <span class="k">else</span> <span class="s2">""</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">running</span>
+            <span class="o">+</span> <span class="p">(</span><span class="s2">", "</span> <span class="k">if</span> <span class="p">(</span><span class="n">running</span> <span class="ow">or</span> <span class="n">enabled</span><span class="p">)</span> <span class="ow">and</span> <span class="n">errored</span> <span class="k">else</span> <span class="s2">""</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">errored</span>
+            <span class="k">if</span> <span class="n">enabled</span> <span class="ow">or</span> <span class="n">running</span> <span class="ow">or</span> <span class="n">errored</span>
+            <span class="k">else</span> <span class="s2">""</span>
         <span class="p">)</span>
 
         <span class="n">me</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
