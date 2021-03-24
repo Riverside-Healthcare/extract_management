@@ -46,6 +46,7 @@ Classes
    em_web.model.Connection
    em_web.model.ConnectionSftp
    em_web.model.ConnectionSsh
+   em_web.model.ConnectionGpg
    em_web.model.ConnectionFtp
    em_web.model.ConnectionSmb
    em_web.model.ConnectionDatabaseType
@@ -192,6 +193,18 @@ Classes
 
 
 
+.. class:: ConnectionGpg
+
+   Bases: :class:`em_web.extensions.db.Model`
+
+   Table conntaining gpg keys.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
 .. class:: ConnectionFtp
 
    Bases: :class:`em_web.extensions.db.Model`
@@ -270,7 +283,7 @@ Classes
 
    Table containing task details.
 
-   .. attribute:: max_retries
+   .. attribute:: est_duration
       :annotation: :int
 
       general information 

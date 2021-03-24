@@ -21,6 +21,7 @@ Functions
    em_web.web.connection.connection
    em_web.web.connection.connection_edit
    em_web.web.connection.connection_sftp
+   em_web.web.connection.connection_gpg
    em_web.web.connection.connection_smb
    em_web.web.connection.connection_ssh
    em_web.web.connection.connection_database
@@ -58,6 +59,15 @@ Functions
    Page for adding a SFTP Connection.
 
    :url: /connection/sftp
+
+   :returns: html page.
+
+
+.. function:: connection_gpg()
+
+   Page for adding a GPG Encryption Key.
+
+   :url: /connection/gpg
 
    :returns: html page.
 

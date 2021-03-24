@@ -32,7 +32,7 @@ Classes
    :param query: query to run
    :param connection: connection string
 
-   .. method:: __rows(self, size=50)
+   .. method:: __rows(self, size=500)
 
       Return data from query by a generator.
 

@@ -18,12 +18,15 @@ Functions
 
 .. autoapisummary::
 
+   em_web.web.dashboard.search
+   em_web.web.dashboard.home
    em_web.web.dashboard.dash
    em_web.web.dashboard.active_schedule
    em_web.web.dashboard.dash_error_gauge
    em_web.web.dashboard.dash_run_gauge
    em_web.web.dashboard.dash_orphans_delete
    em_web.web.dashboard.dash_errored_run
+   em_web.web.dashboard.dash_active_run
    em_web.web.dashboard.dash_errored_schedule
    em_web.web.dashboard.dash_scheduled_run
    em_web.web.dashboard.dash_scheduled_reschedule
@@ -31,9 +34,24 @@ Functions
    em_web.web.dashboard.add_user_log
 
 
+.. function:: search()
+
+   Search data.
+
+
+.. function:: home()
+
+   Return default landing page.
+
+   If user has projects, they will direct to that screen.
+
+   :url: /
+   :returns: html webpage.
+
+
 .. function:: dash()
 
-   Home page.
+   Dashboard page.
 
    :url: /
    :returns: html webpage.
@@ -72,6 +90,14 @@ Functions
 
 
 .. function:: dash_errored_run()
+
+   Button to run all errored tasks.
+
+   :url: /dash/errored/run
+   :returns: redirects to dashboard.
+
+
+.. function:: dash_active_run()
 
    Button to run all errored tasks.
 

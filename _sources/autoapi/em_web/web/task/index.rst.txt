@@ -46,6 +46,7 @@ Functions
    em_web.web.task.get_task_file_download
    em_web.web.task.get_task_run_log
    em_web.web.task.task_sftp_dest
+   em_web.web.task.task_gpg_file
    em_web.web.task.task_sftp_source
    em_web.web.task.task_ssh_source
    em_web.web.task.task_sftp_query
@@ -347,6 +348,14 @@ Functions
    Template to add sftp destination to a task.
 
    :url: /task/sftp-dest
+   :returns: html page.
+
+
+.. function:: task_gpg_file()
+
+   Template to add gpg encryption to a task.
+
+   :url: /task/gpg-file
    :returns: html page.
 
 

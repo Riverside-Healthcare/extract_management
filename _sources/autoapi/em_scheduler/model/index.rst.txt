@@ -46,6 +46,7 @@ Classes
    em_scheduler.model.Connection
    em_scheduler.model.ConnectionSftp
    em_scheduler.model.ConnectionSsh
+   em_scheduler.model.ConnectionGpg
    em_scheduler.model.ConnectionFtp
    em_scheduler.model.ConnectionSmb
    em_scheduler.model.ConnectionDatabaseType
@@ -192,6 +193,18 @@ Classes
 
 
 
+.. class:: ConnectionGpg
+
+   Bases: :class:`em_scheduler.extensions.db.Model`
+
+   Table conntaining gpg keys.
+
+   .. method:: __repr__(self)
+
+      Return repr(self).
+
+
+
 .. class:: ConnectionFtp
 
    Bases: :class:`em_scheduler.extensions.db.Model`
@@ -270,7 +283,7 @@ Classes
 
    Table containing task details.
 
-   .. attribute:: max_retries
+   .. attribute:: est_duration
       :annotation: :int
 
       general information 

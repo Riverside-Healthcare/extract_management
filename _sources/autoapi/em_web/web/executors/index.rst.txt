@@ -20,11 +20,14 @@ Functions
 
    em_web.web.executors.executor_status
    em_web.web.executors.submit_executor
+   em_web.web.executors.enable_task
+   em_web.web.executors.disable_task
    em_web.web.executors.rescheduled_scheduled_tasks
    em_web.web.executors.run_scheduled_tasks
    em_web.web.executors.disabled_scheduled_tasks
    em_web.web.executors.schedule_errored_tasks
    em_web.web.executors.run_errored_tasks
+   em_web.web.executors.run_active_tasks
 
 
 .. function:: executor_status()
@@ -35,7 +38,7 @@ Functions
    :returns: json list of active jobs.
 
 
-.. function:: submit_executor(name)
+.. function:: submit_executor(name, *args)
 
    Task Executor.
 
@@ -46,6 +49,16 @@ Functions
    tasks.
 
    :param name: name of function to call
+
+
+.. function:: enable_task(task_id)
+
+   Enable task.
+
+
+.. function:: disable_task(task_id)
+
+   Disable task.
 
 
 .. function:: rescheduled_scheduled_tasks()
@@ -71,5 +84,10 @@ Functions
 .. function:: run_errored_tasks()
 
    Running all errored tasks.
+
+
+.. function:: run_active_tasks()
+
+   Rerun all running tasks.
 
 

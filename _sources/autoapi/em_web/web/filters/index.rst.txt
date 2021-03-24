@@ -18,6 +18,7 @@ Functions
 
 .. autoapisummary::
 
+   em_web.web.filters.duration
    em_web.web.filters.date_hash
    em_web.web.filters.to_time
    em_web.web.filters.num_st
@@ -31,6 +32,15 @@ Functions
    em_web.web.filters.hide_smb_pass
    em_web.web.filters.clean_path
    em_web.web.filters.database_pass
+
+
+.. function:: duration(seconds)
+
+   Convert seconds to hh:mm:ss.
+
+   :param seconds: seconds to convert
+
+   :returns: hh:mm:ss.
 
 
 .. function:: date_hash(text)

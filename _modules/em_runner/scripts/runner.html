@@ -1,569 +1,203 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>em_runner.scripts.runner &#8212; Extract Management 2.0</title>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
+        <title>em_runner.scripts.runner - Extract Management 2.0</title>
+      <link rel="stylesheet" href="../../../_static/styles/furo.css?digest=978e1795dfe158b585dda6a8417f6411828bf3ed">
+    <link rel="stylesheet" href="../../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../../_static/pygments_dark.css">
     
-  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+<style>
+  :root {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
 
-    
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #ffffff;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
     
-  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 
 
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Extract Management 2.0</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
   
-  <img src="../../../_static/icon-512x512.png" class="logo" alt="logo">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/icon-512x512.png" alt="Logo"/>
+  </div>
   
   
-  <h1 class="site-logo" id="site-title">Extract Management 2.0</h1>
-  
-</a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../index.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../em/dash.html">
-   Dash
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../em/projects.html">
-   Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../em/tasks.html">
-   Tasks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../em/connections.html">
-   Connections
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../em/admin.html">
-   Admin
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../em/development.html">
-   Development
-  </a>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../../autoapi/index.html">
-   API Reference
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2 collapsible-parent">
-    <a class="reference internal" href="../../../autoapi/em_web/index.html">
-     <code class="xref py py-mod docutils literal notranslate">
-      <span class="pre">
-       em_web
-      </span>
-     </code>
-    </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l3 collapsible-parent">
-      <a class="reference internal" href="../../../autoapi/em_web/web/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_web.web
-        </span>
-       </code>
-      </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/admin/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.admin
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/assets/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.assets
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/auth/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.auth
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/connection/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.connection
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/dashboard/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.dashboard
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/executors/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.executors
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/filters/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.filters
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/project/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.project
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/table/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.table
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_web/web/task/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_web.web.task
-          </span>
-         </code>
-        </a>
-       </li>
-      </ul>
-      <i class="fas fa-chevron-down">
-      </i>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_web/extensions/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_web.extensions
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_web/model/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_web.model
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_web/seed/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_web.seed
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
-   </li>
-   <li class="toctree-l2 collapsible-parent">
-    <a class="reference internal" href="../../../autoapi/em_scheduler/index.html">
-     <code class="xref py py-mod docutils literal notranslate">
-      <span class="pre">
-       em_scheduler
-      </span>
-     </code>
-    </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_scheduler/scripts/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_scheduler.scripts
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_scheduler/extensions/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_scheduler.extensions
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_scheduler/model/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_scheduler.model
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
-   </li>
-   <li class="toctree-l2 collapsible-parent">
-    <a class="reference internal" href="../../../autoapi/em_runner/index.html">
-     <code class="xref py py-mod docutils literal notranslate">
-      <span class="pre">
-       em_runner
-      </span>
-     </code>
-    </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l3 collapsible-parent">
-      <a class="reference internal" href="../../../autoapi/em_runner/scripts/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_runner.scripts
-        </span>
-       </code>
-      </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_cmd/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_cmd
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_code/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_code
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_date/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_date
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_file/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_file
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ftp/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_ftp
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_postgres/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_postgres
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_python/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_python
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sftp/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_sftp
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smb/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_smb
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smtp/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_smtp
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sqlserver/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_sqlserver
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ssh/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_ssh
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/em_system/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.em_system
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/runner/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.runner
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/scripts/smb_fix/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.scripts.smb_fix
-          </span>
-         </code>
-        </a>
-       </li>
-      </ul>
-      <i class="fas fa-chevron-down">
-      </i>
-     </li>
-     <li class="toctree-l3 collapsible-parent">
-      <a class="reference internal" href="../../../autoapi/em_runner/web/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_runner.web
-        </span>
-       </code>
-      </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/web/filters/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.web.filters
-          </span>
-         </code>
-        </a>
-       </li>
-       <li class="toctree-l4">
-        <a class="reference internal" href="../../../autoapi/em_runner/web/web/index.html">
-         <code class="xref py py-mod docutils literal notranslate">
-          <span class="pre">
-           em_runner.web.web
-          </span>
-         </code>
-        </a>
-       </li>
-      </ul>
-      <i class="fas fa-chevron-down">
-      </i>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_runner/extensions/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_runner.extensions
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../../autoapi/em_runner/model/index.html">
-       <code class="xref py py-mod docutils literal notranslate">
-        <span class="pre">
-         em_runner.model
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
+</a><form class="sidebar-search-container" method="get" action="../../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../em/dash.html">Dash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../em/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../em/tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../em/connections.html">Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../em/admin.html">Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../em/development.html">Development</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/em_web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/em_web/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/admin/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.admin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/assets/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.assets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/auth/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.auth</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/connection/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.connection</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/dashboard/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.dashboard</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/executors/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.executors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/filters/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.filters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/project/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.project</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/table/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.table</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_web/web/task/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.task</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_web/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.extensions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_web/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_web/seed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.seed</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/em_scheduler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../autoapi/em_runner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/em_runner/scripts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label for="toctree-checkbox-6"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_cmd/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_cmd</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_code/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_code</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_date/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_file/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ftp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_ftp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_postgres/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_postgres</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_python/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_python</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sftp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_sftp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smb/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_smb</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_smtp/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_smtp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_sqlserver/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_sqlserver</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_ssh/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_ssh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/em_system/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.em_system</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/runner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.runner</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/scripts/smb_fix/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.scripts.smb_fix</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../autoapi/em_runner/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.web</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label for="toctree-checkbox-7"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/web/filters/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.web.filters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../autoapi/em_runner/web/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.web.web</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_runner/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.extensions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_runner/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_runner.model</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
-
 </div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+      </div>
+      
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
-        <!-- Source interaction buttons -->
-
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-    </div>
-</div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <h1>Source code for em_runner.scripts.runner</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Task runner.&quot;&quot;&quot;</span>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <h1>Source code for em_runner.scripts.runner</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Task runner."""</span>
 <span class="c1"># Extract Management 2.0</span>
 <span class="c1"># Copyright (C) 2020  Riverside Healthcare, Kankakee, IL</span>
 
@@ -595,6 +229,10 @@
 
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">crypto</span> <span class="kn">import</span> <span class="n">em_decrypt</span>
+<span class="kn">from</span> <span class="nn">error_print</span> <span class="kn">import</span> <span class="n">full_stack</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">app</span>
+<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">PackageLoader</span><span class="p">,</span> <span class="n">select_autoescape</span>
+
 <span class="kn">from</span> <span class="nn">em_runner</span> <span class="kn">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">redis_client</span>
 <span class="kn">from</span> <span class="nn">em_runner.model</span> <span class="kn">import</span> <span class="n">Task</span><span class="p">,</span> <span class="n">TaskFile</span><span class="p">,</span> <span class="n">TaskLog</span>
 <span class="kn">from</span> <span class="nn">em_runner.scripts.em_cmd</span> <span class="kn">import</span> <span class="n">Cmd</span>
@@ -611,19 +249,16 @@
 <span class="kn">from</span> <span class="nn">em_runner.scripts.em_ssh</span> <span class="kn">import</span> <span class="n">Ssh</span>
 <span class="kn">from</span> <span class="nn">em_runner.scripts.em_system</span> <span class="kn">import</span> <span class="n">Monitor</span>
 <span class="kn">from</span> <span class="nn">em_runner.web.filters</span> <span class="kn">import</span> <span class="n">datetime_format</span>
-<span class="kn">from</span> <span class="nn">error_print</span> <span class="kn">import</span> <span class="n">full_stack</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">app</span>
-<span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">PackageLoader</span><span class="p">,</span> <span class="n">select_autoescape</span>
 
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;/scripts&quot;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="s2">"/scripts"</span><span class="p">)</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span>
-    <span class="n">loader</span><span class="o">=</span><span class="n">PackageLoader</span><span class="p">(</span><span class="s2">&quot;em_runner&quot;</span><span class="p">,</span> <span class="s2">&quot;templates&quot;</span><span class="p">),</span>
-    <span class="n">autoescape</span><span class="o">=</span><span class="n">select_autoescape</span><span class="p">([</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;xml&quot;</span><span class="p">]),</span>
+    <span class="n">loader</span><span class="o">=</span><span class="n">PackageLoader</span><span class="p">(</span><span class="s2">"em_runner"</span><span class="p">,</span> <span class="s2">"templates"</span><span class="p">),</span>
+    <span class="n">autoescape</span><span class="o">=</span><span class="n">select_autoescape</span><span class="p">([</span><span class="s2">"html"</span><span class="p">,</span> <span class="s2">"xml"</span><span class="p">]),</span>
 <span class="p">)</span>
 
 
-<span class="n">env</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="s2">&quot;datetime_format&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime_format</span>
+<span class="n">env</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="s2">"datetime_format"</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime_format</span>
 
 
 <span class="c1"># set the limit for a csv cell value to something massive.</span>
@@ -644,29 +279,30 @@
 
 
 <div class="viewcode-block" id="Runner"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/runner/index.html#em_runner.scripts.runner.Runner">[docs]</a><span class="k">class</span> <span class="nc">Runner</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Group of functions used to run a task.&quot;&quot;&quot;</span>
+    <span class="sd">"""Group of functions used to run a task."""</span>
 
     <span class="c1"># pylint: disable=too-few-public-methods</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_id</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set up class parameters.</span>
+        <span class="sd">"""Set up class parameters.</span>
 
 <span class="sd">        :param int task_id: id of the task to be run.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="c1"># Create id for the run instance and assign to tasks being run.</span>
         <span class="n">my_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
-        <span class="n">my_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+        <span class="n">my_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span> <span class="o">=</span> <span class="n">my_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
         <span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">task_id</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data_file</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;starting task &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>  <span class="c1"># noqa: T001</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="s2">""</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">""</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_hash</span> <span class="o">=</span> <span class="s2">""</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"starting task "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>  <span class="c1"># noqa: T001</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Starting task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Starting task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">my_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]),</span>
             <span class="p">)</span>
@@ -681,7 +317,7 @@
                 <span class="n">task_id</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Starting task.&quot;</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Starting task."</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -702,17 +338,17 @@
                     <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
                     <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Task cancelled.&quot;</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">"Task cancelled."</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
                 <span class="k">continue</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/temp/</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">/&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span> <span class="o">=</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">/temp/</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">/"</span> <span class="o">%</span> <span class="p">(</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="p">),</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">"_"</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">"_"</span><span class="p">),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
             <span class="p">)</span>
 
@@ -743,7 +379,7 @@
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
                 <span class="n">error</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span><span class="p">),</span>
-                <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Completed task.&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;Task canceled.&quot;</span><span class="p">),</span>
+                <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="s2">"Completed task."</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"Task canceled."</span><span class="p">),</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -759,13 +395,13 @@
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">error_logs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="c1"># increment attempt counter</span>
-                <span class="n">redis_client</span><span class="o">.</span><span class="n">zincrby</span><span class="p">(</span><span class="s2">&quot;runner_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_attempt&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;inc&quot;</span><span class="p">)</span>
+                <span class="n">redis_client</span><span class="o">.</span><span class="n">zincrby</span><span class="p">(</span><span class="s2">"runner_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_attempt"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"inc"</span><span class="p">)</span>
                 <span class="n">task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">=</span> <span class="mi">2</span>
 
                 <span class="c1"># if task ended with a non-catastrophic error, it is possible that we can rerun it.</span>
                 <span class="k">if</span> <span class="p">(</span>
                     <span class="n">redis_client</span><span class="o">.</span><span class="n">zincrby</span><span class="p">(</span>
-                        <span class="s2">&quot;runner_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_attempt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;inc&quot;</span>
+                        <span class="s2">"runner_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_attempt"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"inc"</span>
                     <span class="p">)</span>
                     <span class="ow">or</span> <span class="mi">1</span>
                 <span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">max_retries</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">):</span>
@@ -775,10 +411,10 @@
                         <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                         <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
                         <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                            <span class="s2">&quot;Scheduling re-attempt </span><span class="si">%d</span><span class="s2"> of </span><span class="si">%d</span><span class="s2">.&quot;</span>
+                            <span class="s2">"Scheduling re-attempt </span><span class="si">%d</span><span class="s2"> of </span><span class="si">%d</span><span class="s2">."</span>
                             <span class="o">%</span> <span class="p">(</span>
                                 <span class="n">redis_client</span><span class="o">.</span><span class="n">zincrby</span><span class="p">(</span>
-                                    <span class="s2">&quot;runner_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_attempt&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;inc&quot;</span>
+                                    <span class="s2">"runner_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_attempt"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"inc"</span>
                                 <span class="p">),</span>
                                 <span class="n">task</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
                             <span class="p">)</span>
@@ -788,14 +424,17 @@
                     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
                     <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/run/</span><span class="si">%s</span><span class="s2">/delay/5&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SCHEUDULER_HOST&quot;</span><span class="p">],</span> <span class="n">task_id</span><span class="p">)</span>
+                        <span class="s2">"</span><span class="si">%s</span><span class="s2">/run/</span><span class="si">%s</span><span class="s2">/delay/5"</span> <span class="o">%</span> <span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">],</span> <span class="n">task_id</span><span class="p">)</span>
                     <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">redis_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;runner_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_attempt&quot;</span><span class="p">)</span>
+                    <span class="n">redis_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"runner_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_attempt"</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># remove any retry tracking</span>
-                <span class="n">redis_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;runner_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_attempt&quot;</span><span class="p">)</span>
+                <span class="n">redis_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"runner_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_attempt"</span><span class="p">)</span>
                 <span class="n">task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">=</span> <span class="mi">4</span>
+                <span class="n">task</span><span class="o">.</span><span class="n">est_duration</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">task</span><span class="o">.</span><span class="n">last_run</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
 
             <span class="n">task</span><span class="o">.</span><span class="n">last_run_job_id</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="n">task</span><span class="o">.</span><span class="n">last_run</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -806,7 +445,7 @@
         <span class="c1"># pylint: disable=too-many-branches</span>
         <span class="c1"># pylint: disable=too-many-statements</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s2">&quot;Runner: Processing: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">"Runner: Processing: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
         <span class="p">)</span>
@@ -819,8 +458,9 @@
         <span class="c1"># 5 = other url</span>
         <span class="c1"># 6 = source code</span>
 
-        <span class="n">processing_script_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span>
-        <span class="n">my_file</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">processing_script_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span> <span class="o">+</span> <span class="s2">".py"</span>
+
+        <span class="n">my_file</span> <span class="o">=</span> <span class="s2">""</span>
         <span class="k">if</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_type_id</span> <span class="o">==</span> <span class="mi">1</span>
             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_smb_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
@@ -896,46 +536,49 @@
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_type_id</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_git</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
             <span class="c1"># if a dir is specified then download all files</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_command</span> <span class="o">!=</span> <span class="s2">""</span>
+            <span class="p">):</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
                         <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                            <span class="sa">r</span><span class="s2">&quot;(https?://)(.+?)&quot;</span><span class="p">,</span>
-                            <span class="sa">r</span><span class="s2">&quot;\1&lt;username&gt;:&lt;password&gt;@\2&quot;</span><span class="p">,</span>
+                            <span class="sa">r</span><span class="s2">"(https?://)(.+?)"</span><span class="p">,</span>
+                            <span class="sa">r</span><span class="s2">"\1&lt;username&gt;:&lt;password&gt;@\2"</span><span class="p">,</span>
                             <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_git</span><span class="p">,</span>
                             <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">,</span>
                         <span class="p">)</span>
                         <span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                            <span class="s2">&quot;&lt;username&gt;&quot;</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;GIT_USERNAME&quot;</span><span class="p">])</span>
+                            <span class="s2">"&lt;username&gt;"</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"GIT_USERNAME"</span><span class="p">])</span>
                         <span class="p">)</span>
                         <span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                            <span class="s2">&quot;&lt;password&gt;&quot;</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;GIT_PASSWORD&quot;</span><span class="p">])</span>
+                            <span class="s2">"&lt;password&gt;"</span><span class="p">,</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"GIT_PASSWORD"</span><span class="p">])</span>
                         <span class="p">)</span>
                     <span class="p">)</span>
 
                     <span class="n">cmd</span> <span class="o">=</span> <span class="p">(</span>
-                        <span class="s2">&quot;$(which git) clone -q --depth 1 &quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;--recurse-submodules --shallow-submodules </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span>
+                        <span class="s2">"$(which git) clone -q --depth 1 "</span>
+                        <span class="o">+</span> <span class="s2">"--recurse-submodules --shallow-submodules </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">"</span>
                         <span class="o">%</span> <span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span><span class="p">)</span>
                     <span class="p">)</span>
 
                     <span class="n">output</span> <span class="o">=</span> <span class="n">Cmd</span><span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
                         <span class="n">cmd</span><span class="p">,</span>
-                        <span class="s2">&quot;Repo cloned.&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;Failed to clone repo: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_git</span><span class="p">,),</span>
+                        <span class="s2">"Repo cloned."</span><span class="p">,</span>
+                        <span class="s2">"Failed to clone repo: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_git</span><span class="p">,),</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="p">)</span><span class="o">.</span><span class="n">shell</span><span class="p">()</span>
 
                     <span class="n">processing_script_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span> <span class="o">+</span> <span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_command</span>
                         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                        <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">else</span> <span class="s2">""</span>
                     <span class="p">)</span>
                 <span class="c1"># pylint: disable=broad-except</span>
                 <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
                     <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                        <span class="s2">&quot;Runner: Processor failed to clone repo: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="s2">"Runner: Processor failed to clone repo: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                         <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                         <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
                         <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
@@ -945,7 +588,7 @@
                         <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                         <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                         <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Processor failed to clone repo:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span>
+                        <span class="n">message</span><span class="o">=</span><span class="s2">"Processor failed to clone repo:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span>
                         <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
                     <span class="p">)</span>
                     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
@@ -969,16 +612,16 @@
                 <span class="k">try</span><span class="p">:</span>
 
                     <span class="n">cmd</span> <span class="o">=</span> <span class="p">(</span>
-                        <span class="s2">&quot;$(which git) clone -q --depth 1 &quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;--recurse-submodules --shallow-submodules </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span>
+                        <span class="s2">"$(which git) clone -q --depth 1 "</span>
+                        <span class="o">+</span> <span class="s2">"--recurse-submodules --shallow-submodules </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">"</span>
                         <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_url</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span><span class="p">)</span>
                     <span class="p">)</span>
 
                     <span class="n">output</span> <span class="o">=</span> <span class="n">Cmd</span><span class="p">(</span>
                         <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
                         <span class="n">cmd</span><span class="o">=</span><span class="n">cmd</span><span class="p">,</span>
-                        <span class="n">success_msg</span><span class="o">=</span><span class="s2">&quot;Repo cloned&quot;</span><span class="p">,</span>
-                        <span class="n">error_msg</span><span class="o">=</span><span class="s2">&quot;Failed to clone repo: </span><span class="si">%s</span><span class="s2">&quot;</span>
+                        <span class="n">success_msg</span><span class="o">=</span><span class="s2">"Repo cloned"</span><span class="p">,</span>
+                        <span class="n">error_msg</span><span class="o">=</span><span class="s2">"Failed to clone repo: </span><span class="si">%s</span><span class="s2">"</span>
                         <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_url</span><span class="p">,),</span>
                         <span class="n">job_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="p">)</span><span class="o">.</span><span class="n">shell</span><span class="p">()</span>
@@ -986,12 +629,12 @@
                     <span class="n">processing_script_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_path</span> <span class="o">+</span> <span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_command</span>
                         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                        <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">else</span> <span class="s2">""</span>
                     <span class="p">)</span>
                 <span class="c1"># pylint: disable=broad-except</span>
                 <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
                     <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                        <span class="s2">&quot;Runner: Processor failed to clone repo: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="s2">"Runner: Processor failed to clone repo: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                         <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                         <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
                         <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
@@ -1001,7 +644,7 @@
                         <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                         <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                         <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Processor failed to clone repo:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span>
+                        <span class="n">message</span><span class="o">=</span><span class="s2">"Processor failed to clone repo:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span>
                         <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
                     <span class="p">)</span>
                     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
@@ -1027,22 +670,22 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Not enough information to run a processing script from </span><span class="si">%s</span><span class="s2">&quot;</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Not enough information to run a processing script from </span><span class="si">%s</span><span class="s2">"</span>
                 <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_type</span><span class="o">.</span><span class="n">name</span><span class="p">,),</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">my_file</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_type_id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">my_file</span> <span class="o">!=</span> <span class="s2">""</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">processing_type_id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">Path</span><span class="p">(</span><span class="n">processing_script_name</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">processing_script_name</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">text_file</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">processing_script_name</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">text_file</span><span class="p">:</span>
                     <span class="n">text_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">my_file</span><span class="p">)</span>
                 <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
                     <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                     <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Processing script created.&quot;</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">"Processing script created."</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1050,7 +693,7 @@
         <span class="c1"># pylint: disable=broad-except</span>
         <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Failed Processing: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Failed Processing: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
@@ -1060,7 +703,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Processing script failure:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Processing script failure:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1074,12 +717,12 @@
         <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
         <span class="c1"># allow processer to rename file</span>
-        <span class="k">if</span> <span class="n">output</span> <span class="ow">and</span> <span class="n">output</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">output</span> <span class="ow">and</span> <span class="n">output</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">:</span>
             <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Processing script output:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">output</span><span class="p">,),</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Processing script output:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">output</span><span class="p">,),</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1089,7 +732,7 @@
     <span class="k">def</span> <span class="nf">__get_source</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Getting Source: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Getting Source: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
             <span class="p">)</span>
@@ -1098,9 +741,9 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_type_id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># sql</span>
 
                 <span class="n">external_db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_database_conn</span>
-                <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_query</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;error&quot;</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_query</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"error"</span>
 
-                <span class="k">if</span> <span class="n">query</span> <span class="o">==</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">query</span> <span class="o">==</span> <span class="s2">"error"</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="k">return</span> <span class="n">query</span>
 
@@ -1109,7 +752,7 @@
                         <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
                         <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
                         <span class="n">connection</span><span class="o">=</span><span class="n">em_decrypt</span><span class="p">(</span>
-                            <span class="n">external_db</span><span class="o">.</span><span class="n">connection_string</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;PASS_KEY&quot;</span><span class="p">]</span>
+                            <span class="n">external_db</span><span class="o">.</span><span class="n">connection_string</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"PASS_KEY"</span><span class="p">]</span>
                         <span class="p">),</span>
                         <span class="n">job_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -1126,7 +769,7 @@
                         <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
                         <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
                         <span class="n">connection</span><span class="o">=</span><span class="n">em_decrypt</span><span class="p">(</span>
-                            <span class="n">external_db</span><span class="o">.</span><span class="n">connection_string</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;PASS_KEY&quot;</span><span class="p">]</span>
+                            <span class="n">external_db</span><span class="o">.</span><span class="n">connection_string</span><span class="p">,</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"PASS_KEY"</span><span class="p">]</span>
                         <span class="p">),</span>
                         <span class="n">job_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -1165,9 +808,9 @@
 
                     <span class="n">my_delimiter</span> <span class="o">=</span> <span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_smb_delimiter</span>
-                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_smb_delimiter</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_smb_delimiter</span> <span class="o">!=</span> <span class="s2">""</span>
                         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_smb_delimiter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                        <span class="k">else</span> <span class="s2">&quot;,&quot;</span>
+                        <span class="k">else</span> <span class="s2">","</span>
                     <span class="p">)</span>
 
                     <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span>
@@ -1205,7 +848,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">data_file</span> <span class="o">=</span> <span class="n">my_file</span>
 
                 <span class="c1"># pylint: disable=W0105</span>
-                <span class="sd">&quot;&quot;&quot;</span>
+                <span class="sd">"""</span>
 <span class="sd">                # if self.task.source_sftp_ignore_delimiter == 1:</span>
 <span class="sd">                #     my_delimiter = None</span>
 
@@ -1214,18 +857,18 @@
 
 <span class="sd">                #     my_delimiter = (</span>
 <span class="sd">                #         self.task.source_sftp_delimiter</span>
-<span class="sd">                #         if self.task.source_sftp_delimiter != &quot;&quot;</span>
+<span class="sd">                #         if self.task.source_sftp_delimiter != ""</span>
 <span class="sd">                #         and self.task.source_sftp_delimiter is not None</span>
-<span class="sd">                #         else &quot;,&quot;</span>
+<span class="sd">                #         else ","</span>
 <span class="sd">                #     )</span>
 
 <span class="sd">                #     csv_reader = csv.reader(</span>
-<span class="sd">                #         open(my_file, &#39;r&#39;).readlines(),</span>
+<span class="sd">                #         open(my_file, 'r').readlines(),</span>
 <span class="sd">                #         delimiter=my_delimiter,</span>
 <span class="sd">                #     )</span>
 
 <span class="sd">                #     self.data_file = list(csv_reader)</span>
-<span class="sd">                &quot;&quot;&quot;</span>
+<span class="sd">                """</span>
                 <span class="k">return</span> <span class="kc">True</span>
 
             <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_type_id</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># ftp file</span>
@@ -1254,9 +897,9 @@
 
                     <span class="n">my_delimiter</span> <span class="o">=</span> <span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_ftp_delimiter</span>
-                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_ftp_delimiter</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_ftp_delimiter</span> <span class="o">!=</span> <span class="s2">""</span>
                         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_ftp_delimiter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                        <span class="k">else</span> <span class="s2">&quot;,&quot;</span>
+                        <span class="k">else</span> <span class="s2">","</span>
                     <span class="p">)</span>
 
                     <span class="n">csv_reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span>
@@ -1268,8 +911,8 @@
 
                 <span class="k">return</span> <span class="kc">True</span>
             <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_type_id</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>  <span class="c1"># ssh command</span>
-                <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_query</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;error&quot;</span>
-                <span class="k">if</span> <span class="n">query</span> <span class="o">==</span> <span class="s2">&quot;error&quot;</span><span class="p">:</span>
+                <span class="n">query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_query</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"error"</span>
+                <span class="k">if</span> <span class="n">query</span> <span class="o">==</span> <span class="s2">"error"</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">+=</span> <span class="mi">1</span>
                     <span class="k">return</span> <span class="n">query</span>
 
@@ -1283,7 +926,7 @@
         <span class="c1"># pylint: disable=broad-except</span>
         <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Failed Getting Source: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Failed Getting Source: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
@@ -1293,7 +936,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to get data source.</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Failed to get data source.</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1304,7 +947,7 @@
             <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">__get_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;error&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s2">"error"</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_query_type_id</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># url</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">query</span> <span class="o">=</span> <span class="n">SourceCode</span><span class="p">(</span>
@@ -1330,7 +973,7 @@
                 <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span>
             <span class="p">)</span><span class="o">.</span><span class="n">cleanup</span><span class="p">(</span>
                 <span class="n">query</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_code</span><span class="p">,</span>
-                <span class="n">db_type</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;mssql&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_database_id</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">db_type</span><span class="o">=</span><span class="p">(</span><span class="s2">"mssql"</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_database_id</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
                 <span class="n">task_params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">query_params</span><span class="p">,</span>
                 <span class="n">project_params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">global_params</span><span class="p">,</span>
             <span class="p">)</span>
@@ -1347,34 +990,34 @@
                 <span class="p">)</span>
                 <span class="o">.</span><span class="n">read</span><span class="p">()</span>
                 <span class="o">.</span><span class="n">decode</span><span class="p">(),</span>
-                <span class="n">db_type</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;mssql&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_database_id</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">db_type</span><span class="o">=</span><span class="p">(</span><span class="s2">"mssql"</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_database_id</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
                 <span class="n">task_params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">query_params</span><span class="p">,</span>
                 <span class="n">project_params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">global_params</span><span class="p">,</span>
             <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">query</span>
 
-    <span class="k">def</span> <span class="nf">__build_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;File will be built locally then dumped onto a file server.</span>
+<div class="viewcode-block" id="Runner.__build_file"><a class="viewcode-back" href="../../../autoapi/em_runner/scripts/runner/index.html#em_runner.scripts.runner.Runner.__build_file">[docs]</a>    <span class="k">def</span> <span class="nf">__build_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">"""File will be built locally then dumped onto a file server.</span>
 
 <span class="sd">        Webserver is not used for long-term storage.</span>
 
 <span class="sd">        files are kept in /em/em_runner/temp/&lt;extract name&gt;</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_file</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Building File: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Building File: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
             <span class="p">)</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_hash</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span>
                 <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span> <span class="n">data_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_file</span><span class="p">,</span> <span class="n">job_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span>
             <span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 
             <span class="c1"># remove data file</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_file</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_file</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__store_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">source_type_id</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
@@ -1386,9 +1029,9 @@
             <span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">error_logs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">error_logs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">!=</span> <span class="s2">""</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">!=</span> <span class="s2">""</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Files not stored because of run error: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Files not stored because of run error: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
@@ -1398,7 +1041,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Files not stored because of run error.&quot;</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Files not stored because of run error."</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1408,7 +1051,7 @@
             <span class="k">return</span> <span class="kc">False</span>
 
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s2">&quot;Runner: Storing file: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">"Runner: Storing file: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
         <span class="p">)</span>
@@ -1450,7 +1093,7 @@
         <span class="c1"># save historical copy</span>
         <span class="n">smb_path</span> <span class="o">=</span> <span class="n">Smb</span><span class="p">(</span>
             <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
-            <span class="n">connection</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="n">connection</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
             <span class="n">overwrite</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">destination_smb_overwrite</span><span class="p">,</span>
             <span class="n">file_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_name</span><span class="p">,</span>
             <span class="n">file_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span>
@@ -1464,6 +1107,7 @@
                 <span class="n">path</span><span class="o">=</span><span class="n">smb_path</span><span class="p">,</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
+                <span class="n">file_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">file_hash</span><span class="p">,</span>
                 <span class="n">size</span><span class="o">=</span><span class="n">file_size</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)),</span>
             <span class="p">)</span>
         <span class="p">)</span>
@@ -1481,7 +1125,7 @@
         <span class="c1"># pylint: disable=broad-except</span>
         <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Failed cleanup: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Failed cleanup: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
@@ -1491,7 +1135,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed to clean up job.</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Failed to clean up job.</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1499,7 +1143,7 @@
 
     <span class="k">def</span> <span class="nf">__send_email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="s2">&quot;Runner: Sending Mail: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">"Runner: Sending Mail: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
         <span class="p">)</span>
@@ -1521,10 +1165,10 @@
 
         <span class="c1"># pylint: disable=broad-except</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">template</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">&quot;email/email.html.j2&quot;</span><span class="p">)</span>
+            <span class="n">template</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="s2">"email/email.html.j2"</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="s2">&quot;Runner: Failed to get email template: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">"Runner: Failed to get email template: Task: </span><span class="si">%s</span><span class="s2">, with run: </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),</span>
@@ -1534,7 +1178,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Failed tto get email template.</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Failed tto get email template.</span><span class="se">\n</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">full_stack</span><span class="p">()),),</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1551,7 +1195,7 @@
                 <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                 <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Sending completion email.&quot;</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">"Sending completion email."</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1559,12 +1203,12 @@
             <span class="n">output</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">if</span> <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">email_completion_file</span> <span class="o">==</span> <span class="mi">1</span>
-                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">!=</span> <span class="s2">""</span>
                 <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
             <span class="p">):</span>
                 <span class="n">attachment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">email_completion_file_embed</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
                         <span class="n">output</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">))</span>
 
             <span class="c1"># check attachement file size if the task</span>
@@ -1582,7 +1226,7 @@
                     <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                     <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Not sending completion email, file is emtpy.&quot;</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">"Not sending completion email, file is emtpy."</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1591,7 +1235,7 @@
             <span class="n">Smtp</span><span class="p">(</span>
                 <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
                 <span class="n">recipients</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">email_completion_recipients</span><span class="p">,</span>
-                <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;Project: </span><span class="si">%s</span><span class="s2"> / Task: </span><span class="si">%s</span><span class="s2"> / Run: </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span>
+                <span class="n">subject</span><span class="o">=</span><span class="s2">"Project: </span><span class="si">%s</span><span class="s2"> / Task: </span><span class="si">%s</span><span class="s2"> / Run: </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">"</span>
                 <span class="o">%</span> <span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -1604,7 +1248,7 @@
                     <span class="n">date</span><span class="o">=</span><span class="n">date</span><span class="p">,</span>
                     <span class="n">logs</span><span class="o">=</span><span class="n">logs</span><span class="p">,</span>
                     <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
-                    <span class="n">host</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;WEB_HOST&quot;</span><span class="p">],</span>
+                    <span class="n">host</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"WEB_HOST"</span><span class="p">],</span>
                 <span class="p">),</span>
                 <span class="n">attachment</span><span class="o">=</span><span class="n">attachment</span><span class="p">,</span>
                 <span class="n">attachment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1629,7 +1273,7 @@
                     <span class="n">task_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                     <span class="n">job_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
                     <span class="n">status_id</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                    <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Sending error email.&quot;</span><span class="p">,</span>
+                    <span class="n">message</span><span class="o">=</span><span class="s2">"Sending error email."</span><span class="p">,</span>
                 <span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1637,7 +1281,7 @@
                 <span class="n">Smtp</span><span class="p">(</span>
                     <span class="n">task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">,</span>
                     <span class="n">recipients</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">email_error_recipients</span><span class="p">,</span>
-                    <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;Error in Project: </span><span class="si">%s</span><span class="s2"> / Task: </span><span class="si">%s</span><span class="s2"> / Run: </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span>
+                    <span class="n">subject</span><span class="o">=</span><span class="s2">"Error in Project: </span><span class="si">%s</span><span class="s2"> / Task: </span><span class="si">%s</span><span class="s2"> / Run: </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">"</span>
                     <span class="o">%</span> <span class="p">(</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -1652,40 +1296,41 @@
                     <span class="p">),</span>
                     <span class="n">attachment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">attachment_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                    <span class="n">job_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span>
-                <span class="p">)</span></div>
+                    <span class="n">job_hash</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">job_hash</span><span class="p">,</span></div>
+                <span class="p">)</span>
 </pre></div>
-
-              </div>
-              
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
         </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
+
+        <div class="related-information">
+              Copyright &#169; 2020, Riverside Healthcare
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        </div>
         
-
+      </footer>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Riverside Healthcare<br/>
-        
-            &copy; Copyright 2020, Riverside Healthcare.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
-      </div>
-    </div>
-
-    
-  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
-  </body>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/tabs.js"></script>
+    <script src="../../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
 </html>
