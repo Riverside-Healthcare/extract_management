@@ -229,7 +229,7 @@
 
 <div class="viewcode-block" id="before_request"><a class="viewcode-back" href="../../../autoapi/em_web/web/auth/index.html#em_web.web.auth.before_request">[docs]</a><span class="k">def</span> <span class="nf">before_request</span><span class="p">():</span>
     <span class="sd">"""Validate user and reloads auth before each request."""</span>
-    <span class="k">if</span> <span class="s2">"username"</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">"username"</span> <span class="ow">in</span> <span class="n">session</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TEST"</span><span class="p">):</span>
         <span class="n">session</span><span class="p">[</span><span class="s2">"user"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ldap</span><span class="o">.</span><span class="n">get_object_details</span><span class="p">(</span>
             <span class="n">user</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"username"</span><span class="p">),</span> <span class="n">dn_only</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
