@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Development" href="development.html" /><link rel="prev" title="Connections" href="connections.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Development" href="development.html" /><link rel="prev" title="Connections" href="connections.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>Admin - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,19 +198,19 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="admin">
+        <section id="admin">
 <h1>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h1>
 <p>There are five primary sections to the admin page, the first three providing admin controls for Extract Management.</p>
 <img alt="Project List" src="../_images/em2-admin.png"/>
-<div class="section" id="app-tasks">
+<section id="app-tasks">
 <h2>App Tasks<a class="headerlink" href="#app-tasks" title="Permalink to this headline">¶</a></h2>
 <p>An admin can</p>
 <ul class="simple">
 <li><p>Clear all logs. This will completely remove all logs from EM2’s database. Use with caution!</p></li>
 <li><p>Reset all tasks to completed. This is useful after publishing a website update and the admin would like to clear all errored tasks.</p></li>
 </ul>
-</div>
-<div class="section" id="scheduler-tasks">
+</section>
+<section id="scheduler-tasks">
 <h2>Scheduler Tasks<a class="headerlink" href="#scheduler-tasks" title="Permalink to this headline">¶</a></h2>
 <p>An admin can</p>
 <ul class="simple">
@@ -219,8 +221,8 @@
 <li><p>Gracefully Stop Scheduler. This will allow the scheduler API to finish anything “in process”, and then shut off.</p></li>
 <li><p>Kill Scheduler. This will turn off the scheduler. Keep in mind that task are run in the Runner API and any started tasks will not be affected.</p></li>
 </ul>
-</div>
-<div class="section" id="server-tasks">
+</section>
+<section id="server-tasks">
 <h2>Server Tasks<a class="headerlink" href="#server-tasks" title="Permalink to this headline">¶</a></h2>
 <p>The server tasks are to aid in debugging website issues without accessing the webserver. They do require some server setup before working. See the readme for information on that process.</p>
 <ul class="simple">
@@ -228,16 +230,16 @@
 <li><p>Restart Web Service. This option will restart all web service daemons. This option could interfere with the user experience.</p></li>
 <li><p>Whomai. Returns the web server user.</p></li>
 </ul>
-</div>
-<div class="section" id="user-task-history">
+</section>
+<section id="user-task-history">
 <h2>User Task History<a class="headerlink" href="#user-task-history" title="Permalink to this headline">¶</a></h2>
 <p>This table is a list of all manual intervention in EM2.</p>
-</div>
-<div class="section" id="user-login-history">
+</section>
+<section id="user-login-history">
 <h2>User Login History<a class="headerlink" href="#user-login-history" title="Permalink to this headline">¶</a></h2>
 <p>This table is a list of EM2’s access log.</p>
-</div>
-</div>
+</section>
+</section>
 
       </article>
       <footer>

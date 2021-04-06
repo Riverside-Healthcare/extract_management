@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>em_web.web.executors - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
     <link rel="stylesheet" href="../../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,12 +198,12 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="module-em_web.web.executors">
+        <section id="module-em_web.web.executors">
 <span id="em-web-web-executors"></span><h1><a class="reference internal" href="#module-em_web.web.executors" title="em_web.web.executors"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.executors</span></code></a><a class="headerlink" href="#module-em_web.web.executors" title="Permalink to this headline">¶</a></h1>
 <p>Jobs to run through exectutor.</p>
-<div class="section" id="module-contents">
+<section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="functions">
+<section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
@@ -221,22 +223,22 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.executors.disable_task" title="em_web.web.executors.disable_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disable_task</span></code></a>(task_id)</p></td>
 <td><p>Disable task.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.executors.rescheduled_scheduled_tasks" title="em_web.web.executors.rescheduled_scheduled_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescheduled_scheduled_tasks</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.executors.rescheduled_scheduled_tasks" title="em_web.web.executors.rescheduled_scheduled_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescheduled_scheduled_tasks</span></code></a>(*args)</p></td>
 <td><p>Rescheduling scheduled tasks.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.executors.run_scheduled_tasks" title="em_web.web.executors.run_scheduled_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_scheduled_tasks</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.executors.run_scheduled_tasks" title="em_web.web.executors.run_scheduled_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_scheduled_tasks</span></code></a>(*args)</p></td>
 <td><p>Running all scheduled tasks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.executors.disabled_scheduled_tasks" title="em_web.web.executors.disabled_scheduled_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disabled_scheduled_tasks</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.executors.disabled_scheduled_tasks" title="em_web.web.executors.disabled_scheduled_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disabled_scheduled_tasks</span></code></a>(*args)</p></td>
 <td><p>Disabling scheduled tasks.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.executors.schedule_errored_tasks" title="em_web.web.executors.schedule_errored_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schedule_errored_tasks</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.executors.schedule_errored_tasks" title="em_web.web.executors.schedule_errored_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schedule_errored_tasks</span></code></a>(*args)</p></td>
 <td><p>Scheduling all errored tasks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.executors.run_errored_tasks" title="em_web.web.executors.run_errored_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_errored_tasks</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.executors.run_errored_tasks" title="em_web.web.executors.run_errored_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_errored_tasks</span></code></a>(*args)</p></td>
 <td><p>Running all errored tasks.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.executors.run_active_tasks" title="em_web.web.executors.run_active_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_active_tasks</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.executors.run_active_tasks" title="em_web.web.executors.run_active_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_active_tasks</span></code></a>(*args)</p></td>
 <td><p>Rerun all running tasks.</p></td>
 </tr>
 </tbody>
@@ -280,37 +282,37 @@ tasks.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="em_web.web.executors.rescheduled_scheduled_tasks">
-<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">rescheduled_scheduled_tasks</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#rescheduled_scheduled_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.rescheduled_scheduled_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">rescheduled_scheduled_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#rescheduled_scheduled_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.rescheduled_scheduled_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rescheduling scheduled tasks.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="em_web.web.executors.run_scheduled_tasks">
-<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">run_scheduled_tasks</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#run_scheduled_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.run_scheduled_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">run_scheduled_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#run_scheduled_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.run_scheduled_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Running all scheduled tasks.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="em_web.web.executors.disabled_scheduled_tasks">
-<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">disabled_scheduled_tasks</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#disabled_scheduled_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.disabled_scheduled_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">disabled_scheduled_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#disabled_scheduled_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.disabled_scheduled_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disabling scheduled tasks.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="em_web.web.executors.schedule_errored_tasks">
-<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">schedule_errored_tasks</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#schedule_errored_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.schedule_errored_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">schedule_errored_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#schedule_errored_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.schedule_errored_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scheduling all errored tasks.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="em_web.web.executors.run_errored_tasks">
-<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">run_errored_tasks</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#run_errored_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.run_errored_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">run_errored_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#run_errored_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.run_errored_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Running all errored tasks.</p>
 </dd></dl>
 <dl class="py function">
 <dt id="em_web.web.executors.run_active_tasks">
-<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">run_active_tasks</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#run_active_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.run_active_tasks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">em_web.web.executors.</span></code><code class="sig-name descname"><span class="pre">run_active_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/executors.html#run_active_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.executors.run_active_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rerun all running tasks.</p>
 </dd></dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
       </article>
       <footer>

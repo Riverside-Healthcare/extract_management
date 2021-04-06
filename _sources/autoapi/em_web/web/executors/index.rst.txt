@@ -61,32 +61,32 @@ Functions
    Disable task.
 
 
-.. function:: rescheduled_scheduled_tasks()
+.. function:: rescheduled_scheduled_tasks(*args)
 
    Rescheduling scheduled tasks.
 
 
-.. function:: run_scheduled_tasks()
+.. function:: run_scheduled_tasks(*args)
 
    Running all scheduled tasks.
 
 
-.. function:: disabled_scheduled_tasks()
+.. function:: disabled_scheduled_tasks(*args)
 
    Disabling scheduled tasks.
 
 
-.. function:: schedule_errored_tasks()
+.. function:: schedule_errored_tasks(*args)
 
    Scheduling all errored tasks.
 
 
-.. function:: run_errored_tasks()
+.. function:: run_errored_tasks(*args)
 
    Running all errored tasks.
 
 
-.. function:: run_active_tasks()
+.. function:: run_active_tasks(*args)
 
    Rerun all running tasks.
 

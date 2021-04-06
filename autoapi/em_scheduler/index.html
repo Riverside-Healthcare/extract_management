@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
     <link rel="shortcut icon" href="../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>em_scheduler - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,7 +198,7 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="module-em_scheduler">
+        <section id="module-em_scheduler">
 <span id="em-scheduler"></span><h1><a class="reference internal" href="#module-em_scheduler" title="em_scheduler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler</span></code></a><a class="headerlink" href="#module-em_scheduler" title="Permalink to this headline">¶</a></h1>
 <p>EM’s scheduler module.</p>
 <p>EM’s scheduler is a Flask web API running Flask_APScheduler on a single
@@ -210,7 +212,7 @@ worker process.</p>
 </ul>
 <p>When the scheduler is ready to run a task it will send an async web request to the runner API
 with the id of the task to run next.</p>
-<div class="section" id="other-urls">
+<section id="other-urls">
 <h2>Other Urls<a class="headerlink" href="#other-urls" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>/delete - delete all jobs</p></li>
@@ -224,29 +226,30 @@ with the id of the task to run next.</p>
 <li><p>/delete-orphans - delete all orphaned jobs (jobs that no
 longer have an associated EM task existing)</p></li>
 </ul>
-</div>
-<div class="section" id="database-model">
+</section>
+<section id="database-model">
 <h2>Database Model<a class="headerlink" href="#database-model" title="Permalink to this headline">¶</a></h2>
 <p>Database model should be cloned from <cite>em_web</cite> before running app.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cp em_web/model.py em_scheduler/</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="submodules">
+</section>
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
 </div>
-</div>
-<div class="section" id="package-contents">
+</section>
+<section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="functions">
+<section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
@@ -256,6 +259,9 @@ longer have an associated EM task existing)</p></li>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.create_app" title="em_scheduler.create_app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_app</span></code></a>()</p></td>
 <td><p>Create task runner app.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.error_message" title="em_scheduler.error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error_message</span></code></a>(error)</p></td>
+<td><p>Return error page for 404 and 500 errors including the specific error message.</p></td>
 </tr>
 </tbody>
 </table></div>
@@ -269,9 +275,25 @@ longer have an associated EM task existing)</p></li>
 </dd>
 </dl>
 </dd></dl>
+<dl class="py function">
+<dt id="em_scheduler.error_message">
+<code class="sig-prename descclassname"><span class="pre">em_scheduler.</span></code><code class="sig-name descname"><span class="pre">error_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/em_scheduler.html#error_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_scheduler.error_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return error page for 404 and 500 errors including the specific error message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>error</strong> – error message</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>json web response with error message:</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"messsage"</span><span class="p">}</span>
+</pre></div>
 </div>
-</div>
-</div>
+</dd></dl>
+</section>
+</section>
+</section>
 
       </article>
       <footer>
@@ -316,6 +338,7 @@ longer have an associated EM task existing)</p></li>
 <li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
 <li><a class="reference internal" href="#functions">Functions</a><ul>
 <li><a class="reference internal" href="#em_scheduler.create_app">create_app</a></li>
+<li><a class="reference internal" href="#em_scheduler.error_message">error_message</a></li>
 </ul>
 </li>
 </ul>

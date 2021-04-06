@@ -40,8 +40,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -229,6 +230,7 @@
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">session</span>
@@ -768,7 +770,7 @@
         <span class="p">)</span>
 
         <span class="n">me</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"No orphans."</span><span class="p">})</span>
-    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
         <span class="n">table</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">me</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span>
 
@@ -784,9 +786,9 @@
 
 
 <span class="nd">@table_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/table/tasks/&lt;task_type&gt;"</span><span class="p">)</span>
-<div class="viewcode-block" id="dash_errored"><a class="viewcode-back" href="../../../autoapi/em_web/web/table/index.html#em_web.web.table.dash_errored">[docs]</a><span class="c1"># @ldap.login_required</span>
+<div class="viewcode-block" id="dash_tasks"><a class="viewcode-back" href="../../../autoapi/em_web/web/table/index.html#em_web.web.table.dash_tasks">[docs]</a><span class="c1"># @ldap.login_required</span>
 <span class="c1"># @ldap.group_required(["Analytics"])</span>
-<span class="k">def</span> <span class="nf">dash_errored</span><span class="p">(</span><span class="n">task_type</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">dash_tasks</span><span class="p">(</span><span class="n">task_type</span><span class="p">):</span>
     <span class="sd">"""Get a table of any jobs marked error.</span>
 
 <span class="sd">    :url: /table/tasks/&lt;task_type&gt;</span>
@@ -794,8 +796,10 @@
 
 <span class="sd">    :returns: json output of associated tasks.</span>
 <span class="sd">    """</span>
+    <span class="n">default_sort</span> <span class="o">=</span> <span class="s2">"Next Run.asc"</span> <span class="k">if</span> <span class="n">task_type</span> <span class="o">==</span> <span class="s2">"scheduled"</span> <span class="k">else</span> <span class="s2">"Last Run.asc"</span>
+
     <span class="n">page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"p"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-    <span class="n">sort</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"s"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">"Last Run.asc"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">sort</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"s"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_sort</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="n">split_sort</span> <span class="o">=</span> <span class="n">sort</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)</span>
 
     <span class="n">page</span> <span class="o">-=</span> <span class="mi">1</span>
@@ -834,15 +838,21 @@
                 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
             <span class="p">)</span>
             <span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">and_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">),</span> <span class="n">Task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
-            <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">me</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error EM_Scheduler is offline."</span><span class="p">})</span>
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span>
+            <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">me</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler is offline."</span><span class="p">})</span>
 
     <span class="k">elif</span> <span class="n">task_type</span> <span class="o">==</span> <span class="s2">"active"</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># running</span>
-        <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">:</span>
-            <span class="n">task</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span>
+            <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">me</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error querying active tasks."</span><span class="p">})</span>
 
     <span class="n">me</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"total"</span><span class="p">:</span> <span class="n">tasks</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">})</span>  <span class="c1"># runs.total</span>

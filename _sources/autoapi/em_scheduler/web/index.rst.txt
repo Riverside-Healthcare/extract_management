@@ -18,7 +18,6 @@ Functions
 
 .. autoapisummary::
 
-   em_scheduler.web.error_message
    em_scheduler.web.alive
    em_scheduler.web.schedule
    em_scheduler.web.add_task
@@ -34,18 +33,6 @@ Functions
    em_scheduler.web.get_jobs_details
    em_scheduler.web.get_scheduled_jobs
    em_scheduler.web.delete_orphans
-
-
-.. function:: error_message(error)
-
-   Return error page for 404 and 500 errors including the specific error message.
-
-   :param error: error message
-   :return: json web response with error message:
-
-   .. code-block:: python
-
-       {"error": "messsage"}
 
 
 .. function:: alive()

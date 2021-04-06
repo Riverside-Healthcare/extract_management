@@ -30,7 +30,7 @@ Functions
    em_web.web.table.table_user_auth
    em_web.web.table.connection_task
    em_web.web.table.table_jobs_orphans
-   em_web.web.table.dash_errored
+   em_web.web.table.dash_tasks
    em_web.web.table.task_list
    em_web.web.table.project_task_all
    em_web.web.table.project_task_log_all
@@ -87,7 +87,7 @@ Functions
    :returns: json output of associated jobs.
 
 
-.. function:: dash_errored(task_type)
+.. function:: dash_tasks(task_type)
 
    Get a table of any jobs marked error.
 

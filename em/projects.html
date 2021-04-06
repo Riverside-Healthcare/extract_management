@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Tasks" href="tasks.html" /><link rel="prev" title="Dash" href="dash.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Tasks" href="tasks.html" /><link rel="prev" title="Dash" href="dash.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>Projects - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,7 +198,7 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="projects">
+        <section id="projects">
 <h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -210,7 +212,7 @@
 <li><p>New Project. The page to create or edit a project. If no projects, or no tasks exists, users are directed here to create a project.</p></li>
 </ul>
 <img alt="Project List" src="../_images/em2-project.png"/>
-<div class="section" id="project-details">
+<section id="project-details">
 <h2>Project Details<a class="headerlink" href="#project-details" title="Permalink to this headline">¶</a></h2>
 <p>There are two actions a user can take in a project - delete or edit. Editing options are explained in the <a class="reference internal" href="#new-project">New Project</a> section.</p>
 <p>There are a few task control options:</p>
@@ -220,20 +222,20 @@
 <li><p>Enable all tasks. This will allow the project schedule to run all the tasks.</p></li>
 <li><p>Run all tasks. This will immediately run all tasks.</p></li>
 </ul>
-</div>
-<div class="section" id="new-project">
+</section>
+<section id="new-project">
 <h2>New Project<a class="headerlink" href="#new-project" title="Permalink to this headline">¶</a></h2>
 <p>When creating or editing a project the same steps can be used. By default a new project is owned by the creator. However, users have the option of taking ownership of existing projects by checking the “Take Ownership of Project” button.</p>
-<div class="section" id="triggers">
+<section id="triggers">
 <h3>Triggers<a class="headerlink" href="#triggers" title="Permalink to this headline">¶</a></h3>
 <p>There are three types of triggers for a project.</p>
-<div class="section" id="cron">
+<section id="cron">
 <h4>Cron<a class="headerlink" href="#cron" title="Permalink to this headline">¶</a></h4>
 <p>The cron schedule follows the typical linux type scheduling. More information can be found <a class="reference external" href="https://crontab.guru">here</a> and some <a class="reference external" href="https://crontab.guru/examples.html">examples</a>.</p>
 <p>Check the “Use a cron schedule” box to enable a cron schedule.</p>
 <p>Fill in parameters as required. Leave fields blank as a wildcard.</p>
-</div>
-<div class="section" id="interval">
+</section>
+<section id="interval">
 <h4>Interval<a class="headerlink" href="#interval" title="Permalink to this headline">¶</a></h4>
 <p>Check the “Use an interval schedule” box to enable an interval schedule.</p>
 <p>An interval schedule will run a project “ever x &lt;time period&gt;”. Where the time periods is either</p>
@@ -244,13 +246,13 @@
 <li><p>minute(s)</p></li>
 <li><p>second(s)</p></li>
 </ul>
-</div>
-<div class="section" id="one-off">
+</section>
+<section id="one-off">
 <h4>One Off<a class="headerlink" href="#one-off" title="Permalink to this headline">¶</a></h4>
 <p>It is also possible to schedule an additional one-time schedule.</p>
-</div>
-</div>
-<div class="section" id="parameters">
+</section>
+</section>
+<section id="parameters">
 <span id="project-parameters"></span><h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <p>Parameters can be used to modify sql queries at run time. Parameters must be in one of two formats:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">param_name</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">param_value</span><span class="o">&gt;</span>
@@ -279,9 +281,9 @@
 <p class="admonition-title">Note</p>
 <p>Project parameters will be passed to all tasks in the project, but can be overridden at the task level.</p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
       </article>
       <footer>

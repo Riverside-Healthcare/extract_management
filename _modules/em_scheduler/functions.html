@@ -40,8 +40,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -217,7 +218,6 @@
 <span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span>
 <span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">get</span>
 
 <span class="kn">from</span> <span class="nn">em_scheduler.extensions</span> <span class="kn">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">scheduler</span>
@@ -230,7 +230,8 @@
 <span class="sd">    :returns: true</span>
 <span class="sd">    """</span>
     <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">get_jobs</span><span class="p">():</span>
-        <span class="n">job</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+            <span class="n">job</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="kc">True</span></div>
 
@@ -242,19 +243,20 @@
 <span class="sd">    :returns: true</span>
 <span class="sd">    """</span>
     <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">get_jobs</span><span class="p">():</span>
-        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">job</span><span class="o">.</span><span class="n">args</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">):</span>
             <span class="n">job</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<div class="viewcode-block" id="scheduler_task_runner"><a class="viewcode-back" href="../../autoapi/em_scheduler/functions/index.html#em_scheduler.functions.scheduler_task_runner">[docs]</a><span class="k">def</span> <span class="nf">scheduler_task_runner</span><span class="p">(</span><span class="n">task_id</span><span class="p">,</span> <span class="n">runner_host</span><span class="p">):</span>
+<div class="viewcode-block" id="scheduler_task_runner"><a class="viewcode-back" href="../../autoapi/em_scheduler/functions/index.html#em_scheduler.functions.scheduler_task_runner">[docs]</a><span class="k">def</span> <span class="nf">scheduler_task_runner</span><span class="p">(</span><span class="n">task_id</span><span class="p">):</span>
     <span class="sd">"""Send request to runner api to run task.</span>
 
 <span class="sd">    :param task_id: id of task to run</span>
 <span class="sd">    """</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">get</span><span class="p">(</span><span class="n">runner_host</span> <span class="o">+</span> <span class="s2">"/"</span> <span class="o">+</span> <span class="n">task_id</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span>
+            <span class="n">get</span><span class="p">(</span><span class="n">scheduler</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"RUNNER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/"</span> <span class="o">+</span> <span class="n">task_id</span><span class="p">)</span>
     <span class="c1"># pylint: disable=broad-except</span>
     <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"failed to run job."</span><span class="p">)</span>  <span class="c1"># noqa: T001</span>
@@ -331,7 +333,6 @@
     <span class="c1"># schedule cron</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">cron</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">project</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">project</span>
-        <span class="n">my_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
         <span class="n">scheduler</span><span class="o">.</span><span class="n">add_job</span><span class="p">(</span>
             <span class="n">func</span><span class="o">=</span><span class="n">scheduler_task_runner</span><span class="p">,</span>
             <span class="n">trigger</span><span class="o">=</span><span class="s2">"cron"</span><span class="p">,</span>
@@ -345,16 +346,16 @@
             <span class="n">day_of_week</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">cron_week_day</span><span class="p">,</span>
             <span class="n">start_date</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">cron_start_date</span><span class="p">,</span>
             <span class="n">end_date</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">cron_end_date</span><span class="p">,</span>
-            <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">),</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"RUNNER_HOST"</span><span class="p">]],</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="n">my_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">10</span><span class="p">],</span>
+            <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)],</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-cron"</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">"(cron) "</span> <span class="o">+</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">replace_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span>
 
     <span class="c1"># schedule interval</span>
     <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">task_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">intv</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">project</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">project</span>
-        <span class="n">my_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
         <span class="n">weeks</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">intv_value</span> <span class="ow">or</span> <span class="mi">999</span> <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">intv_type</span> <span class="o">==</span> <span class="s2">"w"</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="n">days</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">intv_value</span> <span class="ow">or</span> <span class="mi">999</span> <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">intv_type</span> <span class="o">==</span> <span class="s2">"d"</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="n">hours</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">intv_value</span> <span class="ow">or</span> <span class="mi">999</span> <span class="k">if</span> <span class="n">project</span><span class="o">.</span><span class="n">intv_type</span> <span class="o">==</span> <span class="s2">"h"</span> <span class="k">else</span> <span class="mi">0</span>
@@ -371,11 +372,13 @@
             <span class="n">weeks</span><span class="o">=</span><span class="n">weeks</span><span class="p">,</span>
             <span class="n">start_date</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">intv_start_date</span><span class="p">,</span>
             <span class="n">end_date</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">intv_end_date</span><span class="p">,</span>
-            <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">),</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"RUNNER_HOST"</span><span class="p">]],</span>
-            <span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="n">my_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">10</span><span class="p">],</span>
+            <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)],</span>
+            <span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-intv"</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">"(inverval) "</span> <span class="o">+</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">replace_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span>
 
+    <span class="c1"># ooff tasks use a hash to identify jobs as a job can have multiple one-off runs scheduled.</span>
     <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">task_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">ooff</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">project</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">project</span>
@@ -384,9 +387,10 @@
             <span class="n">func</span><span class="o">=</span><span class="n">scheduler_task_runner</span><span class="p">,</span>
             <span class="n">trigger</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span>
             <span class="n">run_date</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">ooff_date</span><span class="p">,</span>
-            <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">),</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"RUNNER_HOST"</span><span class="p">]],</span>
+            <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)],</span>
             <span class="nb">id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">+</span> <span class="n">my_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">10</span><span class="p">],</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">"(one off) "</span> <span class="o">+</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">": "</span> <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">replace_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span>
 
     <span class="k">return</span> <span class="kc">True</span></div>

@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
 
     <link rel="shortcut icon" href="../../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>em_web.web.table - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
     <link rel="stylesheet" href="../../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,7 +198,7 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="module-em_web.web.table">
+        <section id="module-em_web.web.table">
 <span id="em-web-web-table"></span><h1><a class="reference internal" href="#module-em_web.web.table" title="em_web.web.table"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.web.table</span></code></a><a class="headerlink" href="#module-em_web.web.table" title="Permalink to this headline">¶</a></h1>
 <p>Table API.</p>
 <p>All routes return a json string to be build into a table by javascript.</p>
@@ -205,9 +207,9 @@
 <li><p>p: page number</p></li>
 <li><p>s: sort order ex: “Name.asc”, “Name.desc”</p></li>
 </ul>
-<div class="section" id="module-contents">
+<section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="functions">
+<section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
@@ -230,7 +232,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.table.table_jobs_orphans" title="em_web.web.table.table_jobs_orphans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">table_jobs_orphans</span></code></a>()</p></td>
 <td><p>Get a table of any jobs without a linked task.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.table.dash_errored" title="em_web.web.table.dash_errored"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dash_errored</span></code></a>(task_type)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.web.table.dash_tasks" title="em_web.web.table.dash_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dash_tasks</span></code></a>(task_type)</p></td>
 <td><p>Get a table of any jobs marked error.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#em_web.web.table.task_list" title="em_web.web.table.task_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">task_list</span></code></a>(my_type)</p></td>
@@ -328,8 +330,8 @@
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="em_web.web.table.dash_errored">
-<code class="sig-prename descclassname"><span class="pre">em_web.web.table.</span></code><code class="sig-name descname"><span class="pre">dash_errored</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/table.html#dash_errored"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.table.dash_errored" title="Permalink to this definition">¶</a></dt>
+<dt id="em_web.web.table.dash_tasks">
+<code class="sig-prename descclassname"><span class="pre">em_web.web.table.</span></code><code class="sig-name descname"><span class="pre">dash_tasks</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/em_web/web/table.html#dash_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.web.table.dash_tasks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a table of any jobs marked error.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Url</dt>
@@ -449,9 +451,9 @@
 </dd>
 </dl>
 </dd></dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
       </article>
       <footer>
@@ -497,7 +499,7 @@
 <li><a class="reference internal" href="#em_web.web.table.table_user_auth">table_user_auth</a></li>
 <li><a class="reference internal" href="#em_web.web.table.connection_task">connection_task</a></li>
 <li><a class="reference internal" href="#em_web.web.table.table_jobs_orphans">table_jobs_orphans</a></li>
-<li><a class="reference internal" href="#em_web.web.table.dash_errored">dash_errored</a></li>
+<li><a class="reference internal" href="#em_web.web.table.dash_tasks">dash_tasks</a></li>
 <li><a class="reference internal" href="#em_web.web.table.task_list">task_list</a></li>
 <li><a class="reference internal" href="#em_web.web.table.project_task_all">project_task_all</a></li>
 <li><a class="reference internal" href="#em_web.web.table.project_task_log_all">project_task_log_all</a></li>

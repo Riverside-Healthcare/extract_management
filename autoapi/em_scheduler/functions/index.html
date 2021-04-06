@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>em_scheduler.functions - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,12 +198,12 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="module-em_scheduler.functions">
+        <section id="module-em_scheduler.functions">
 <span id="em-scheduler-functions"></span><h1><a class="reference internal" href="#module-em_scheduler.functions" title="em_scheduler.functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a><a class="headerlink" href="#module-em_scheduler.functions" title="Permalink to this headline">¶</a></h1>
 <p>Scheduler Event Logging.</p>
-<div class="section" id="module-contents">
+<section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="functions">
+<section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
@@ -215,7 +217,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.functions.scheduler_delete_task" title="em_scheduler.functions.scheduler_delete_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_delete_task</span></code></a>(task_id)</p></td>
 <td><p>Delete all jobs associated with a task from the scheduler.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.functions.scheduler_task_runner" title="em_scheduler.functions.scheduler_task_runner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_task_runner</span></code></a>(task_id, runner_host)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.functions.scheduler_task_runner" title="em_scheduler.functions.scheduler_task_runner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_task_runner</span></code></a>(task_id)</p></td>
 <td><p>Send request to runner api to run task.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.functions.scheduler_add_task" title="em_scheduler.functions.scheduler_add_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scheduler_add_task</span></code></a>(task_id)</p></td>
@@ -248,7 +250,7 @@
 </dd></dl>
 <dl class="py function">
 <dt id="em_scheduler.functions.scheduler_task_runner">
-<code class="sig-prename descclassname"><span class="pre">em_scheduler.functions.</span></code><code class="sig-name descname"><span class="pre">scheduler_task_runner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runner_host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/em_scheduler/functions.html#scheduler_task_runner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_scheduler.functions.scheduler_task_runner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">em_scheduler.functions.</span></code><code class="sig-name descname"><span class="pre">scheduler_task_runner</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/em_scheduler/functions.html#scheduler_task_runner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_scheduler.functions.scheduler_task_runner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send request to runner api to run task.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -370,9 +372,9 @@ type. So it is possible to have multiple triggers per task. Because of this, the
 assigned to the job is project_id-task_id-&lt;time hash&gt;. The tasks id is sent as an arg
 to the job.</p>
 </dd></dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
       </article>
       <footer>

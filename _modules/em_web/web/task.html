@@ -40,8 +40,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -826,8 +827,13 @@
         <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_delimiter</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">form</span><span class="p">[</span><span class="s2">"fileDelimiter"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"fileDelimiter"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
+        <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_line_terminator</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">form</span><span class="p">[</span><span class="s2">"fileTerminator"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"fileTerminator"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
     <span class="k">else</span><span class="p">:</span>
         <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_delimiter</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_line_terminator</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_ignore_delimiter</span> <span class="o">=</span> <span class="p">(</span>
         <span class="mi">1</span>
@@ -1609,8 +1615,12 @@
         <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_delimiter</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">form</span><span class="p">[</span><span class="s2">"fileDelimiter"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"fileDelimiter"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
+        <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_line_terminator</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">form</span><span class="p">[</span><span class="s2">"fileTerminator"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"fileTerminator"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_delimiter</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_line_terminator</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_ignore_delimiter</span> <span class="o">=</span> <span class="p">(</span>
         <span class="mi">1</span>

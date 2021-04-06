@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>em_scheduler.web - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,12 +198,12 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="module-em_scheduler.web">
+        <section id="module-em_scheduler.web">
 <span id="em-scheduler-web"></span><h1><a class="reference internal" href="#module-em_scheduler.web" title="em_scheduler.web"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a><a class="headerlink" href="#module-em_scheduler.web" title="Permalink to this headline">¶</a></h1>
 <p>Scheduler Web API.</p>
-<div class="section" id="module-contents">
+<section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="functions">
+<section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
@@ -209,72 +211,53 @@
 <col style="width: 90%"/>
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.error_message" title="em_scheduler.web.error_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error_message</span></code></a>(error)</p></td>
-<td><p>Return error page for 404 and 500 errors including the specific error message.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.alive" title="em_scheduler.web.alive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alive</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.alive" title="em_scheduler.web.alive"><code class="xref py py-obj docutils literal notranslate"><span class="pre">alive</span></code></a>()</p></td>
 <td><p>Check API status.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.schedule" title="em_scheduler.web.schedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schedule</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.schedule" title="em_scheduler.web.schedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">schedule</span></code></a>()</p></td>
 <td><p>Build simulated run schedule.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.add_task" title="em_scheduler.web.add_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_task</span></code></a>(task_id)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.add_task" title="em_scheduler.web.add_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_task</span></code></a>(task_id)</p></td>
 <td><p>Schedule task to run.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.delete_task" title="em_scheduler.web.delete_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_task</span></code></a>(task_id)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.delete_task" title="em_scheduler.web.delete_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_task</span></code></a>(task_id)</p></td>
 <td><p>Delete tasks schedule.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.run_task" title="em_scheduler.web.run_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_task</span></code></a>(task_id)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.run_task" title="em_scheduler.web.run_task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_task</span></code></a>(task_id)</p></td>
 <td><p>Run task now.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.run_task_delay" title="em_scheduler.web.run_task_delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_task_delay</span></code></a>(task_id, minutes)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.run_task_delay" title="em_scheduler.web.run_task_delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_task_delay</span></code></a>(task_id, minutes)</p></td>
 <td><p>Run task in x minutes.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.delete_all_tasks" title="em_scheduler.web.delete_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all_tasks</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.delete_all_tasks" title="em_scheduler.web.delete_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_all_tasks</span></code></a>()</p></td>
 <td><p>Delete all scheduled tasks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.pause_all_tasks" title="em_scheduler.web.pause_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause_all_tasks</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.pause_all_tasks" title="em_scheduler.web.pause_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause_all_tasks</span></code></a>()</p></td>
 <td><p>Pause all tasks.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.resume_all_tasks" title="em_scheduler.web.resume_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resume_all_tasks</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.resume_all_tasks" title="em_scheduler.web.resume_all_tasks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resume_all_tasks</span></code></a>()</p></td>
 <td><p>Resume all tasks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.shutdown" title="em_scheduler.web.shutdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shutdown</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.shutdown" title="em_scheduler.web.shutdown"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shutdown</span></code></a>()</p></td>
 <td><p>Gracefully shutdown scheduler.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.kill" title="em_scheduler.web.kill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kill</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.kill" title="em_scheduler.web.kill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kill</span></code></a>()</p></td>
 <td><p>Kill scheduler.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.get_jobs" title="em_scheduler.web.get_jobs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_jobs</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.get_jobs" title="em_scheduler.web.get_jobs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_jobs</span></code></a>()</p></td>
 <td><p>Get list of all job ids.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.get_jobs_details" title="em_scheduler.web.get_jobs_details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_jobs_details</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.get_jobs_details" title="em_scheduler.web.get_jobs_details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_jobs_details</span></code></a>()</p></td>
 <td><p>Get list of all jobs with all details.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.get_scheduled_jobs" title="em_scheduler.web.get_scheduled_jobs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scheduled_jobs</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.get_scheduled_jobs" title="em_scheduler.web.get_scheduled_jobs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scheduled_jobs</span></code></a>()</p></td>
 <td><p>Get list of all scheduled job ids.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_scheduler.web.delete_orphans" title="em_scheduler.web.delete_orphans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_orphans</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_scheduler.web.delete_orphans" title="em_scheduler.web.delete_orphans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_orphans</span></code></a>()</p></td>
 <td><p>Delete all orphaned jobs.</p></td>
 </tr>
 </tbody>
 </table></div>
-<dl class="py function">
-<dt id="em_scheduler.web.error_message">
-<code class="sig-prename descclassname"><span class="pre">em_scheduler.web.</span></code><code class="sig-name descname"><span class="pre">error_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/em_scheduler/web.html#error_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_scheduler.web.error_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return error page for 404 and 500 errors including the specific error message.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>error</strong> – error message</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>json web response with error message:</p>
-</dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"messsage"</span><span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
 <dl class="py function">
 <dt id="em_scheduler.web.alive">
 <code class="sig-prename descclassname"><span class="pre">em_scheduler.web.</span></code><code class="sig-name descname"><span class="pre">alive</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/em_scheduler/web.html#alive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_scheduler.web.alive" title="Permalink to this definition">¶</a></dt>
@@ -490,9 +473,9 @@
 </dd>
 </dl>
 </dd></dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
       </article>
       <footer>
@@ -533,7 +516,6 @@
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a><ul>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#functions">Functions</a><ul>
-<li><a class="reference internal" href="#em_scheduler.web.error_message">error_message</a></li>
 <li><a class="reference internal" href="#em_scheduler.web.alive">alive</a></li>
 <li><a class="reference internal" href="#em_scheduler.web.schedule">schedule</a></li>
 <li><a class="reference internal" href="#em_scheduler.web.add_task">add_task</a></li>

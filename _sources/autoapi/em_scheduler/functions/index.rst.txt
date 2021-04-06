@@ -39,7 +39,7 @@ Functions
    :returns: true
 
 
-.. function:: scheduler_task_runner(task_id, runner_host)
+.. function:: scheduler_task_runner(task_id)
 
    Send request to runner api to run task.
 

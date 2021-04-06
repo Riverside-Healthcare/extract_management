@@ -56,6 +56,7 @@ Submodules
    events/index.rst
    extensions/index.rst
    functions/index.rst
+   maintenance/index.rst
    model/index.rst
    web/index.rst
 
@@ -70,6 +71,7 @@ Functions
 .. autoapisummary::
 
    em_scheduler.create_app
+   em_scheduler.error_message
 
 
 .. function:: create_app()
@@ -77,5 +79,17 @@ Functions
    Create task runner app.
 
    :return: app
+
+
+.. function:: error_message(error)
+
+   Return error page for 404 and 500 errors including the specific error message.
+
+   :param error: error message
+   :return: json web response with error message:
+
+   .. code-block:: python
+
+       {"error": "messsage"}
 
 

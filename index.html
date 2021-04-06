@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Dash" href="em/dash.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Dash" href="em/dash.html" />
 
     <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-3.5.3, furo 2021.03.20.beta30"/>
         <title>Home - Extract Management 2.0</title>
@@ -40,8 +41,8 @@
 </style><link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" href="_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -196,13 +198,13 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="extract-management-2-0-docs">
+        <section id="extract-management-2-0-docs">
 <h1>Extract Management 2.0 Docs<a class="headerlink" href="#extract-management-2-0-docs" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p><a class="reference external" href="https://analyticsgit.riversidehealthcare.net/extract-management/extract-management-site/-/commits/master"><img alt="python-version" src="https://img.shields.io/badge/Python-3.7%20%7C%203.8%20%7C%203.9-blue"/></a></p>
-</div>
-<div class="section" id="extract-management-2-0">
+</section>
+<section id="extract-management-2-0">
 <h1>Extract Management 2.0<a class="headerlink" href="#extract-management-2-0" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="_images/em2.png"><img alt="Demo Image" src="_images/em2.png" style="width: 100%;"/></a>
 <p>Extract Management 2.0 is a task scheduling tool for getting data from a source and depositing it in a destination - sql servers to SFTP servers.</p>
@@ -214,7 +216,7 @@ Or, you can run your own docker image:</p>
 </pre></div>
 </div>
 <p>Check out our <a class="reference external" href="https://riverside-healthcare.github.io/extract_management/">documentation site</a>.</p>
-<div class="section" id="how-to-use">
+<section id="how-to-use">
 <h2>How To Use?<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
 <p>EM2 is a three part server:</p>
 <ul class="simple">
@@ -223,15 +225,15 @@ Or, you can run your own docker image:</p>
 <li><p>job runner</p></li>
 </ul>
 <p>EM2 runs with Nginx + Gunicorn. Three individual web services are created, the web app is the public web site and the other two (scheduler and runner) are internal API’s running on the web server.</p>
-<div class="section" id="prerequisites">
+<section id="prerequisites">
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Currently EM2 is setup to install on an Ubuntu server, however with a few tweaks to the install script it will work well on most Linux.</p></li>
 <li><p>curl or wget should be installed</p></li>
 <li><p>Ideally, you will have your own git repository, holding updated config files, and will publish from there.</p></li>
 </ul>
-</div>
-<div class="section" id="installation">
+</section>
+<section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
 <p>An install script is provided to easily install EM2 onto your Ubuntu server. Update the <code class="docutils literal notranslate"><span class="pre">publish/install.sh</span></code> file “dns” value to be the dns of your server, and the “remote” to point to your repo path. If you plan to use ssl you can add the certs into the <code class="docutils literal notranslate"><span class="pre">publish</span></code> folder as well. Use names “cert.crt” and “cert.key”.</p>
 <p>The publish takes place over SSH from a git server. It is possible to use an accesskey when publishing from fabric.</p>
@@ -259,8 +261,8 @@ Or, you can run your own docker image:</p>
 </tbody>
 </table></div>
 <p>After cloning the repo the <code class="docutils literal notranslate"><span class="pre">install.sh</span></code> script will install all packages necessary to start up the app.</p>
-</div>
-<div class="section" id="running-em2-locally">
+</section>
+<section id="running-em2-locally">
 <h3>Running EM2 Locally<a class="headerlink" href="#running-em2-locally" title="Permalink to this headline">¶</a></h3>
 <p>EM2 can be run locally. We use pyenv and poetry to manage the project dependencies. Assuming you will too -</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pyenv <span class="nb">local</span> <span class="m">3</span>.9.0
@@ -282,15 +284,15 @@ flask seed_demo
 <span class="nv">FLASK_ENV</span><span class="o">=</span>development <span class="o">&amp;&amp;</span> <span class="nv">FLASK_DEBUG</span><span class="o">=</span><span class="m">1</span> <span class="o">&amp;&amp;</span> <span class="nv">FLASK_APP</span><span class="o">=</span>em_runner <span class="o">&amp;&amp;</span> flask run --port<span class="o">=</span><span class="m">5002</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="other-configuration-tips">
+</section>
+<section id="other-configuration-tips">
 <h3>Other Configuration Tips<a class="headerlink" href="#other-configuration-tips" title="Permalink to this headline">¶</a></h3>
 <p>If you use hostnames vs IP addresses in your config files be sure to update hosts file <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">/etc/hosts</span></code> to include the ip address of any internal domain hosts you will use. For example, LDAP server, GIT server, any databases you plan to query, etc.</p>
-</div>
-</div>
-<div class="section" id="about-the-app">
+</section>
+</section>
+<section id="about-the-app">
 <h2>About the App<a class="headerlink" href="#about-the-app" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="how-login-works">
+<section id="how-login-works">
 <h3>How Login Works<a class="headerlink" href="#how-login-works" title="Permalink to this headline">¶</a></h3>
 <p>Login is done through LDAP and follows this basic process Note: the python package python-simpleldap has been customized slightly to work with our ldap setup.</p>
 <ol class="arabic simple">
@@ -303,21 +305,21 @@ flask seed_demo
 <p class="admonition-title">Note</p>
 <p>once logged in the user_id is kept in the server “session”. When a user logs out we just drop the user_id from the session.</p>
 </div>
-</div>
-<div class="section" id="data-flow">
+</section>
+<section id="data-flow">
 <h3>Data Flow<a class="headerlink" href="#data-flow" title="Permalink to this headline">¶</a></h3>
 <p>Project name and schedule are created &gt; tasks can be added to the project.</p>
 <p>Task are completely independent, the order of tasks is not respected and tasks may run in parallel. The purpose of allowing multiple tasks is to keep a clean grouping of tasks that belong to the same data project.</p>
 <p>The tasks in a job can individually be started or stopped.</p>
-</div>
-<div class="section" id="testing">
+</section>
+<section id="testing">
 <h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
 <p>Code (python/javascript/css/html) is all tested with tox:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>tox
 </pre></div>
 </div>
-</div>
-<div class="section" id="webserver-info">
+</section>
+<section id="webserver-info">
 <h3>Webserver Info<a class="headerlink" href="#webserver-info" title="Permalink to this headline">¶</a></h3>
 <p>EM2 uses three web services for a few reasons -</p>
 <ul class="simple">
@@ -343,9 +345,9 @@ proxy_connect_timeout 999s<span class="p">;</span>
 proxy_read_timeout 999s<span class="p">;</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="credits">
+</section>
+</section>
+<section id="credits">
 <h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
 <p>Atlas was created by the Riverside Healthcare Analytics team -</p>
 <ul class="simple">
@@ -359,16 +361,16 @@ proxy_read_timeout 999s<span class="p">;</span>
 <li><p><a class="reference external" href="https://github.com/schiss152">Richard Schissler</a></p></li>
 <li><p><a class="reference external" href="https://github.com/eshultz">Eric Shultz</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
+</section>
+</section>
+<section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
+</section>
 
       </article>
       <footer>

@@ -40,8 +40,8 @@
 </style><link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" href="../../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
@@ -148,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/events/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.events</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/extensions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.extensions</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.functions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/maintenance/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.maintenance</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.model</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../autoapi/em_scheduler/web/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_scheduler.web</span></code></a></li>
 </ul>
@@ -305,7 +306,7 @@
     <span class="n">sftp_list</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"sftp"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"sftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"sftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
     <span class="p">]</span>
     <span class="k">for</span> <span class="n">sftp</span> <span class="ow">in</span> <span class="n">sftp_list</span><span class="p">:</span>
         <span class="c1"># try to get first, else create.</span>
@@ -356,7 +357,7 @@
     <span class="n">ssh_list</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"ssh"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ssh"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ssh"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
     <span class="p">]</span>
     <span class="k">for</span> <span class="n">ssh</span> <span class="ow">in</span> <span class="n">ssh_list</span><span class="p">:</span>
         <span class="c1"># try to get first, else create.</span>
@@ -399,7 +400,7 @@
     <span class="n">ftp_list</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"ftp"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
     <span class="p">]</span>
     <span class="k">for</span> <span class="n">ftp</span> <span class="ow">in</span> <span class="n">ftp_list</span><span class="p">:</span>
         <span class="c1"># try to get first, else create.</span>
@@ -442,7 +443,7 @@
     <span class="n">smb_list</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"smb"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"smb"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"smb"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
     <span class="p">]</span>
 
     <span class="k">for</span> <span class="n">smb</span> <span class="ow">in</span> <span class="n">smb_list</span><span class="p">:</span>
@@ -457,9 +458,9 @@
 
         <span class="n">smb_conn</span><span class="o">.</span><span class="n">connection_id</span> <span class="o">=</span> <span class="n">my_connection</span><span class="o">.</span><span class="n">id</span>
         <span class="n">smb_conn</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-name"</span><span class="p">]</span>
-        <span class="n">smb_conn</span><span class="o">.</span><span class="n">server_name</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-server-name"</span><span class="p">]</span>
-        <span class="n">smb_conn</span><span class="o">.</span><span class="n">server_ip</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-server-ip"</span><span class="p">]</span>
-        <span class="n">smb_conn</span><span class="o">.</span><span class="n">share_name</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-share-name"</span><span class="p">]</span>
+        <span class="n">smb_conn</span><span class="o">.</span><span class="n">server_name</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-servername"</span><span class="p">]</span>
+        <span class="n">smb_conn</span><span class="o">.</span><span class="n">server_ip</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-serverip"</span><span class="p">]</span>
+        <span class="n">smb_conn</span><span class="o">.</span><span class="n">share_name</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-sharename"</span><span class="p">]</span>
         <span class="n">smb_conn</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-path"</span><span class="p">]</span>
         <span class="n">smb_conn</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"smb"</span> <span class="o">+</span> <span class="n">smb</span> <span class="o">+</span> <span class="s2">"-user"</span><span class="p">]</span>
         <span class="n">smb_conn</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">em_encrypt</span><span class="p">(</span>
@@ -488,7 +489,7 @@
     <span class="n">gpg_list</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"gpg"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"gpg"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"gpg"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
     <span class="p">]</span>
 
     <span class="k">for</span> <span class="n">gpg</span> <span class="ow">in</span> <span class="n">gpg_list</span><span class="p">:</span>
@@ -527,7 +528,7 @@
     <span class="n">database_list</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"database"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"database"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"database"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
     <span class="p">]</span>
 
     <span class="k">for</span> <span class="n">database</span> <span class="ow">in</span> <span class="n">database_list</span><span class="p">:</span>
@@ -704,7 +705,7 @@
         <span class="n">sftp_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"sftp"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"sftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"sftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
         <span class="p">]</span>
 
         <span class="k">for</span> <span class="n">sftp</span> <span class="ow">in</span> <span class="n">sftp_list</span><span class="p">:</span>
@@ -751,7 +752,7 @@
         <span class="n">ssh_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"ssh"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ssh"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ssh"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
         <span class="p">]</span>
 
         <span class="k">for</span> <span class="n">ssh</span> <span class="ow">in</span> <span class="n">ssh_list</span><span class="p">:</span>
@@ -789,7 +790,7 @@
         <span class="n">ftp_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"ftp"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"ftp"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
         <span class="p">]</span>
 
         <span class="k">for</span> <span class="n">ftp</span> <span class="ow">in</span> <span class="n">ftp_list</span><span class="p">:</span>
@@ -825,7 +826,7 @@
         <span class="n">smb_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"smb"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"smb"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"smb"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
         <span class="p">]</span>
 
         <span class="k">for</span> <span class="n">smb</span> <span class="ow">in</span> <span class="n">smb_list</span><span class="p">:</span>
@@ -866,7 +867,7 @@
         <span class="n">gpg_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"gpg"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"gpg"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"gpg"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
         <span class="p">]</span>
 
         <span class="k">for</span> <span class="n">gpg</span> <span class="ow">in</span> <span class="n">gpg_list</span><span class="p">:</span>
@@ -902,7 +903,7 @@
         <span class="n">database_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"database"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">form</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"database"</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"name"</span> <span class="ow">in</span> <span class="n">k</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"database"</span><span class="p">)</span> <span class="ow">and</span> <span class="n">k</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"-name"</span><span class="p">)</span>
         <span class="p">]</span>
 
         <span class="k">for</span> <span class="n">database</span> <span class="ow">in</span> <span class="n">database_list</span><span class="p">:</span>
