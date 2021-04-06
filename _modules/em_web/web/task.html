@@ -290,7 +290,7 @@
     <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
         <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
         <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
-        <span class="n">message</span><span class="o">=</span><span class="s2">"</span><span class="si">%s</span><span class="s2">: Task retry canceled."</span> <span class="o">%</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">),</span>
+        <span class="n">message</span><span class="o">=</span><span class="s2">"</span><span class="si">%s</span><span class="s2">: Task retry canceled."</span> <span class="o">%</span> <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">),</span>
     <span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -423,7 +423,7 @@
 
         <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-            <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+            <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
             <span class="o">+</span> <span class="s2">": Task deleted. ("</span>
             <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span>
             <span class="o">+</span> <span class="s2">")"</span><span class="p">,</span>
@@ -437,7 +437,7 @@
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to delete task. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -519,7 +519,7 @@
 
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
         <span class="s2">"pages/task/all.html.j2"</span><span class="p">,</span>
-        <span class="n">mine</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">),</span>
+        <span class="n">mine</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">),</span>
         <span class="n">title</span><span class="o">=</span><span class="s2">"My Tasks"</span><span class="p">,</span>
         <span class="n">projects</span><span class="o">=</span><span class="n">projects</span><span class="p">,</span></div>
     <span class="p">)</span>
@@ -925,7 +925,7 @@
     <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="n">tme</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
         <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-        <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task created."</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task created."</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -936,7 +936,7 @@
             <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="n">tme</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task enabled."</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task enabled."</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -948,7 +948,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="n">tme</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                 <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                    <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                     <span class="o">+</span> <span class="s2">": Failed to enable task. ("</span>
                     <span class="o">+</span> <span class="n">tme</span><span class="o">.</span><span class="n">id</span>
                     <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1195,7 +1195,7 @@
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to get git code. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1234,7 +1234,7 @@
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to get source code. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1273,7 +1273,7 @@
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to get url code. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1314,7 +1314,7 @@
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to get processing_git code. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1355,7 +1355,7 @@
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to get processing_url code. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1712,7 +1712,7 @@
     <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="n">tme</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
         <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-        <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task edited."</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task edited."</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1721,7 +1721,7 @@
         <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">tme</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-            <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task enabled."</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task enabled."</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1735,7 +1735,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
                 <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                    <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                     <span class="o">+</span> <span class="s2">": Failed to add job to scheduler. ("</span>
                     <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tme</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
                     <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1755,7 +1755,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
                 <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                    <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                     <span class="o">+</span> <span class="s2">": Failed to delete job from scheduler. ("</span>
                     <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tme</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
                     <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1787,7 +1787,8 @@
             <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                 <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-                <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task manually run."</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">": Task manually run."</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
             <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1798,7 +1799,7 @@
                 <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
                 <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                    <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                     <span class="o">+</span> <span class="s2">": Failed to manually run task. ("</span>
                     <span class="o">+</span> <span class="n">task_id</span>
                     <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1829,7 +1830,7 @@
         <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-            <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task scheduled."</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Task scheduled."</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -1841,7 +1842,7 @@
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to schedule task. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -1942,7 +1943,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="s2">"("</span>
-            <span class="o">+</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
             <span class="o">+</span> <span class="s2">") Manually sending file to SFTP server: "</span>
             <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">destination_sftp_conn</span><span class="o">.</span><span class="n">path</span>
             <span class="o">+</span> <span class="n">my_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
@@ -1958,7 +1959,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to send file to SFTP server. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -2003,7 +2004,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="s2">"("</span>
-            <span class="o">+</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
             <span class="o">+</span> <span class="s2">") Manually sending file to FTP server: "</span>
             <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">destination_ftp_conn</span><span class="o">.</span><span class="n">path</span>
             <span class="o">+</span> <span class="s2">"/"</span>
@@ -2020,7 +2021,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to send file to FTP server. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -2065,7 +2066,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="s2">"("</span>
-            <span class="o">+</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
             <span class="o">+</span> <span class="s2">") Manually sending file to SMB server: "</span>
             <span class="o">+</span> <span class="n">task</span><span class="o">.</span><span class="n">destination_smb_conn</span><span class="o">.</span><span class="n">path</span>
             <span class="o">+</span> <span class="s2">"/"</span>
@@ -2081,7 +2082,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to send file to SMB server. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -2126,7 +2127,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="s2">"("</span>
-            <span class="o">+</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
             <span class="o">+</span> <span class="s2">") Manually sending email with file: "</span>
             <span class="o">+</span> <span class="n">my_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
         <span class="p">)</span>
@@ -2140,7 +2141,7 @@
             <span class="n">job_id</span><span class="o">=</span><span class="n">my_file</span><span class="o">.</span><span class="n">job_id</span><span class="p">,</span>
             <span class="n">error</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
-                <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
                 <span class="o">+</span> <span class="s2">": Failed to send email with file. ("</span>
                 <span class="o">+</span> <span class="n">task_id</span>
                 <span class="o">+</span> <span class="s2">")</span><span class="se">\n</span><span class="s2">"</span>
@@ -2176,7 +2177,7 @@
             <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
             <span class="n">message</span><span class="o">=</span><span class="p">(</span>
                 <span class="s2">"(</span><span class="si">%s</span><span class="s2">) Manually downloading file </span><span class="si">%s</span><span class="s2">."</span>
-                <span class="o">%</span> <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">),</span> <span class="n">my_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="o">%</span> <span class="p">((</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">),</span> <span class="n">my_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="p">),</span>
         <span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
@@ -2660,7 +2661,8 @@
     <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
         <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-        <span class="n">message</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">": Reset task status to completed."</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"user_full_name"</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">)</span>
+        <span class="o">+</span> <span class="s2">": Reset task status to completed."</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
