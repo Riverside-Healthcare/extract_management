@@ -230,6 +230,18 @@
 </ul>
 <p>These files need to be updated with parameters specific to you.</p>
 </div>
+<div class="section" id="creating-database">
+<h2>Creating Database<a class="headerlink" href="#creating-database" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flask</span> <span class="n">db</span> <span class="n">init</span>
+<span class="n">flask</span> <span class="n">db</span> <span class="n">migrate</span>
+<span class="n">flask</span> <span class="n">db</span> <span class="n">upgrade</span>
+<span class="n">flask</span> <span class="n">cli</span> <span class="n">seed</span>
+
+<span class="c1"># add demo data in needed</span>
+<span class="c1"># flask cli seed_demo</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="tips">
 <h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
 <p>If you use hostnames vs IP addresses in your config files be sure to update hosts file <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">/etc/hosts</span></code> to include the ip address of any internal domain hosts you will use. For example, LDAP server, GIT server, any databases you plan to query, etc.</p>
@@ -292,6 +304,7 @@
             <ul>
 <li><a class="reference internal" href="#">Setting Up EM2</a><ul>
 <li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#creating-database">Creating Database</a></li>
 <li><a class="reference internal" href="#tips">Tips</a></li>
 </ul>
 </li>
