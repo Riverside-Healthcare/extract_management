@@ -21,6 +21,7 @@ Classes
 
 
 
+
 .. class:: SqlServer(task, query, connection, job_hash)
 
 

@@ -34,6 +34,7 @@ Functions
    em_web.web.filters.database_pass
 
 
+
 .. function:: duration(seconds)
 
    Convert seconds to hh:mm:ss.

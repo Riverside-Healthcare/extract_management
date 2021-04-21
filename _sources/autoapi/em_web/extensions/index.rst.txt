@@ -16,7 +16,6 @@
    :db: database
    :executor: run process off main thread
    :htmlmin: html minifier
-   :ldap: ldap auth
    :migrate: sql migrations
    :redis_client: redis connection
    :sess: session

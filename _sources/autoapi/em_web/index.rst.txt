@@ -39,9 +39,11 @@ Functions
 .. autoapisummary::
 
    em_web.create_app
+   em_web.create_db
    em_web.db_seed
    em_web.db_seed_demo
    em_web.error_message
+
 
 
 .. function:: create_app()
@@ -49,6 +51,11 @@ Functions
    Create app.
 
    :returns: app.
+
+
+.. function:: create_db()
+
+   Add command to create the test database.
 
 
 .. function:: db_seed()

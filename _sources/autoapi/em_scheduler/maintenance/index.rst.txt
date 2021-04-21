@@ -21,6 +21,7 @@ Functions
    em_scheduler.maintenance.job_sync
 
 
+
 .. function:: job_sync()
 
    Job to sync run times between model and scheduler.

@@ -51,6 +51,7 @@ Functions
    em_scheduler.events.scheduler_logs
 
 
+
 .. function:: scheduler_logs(app)
 
    Wrap function to pass app context to all logs.

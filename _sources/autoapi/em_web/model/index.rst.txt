@@ -59,9 +59,10 @@ Classes
 
 
 
+
 .. class:: LoginType
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table of user login types.
 
@@ -73,7 +74,7 @@ Classes
 
 .. class:: Login
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table should contain all login attempts.
 
@@ -85,9 +86,14 @@ Classes
 
 .. class:: User
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table containing any user-specific information.
+
+   .. method:: get_id(self)
+
+      Convert id to unicode.
+
 
    .. method:: __repr__(self)
 
@@ -97,7 +103,7 @@ Classes
 
 .. class:: Project
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table containing project details.
 
@@ -109,7 +115,7 @@ Classes
 
 .. class:: TaskSourceType
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table of task source types.
 
@@ -121,7 +127,7 @@ Classes
 
 .. class:: TaskSourceQueryType
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table of task query source types.
 
@@ -133,7 +139,7 @@ Classes
 
 .. class:: TaskProcessingType
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table of task query source types.
 
@@ -145,7 +151,7 @@ Classes
 
 .. class:: TaskStatus
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table of task status types.
 
@@ -159,7 +165,7 @@ Classes
 
 .. class:: Connection
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table containing all destination information.
 
@@ -171,7 +177,7 @@ Classes
 
 .. class:: ConnectionSftp
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table conntaining sftp connection strings.
 
@@ -183,7 +189,7 @@ Classes
 
 .. class:: ConnectionSsh
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table conntaining sftp connection strings.
 
@@ -195,7 +201,7 @@ Classes
 
 .. class:: ConnectionGpg
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table conntaining gpg keys.
 
@@ -207,7 +213,7 @@ Classes
 
 .. class:: ConnectionFtp
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table conntaining sftp connection strings.
 
@@ -219,7 +225,7 @@ Classes
 
 .. class:: ConnectionSmb
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table conntaining sftp connection strings.
 
@@ -231,7 +237,7 @@ Classes
 
 .. class:: ConnectionDatabaseType
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table of task source database types.
 
@@ -243,7 +249,7 @@ Classes
 
 .. class:: ConnectionDatabase
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    List of task source databases and connection strings.
 
@@ -255,7 +261,7 @@ Classes
 
 .. class:: TaskDestinationFileType
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table of task destination file types.
 
@@ -267,7 +273,7 @@ Classes
 
 .. class:: QuoteLevel
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Lookup table for python quote levels.
 
@@ -279,7 +285,7 @@ Classes
 
 .. class:: Task
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table containing task details.
 
@@ -321,7 +327,7 @@ Classes
 
 .. class:: TaskLog
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table containing job run history.
 
@@ -333,7 +339,7 @@ Classes
 
 .. class:: TaskFile
 
-   Bases: :class:`em_web.extensions.db.Model`
+   Bases: :py:obj:`em_web.extensions.db.Model`
 
    Table containing paths to task backup files.
 

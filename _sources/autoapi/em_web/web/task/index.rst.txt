@@ -63,6 +63,7 @@ Functions
    em_web.web.task.task_reset
 
 
+
 .. function:: task_endretry(task_id)
 
    Stop a task from performing the scheduled retry.

@@ -21,6 +21,7 @@ Classes
 
 
 
+
 .. class:: Postgres(task, query, connection, job_hash)
 
 

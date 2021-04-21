@@ -21,6 +21,7 @@ Classes
 
 
 
+
 .. class:: Smtp(task, recipients, subject, message, attachment, attachment_name, job_hash)
 
 

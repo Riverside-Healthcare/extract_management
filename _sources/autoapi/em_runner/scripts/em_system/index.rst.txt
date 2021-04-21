@@ -21,6 +21,7 @@ Classes
 
 
 
+
 .. class:: Monitor(task, job_hash)
 
 

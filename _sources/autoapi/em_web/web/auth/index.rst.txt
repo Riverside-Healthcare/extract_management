@@ -18,15 +18,22 @@ Functions
 
 .. autoapisummary::
 
-   em_web.web.auth.before_request
+   em_web.web.auth.load_user
+   em_web.web.auth.not_authorized
    em_web.web.auth.login
    em_web.web.auth.logout
    em_web.web.auth.log_login
 
 
-.. function:: before_request()
 
-   Validate user and reloads auth before each request.
+.. function:: load_user(user_id)
+
+   Get user.
+
+
+.. function:: not_authorized()
+
+   Return not authorized template.
 
 
 .. function:: login()

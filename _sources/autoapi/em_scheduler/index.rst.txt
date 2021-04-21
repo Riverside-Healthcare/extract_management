@@ -74,6 +74,7 @@ Functions
    em_scheduler.error_message
 
 
+
 .. function:: create_app()
 
    Create task runner app.

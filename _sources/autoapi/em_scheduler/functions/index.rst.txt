@@ -24,6 +24,7 @@ Functions
    em_scheduler.functions.scheduler_add_task
 
 
+
 .. function:: scheduler_delete_all_tasks()
 
    Delete all jobs associated with a task from the scheduler.

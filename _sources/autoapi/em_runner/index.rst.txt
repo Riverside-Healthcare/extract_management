@@ -75,6 +75,7 @@ Functions
    em_runner.create_app
 
 
+
 .. function:: create_app()
 
    Create task runner app.

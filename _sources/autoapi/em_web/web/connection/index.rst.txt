@@ -32,7 +32,9 @@ Functions
    em_web.web.connection.connection_remove_ssh
    em_web.web.connection.connection_remove_smb
    em_web.web.connection.connection_remove_ftp
+   em_web.web.connection.connection_remove_gpg
    em_web.web.connection.connection_remove_database
+
 
 
 .. function:: connection()
@@ -165,6 +167,17 @@ Functions
    Delete a FPT connection from group.
 
    :url: /connection/<connection_id>/removeFtp/<ftp_id>
+   :param ftp_id: id of the FTP connection in question.
+   :param connection_id: id of connection group in question.
+
+   :returns: redirects back to connection page.
+
+
+.. function:: connection_remove_gpg(connection_id, gpg_id)
+
+   Delete a FPT connection from group.
+
+   :url: /connection/<connection_id>/removeGpg/<gpg_id>
    :param ftp_id: id of the FTP connection in question.
    :param connection_id: id of connection group in question.
 

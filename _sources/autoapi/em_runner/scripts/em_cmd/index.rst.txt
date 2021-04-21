@@ -21,6 +21,7 @@ Classes
 
 
 
+
 .. class:: Cmd(task, cmd, success_msg, error_msg, job_hash)
 
 

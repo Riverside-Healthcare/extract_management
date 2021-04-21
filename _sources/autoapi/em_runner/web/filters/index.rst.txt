@@ -22,6 +22,7 @@ Functions
    em_runner.web.filters.datetime_format
 
 
+
 .. function:: year(none)
 
    Get current year.

@@ -23,6 +23,7 @@ Submodules
    executors/index.rst
    filters/index.rst
    project/index.rst
+   saml_auth/index.rst
    table/index.rst
    task/index.rst
 
