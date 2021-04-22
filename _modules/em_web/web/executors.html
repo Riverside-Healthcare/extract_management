@@ -236,8 +236,10 @@
 
 
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">app</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">jsonify</span>
@@ -384,86 +386,124 @@
 <span class="c1"># pylint: disable=W0613</span>
 <div class="viewcode-block" id="rescheduled_scheduled_tasks"><a class="viewcode-back" href="../../../autoapi/em_web/web/executors/index.html#em_web.web.executors.rescheduled_scheduled_tasks">[docs]</a><span class="k">def</span> <span class="nf">rescheduled_scheduled_tasks</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">"""Rescheduling scheduled tasks."""</span>
-    <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="p">)</span>
 
-    <span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
-    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/add/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span></div>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/add/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span></div>
 
 
 <span class="c1"># pylint: disable=W0613</span>
 <div class="viewcode-block" id="run_scheduled_tasks"><a class="viewcode-back" href="../../../autoapi/em_web/web/executors/index.html#em_web.web.executors.run_scheduled_tasks">[docs]</a><span class="k">def</span> <span class="nf">run_scheduled_tasks</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">"""Running all scheduled tasks."""</span>  <span class="c1"># noqa: D401</span>
-    <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="p">)</span>
 
-    <span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
-    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/run/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span></div>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/run/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span></div>
 
 
 <span class="c1"># pylint: disable=W0613</span>
 <div class="viewcode-block" id="disabled_scheduled_tasks"><a class="viewcode-back" href="../../../autoapi/em_web/web/executors/index.html#em_web.web.executors.disabled_scheduled_tasks">[docs]</a><span class="k">def</span> <span class="nf">disabled_scheduled_tasks</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">"""Disabling scheduled tasks."""</span>
-    <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="p">)</span>
 
-    <span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">ids</span><span class="p">))</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
-    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/delete/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span></div>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/delete/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span></div>
 
 
 <span class="c1"># pylint: disable=W0613</span>
 <div class="viewcode-block" id="schedule_errored_tasks"><a class="viewcode-back" href="../../../autoapi/em_web/web/executors/index.html#em_web.web.executors.schedule_errored_tasks">[docs]</a><span class="k">def</span> <span class="nf">schedule_errored_tasks</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">"""Scheduling all errored tasks."""</span>
-    <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="p">)</span>
 
-    <span class="n">tasks</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">select_from</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">or_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="n">and_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">notin_</span><span class="p">(</span><span class="n">ids</span><span class="p">),</span> <span class="n">Task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span>
-        <span class="o">.</span><span class="n">add_columns</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">"task.id"</span><span class="p">))</span>
-        <span class="o">.</span><span class="n">all</span><span class="p">()</span>
-    <span class="p">)</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">select_from</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                <span class="n">or_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="n">and_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">notin_</span><span class="p">(</span><span class="n">ids</span><span class="p">),</span> <span class="n">Task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="p">)</span>
+            <span class="o">.</span><span class="n">add_columns</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">"task.id"</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/add/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/add/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span></div>
 
 
 <span class="c1"># pylint: disable=W0613</span>
 <div class="viewcode-block" id="run_errored_tasks"><a class="viewcode-back" href="../../../autoapi/em_web/web/executors/index.html#em_web.web.executors.run_errored_tasks">[docs]</a><span class="k">def</span> <span class="nf">run_errored_tasks</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">"""Running all errored tasks."""</span>  <span class="c1"># noqa: D401</span>
-    <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/scheduled"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="p">)</span>
 
-    <span class="n">tasks</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">select_from</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">or_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="n">and_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">notin_</span><span class="p">(</span><span class="n">ids</span><span class="p">),</span> <span class="n">Task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span>
-        <span class="o">.</span><span class="n">add_columns</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">"task.id"</span><span class="p">))</span>
-        <span class="o">.</span><span class="n">all</span><span class="p">()</span>
-    <span class="p">)</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">select_from</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                <span class="n">or_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="n">and_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">notin_</span><span class="p">(</span><span class="n">ids</span><span class="p">),</span> <span class="n">Task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="p">)</span>
+            <span class="o">.</span><span class="n">add_columns</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">"task.id"</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/run/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/run/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span></div>
 
 
 <span class="c1"># pylint: disable=W0613</span>
 <div class="viewcode-block" id="run_active_tasks"><a class="viewcode-back" href="../../../autoapi/em_web/web/executors/index.html#em_web.web.executors.run_active_tasks">[docs]</a><span class="k">def</span> <span class="nf">run_active_tasks</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">"""Rerun all running tasks."""</span>
-    <span class="n">tasks</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
-        <span class="o">.</span><span class="n">select_from</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">or_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 1 = running</span>
-        <span class="o">.</span><span class="n">add_columns</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">"task.id"</span><span class="p">))</span>
-        <span class="o">.</span><span class="n">all</span><span class="p">()</span>
-    <span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">select_from</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">or_</span><span class="p">(</span><span class="n">Task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>  <span class="c1"># 1 = running</span>
+            <span class="o">.</span><span class="n">add_columns</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">"task.id"</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/run/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/run/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span></div>
 </pre></div>
       </article>
       <footer>

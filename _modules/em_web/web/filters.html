@@ -290,6 +290,9 @@
     <span class="k">if</span> <span class="n">my_num</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">"*"</span>
 
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">my_num</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">my_num</span>
+
     <span class="k">if</span> <span class="n">my_num</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">my_num</span>
 
@@ -304,6 +307,9 @@
 
 <span class="sd">    :returns: number with pronunciation text.</span>
 <span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">my_num</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">my_num</span>
+
     <span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span>
         <span class="mi">0</span><span class="p">:</span> <span class="s2">"th"</span><span class="p">,</span>
         <span class="mi">1</span><span class="p">:</span> <span class="s2">"st"</span><span class="p">,</span>
@@ -317,6 +323,9 @@
         <span class="mi">9</span><span class="p">:</span> <span class="s2">"th"</span><span class="p">,</span>
     <span class="p">}</span>
 
+    <span class="c1"># special case for 11</span>
+    <span class="k">if</span> <span class="n">my_num</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"11th"</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">my_num</span><span class="p">)</span> <span class="o">+</span> <span class="n">my_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">my_num</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span></div>
 
 
@@ -393,7 +402,12 @@
 
 <span class="sd">    :returns: string representation of the number</span>
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="n">num2words</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">"ordinal"</span><span class="p">)</span></div>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">num2words</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">"ordinal"</span><span class="p">)</span>
+
+    <span class="c1"># pylint: disable=W0612,W0703</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># noqa: F841</span>
+        <span class="k">return</span> <span class="n">num</span></div>
 
 
 <span class="nd">@filters_bp</span><span class="o">.</span><span class="n">app_template_filter</span><span class="p">(</span><span class="s2">"year"</span><span class="p">)</span>
@@ -416,10 +430,13 @@
 
 <span class="sd">    :returns: formatted date string</span>
 <span class="sd">    """</span>
-    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span>
-        <span class="n">my_date</span><span class="p">,</span>
-        <span class="s2">"</span><span class="si">%a</span><span class="s2">, %b </span><span class="si">%-d</span><span class="s2">, %Y %H:%M:%S.</span><span class="si">%f</span><span class="s2">"</span><span class="p">,</span></div>
-    <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">my_date</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span>
+            <span class="n">my_date</span><span class="p">,</span>
+            <span class="s2">"</span><span class="si">%a</span><span class="s2">, %b </span><span class="si">%-d</span><span class="s2">, %Y %H:%M:%S.</span><span class="si">%f</span><span class="s2">"</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">my_date</span></div>
 
 
 <span class="nd">@filters_bp</span><span class="o">.</span><span class="n">app_template_filter</span><span class="p">(</span><span class="s2">"decrypt"</span><span class="p">)</span>

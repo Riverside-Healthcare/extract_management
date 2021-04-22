@@ -238,13 +238,15 @@
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">html</span>
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">zipfile</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">Response</span>
 <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">current_app</span> <span class="k">as</span> <span class="n">app</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">send_file</span><span class="p">,</span> <span class="n">url_for</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">flash</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">send_file</span><span class="p">,</span> <span class="n">url_for</span>
 <span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">current_user</span><span class="p">,</span> <span class="n">login_required</span>
 <span class="kn">from</span> <span class="nn">RelativeToNow</span> <span class="kn">import</span> <span class="n">relative_to_now</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">and_</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">text</span>
@@ -288,23 +290,28 @@
 <span class="sd">    clear any scheduled jobs that do not belong to</span>
 <span class="sd">    the primary schedule.</span>
 <span class="sd">    """</span>
-    <span class="n">redis_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"runner_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_attempt"</span><span class="p">)</span>
-    <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">task_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">redis_client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"runner_"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"_attempt"</span><span class="p">)</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">task_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/add/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">next_run</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">enabled</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/add/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">task</span><span class="o">.</span><span class="n">next_run</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/delete/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">))</span>
+
+        <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
+            <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+            <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">"</span><span class="si">%s</span><span class="s2">: Task retry canceled."</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">full_name</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-        <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s2">"SCHEUDULER_HOST"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"/delete/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">task_id</span><span class="p">))</span>
 
-    <span class="n">log</span> <span class="o">=</span> <span class="n">TaskLog</span><span class="p">(</span>
-        <span class="n">status_id</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">,</span>
-        <span class="n">message</span><span class="o">=</span><span class="s2">"</span><span class="si">%s</span><span class="s2">: Task retry canceled."</span> <span class="o">%</span> <span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">full_name</span> <span class="ow">or</span> <span class="s2">"none"</span><span class="p">),</span>
-    <span class="p">)</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
-    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span> <span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span> <span class="n">urllib3</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">NewConnectionError</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">({</span><span class="s2">"empty_msg"</span><span class="p">:</span> <span class="s2">"Error - EM_Scheduler offline."</span><span class="p">})</span>
+        <span class="n">flash</span><span class="p">(</span><span class="s2">"Error - EM_Scheduler offline."</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">"task_bp.get_task"</span><span class="p">,</span> <span class="n">task_id</span><span class="o">=</span><span class="n">task_id</span><span class="p">))</span></div>
 
@@ -727,6 +734,9 @@
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tme</span><span class="o">.</span><span class="n">source_type_id</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="c1"># query options</span>
     <span class="k">if</span> <span class="s2">"sourceQueryType"</span> <span class="ow">in</span> <span class="n">form</span><span class="p">:</span>
         <span class="n">tme</span><span class="o">.</span><span class="n">source_query_type_id</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"sourceQueryType"</span><span class="p">]</span>
@@ -808,9 +818,14 @@
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_quote_level_id</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"quoteLevel"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"quoteLevel"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="mi">3</span>
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_type_id</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">"none"</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"fileType"</span> <span class="ow">in</span> <span class="n">form</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">"none"</span>
+        <span class="k">else</span> <span class="kc">None</span>
     <span class="p">)</span>
-    <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_name</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"destinationFileName"</span><span class="p">]</span>
+
+    <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_name</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">form</span><span class="p">[</span><span class="s2">"destinationFileName"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"destinationFileName"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="n">form</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_create_zip</span> <span class="o">=</span> <span class="p">(</span>
         <span class="mi">1</span>
@@ -827,7 +842,7 @@
         <span class="k">else</span> <span class="kc">None</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">"fileType"</span> <span class="ow">in</span> <span class="n">form</span> <span class="ow">and</span> <span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">):</span>
         <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_delimiter</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">form</span><span class="p">[</span><span class="s2">"fileDelimiter"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"fileDelimiter"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
@@ -841,7 +856,8 @@
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_ignore_delimiter</span> <span class="o">=</span> <span class="p">(</span>
         <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"fileType"</span> <span class="ow">in</span> <span class="n">form</span>
+        <span class="ow">and</span> <span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">)</span>
         <span class="ow">and</span> <span class="s2">"task_ignore_file_delimiter"</span> <span class="ow">in</span> <span class="n">form</span>
         <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"task_ignore_file_delimiter"</span><span class="p">])</span> <span class="o">==</span> <span class="s2">"1"</span>
         <span class="k">else</span> <span class="kc">None</span>
@@ -1507,6 +1523,9 @@
             <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">tme</span><span class="o">.</span><span class="n">source_type_id</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="c1"># query options</span>
     <span class="k">if</span> <span class="s2">"sourceQueryType"</span> <span class="ow">in</span> <span class="n">form</span><span class="p">:</span>
         <span class="n">tme</span><span class="o">.</span><span class="n">source_query_type_id</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"sourceQueryType"</span><span class="p">]</span>
@@ -1588,9 +1607,13 @@
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_quote_level_id</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"quoteLevel"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"quoteLevel"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="mi">3</span>
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_type_id</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">"none"</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"fileType"</span> <span class="ow">in</span> <span class="n">form</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">"none"</span>
+        <span class="k">else</span> <span class="kc">None</span>
     <span class="p">)</span>
-    <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_name</span> <span class="o">=</span> <span class="n">form</span><span class="p">[</span><span class="s2">"destinationFileName"</span><span class="p">]</span>
+    <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_name</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">form</span><span class="p">[</span><span class="s2">"destinationFileName"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"destinationFileName"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="n">form</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
+    <span class="p">)</span>
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_create_zip</span> <span class="o">=</span> <span class="p">(</span>
         <span class="mi">1</span>
@@ -1607,7 +1630,7 @@
         <span class="k">else</span> <span class="kc">None</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">"fileType"</span> <span class="ow">in</span> <span class="n">form</span> <span class="ow">and</span> <span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">):</span>
         <span class="n">tme</span><span class="o">.</span><span class="n">destination_file_delimiter</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">form</span><span class="p">[</span><span class="s2">"fileDelimiter"</span><span class="p">]</span> <span class="k">if</span> <span class="s2">"fileDelimiter"</span> <span class="ow">in</span> <span class="n">form</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="p">)</span>
@@ -1620,7 +1643,8 @@
 
     <span class="n">tme</span><span class="o">.</span><span class="n">destination_ignore_delimiter</span> <span class="o">=</span> <span class="p">(</span>
         <span class="mi">1</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"fileType"</span> <span class="ow">in</span> <span class="n">form</span>
+        <span class="ow">and</span> <span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"2"</span> <span class="ow">or</span> <span class="n">form</span><span class="p">[</span><span class="s2">"fileType"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"4"</span><span class="p">)</span>
         <span class="ow">and</span> <span class="s2">"task_ignore_file_delimiter"</span> <span class="ow">in</span> <span class="n">form</span>
         <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">form</span><span class="p">[</span><span class="s2">"task_ignore_file_delimiter"</span><span class="p">])</span> <span class="o">==</span> <span class="s2">"1"</span>
         <span class="k">else</span> <span class="kc">None</span>
@@ -2597,6 +2621,7 @@
 <span class="sd">    :returns: html page.</span>
 <span class="sd">    """</span>
     <span class="n">org</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"org"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
     <span class="n">dest</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">ConnectionDatabase</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">connection_id</span><span class="o">=</span><span class="n">org</span><span class="p">)</span>
         <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">ConnectionDatabase</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -2623,6 +2648,7 @@
 <span class="sd">    :returns: redirects to task details.</span>
 <span class="sd">    """</span>
     <span class="n">task</span> <span class="o">=</span> <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">task_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
     <span class="n">task</span><span class="o">.</span><span class="n">status_id</span> <span class="o">=</span> <span class="mi">4</span>
     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 

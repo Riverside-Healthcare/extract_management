@@ -236,6 +236,7 @@
 
 
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
@@ -357,7 +358,7 @@
 
     <span class="c1"># pylint: disable=broad-except</span>
     <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>  <span class="c1"># noqa: T001</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
         <span class="k">return</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">200</span></div>
 
 
@@ -369,55 +370,61 @@
 <span class="sd">    :url: /dash/errorGauge</span>
 <span class="sd">    :returns: html webpage.</span>
 <span class="sd">    """</span>
-    <span class="n">success</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">"""</span>
-<span class="sd">        select</span>
-<span class="sd">            case when success &gt; 0 and error &gt; 0</span>
-<span class="sd">                     then 1.00 - round(cast(error as decimal) / cast(success as decimal),2)</span>
-<span class="sd">                 when error &gt; 0 or success = 0</span>
-<span class="sd">                     then 0</span>
-<span class="sd">             else 1 end accuracy</span>
-<span class="sd">        from</span>
-<span class="sd">            (</span>
-<span class="sd">                select</span>
-<span class="sd">                    count(1) error</span>
-<span class="sd">                from (</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="sd">"""</span>
+<span class="sd">            select</span>
+<span class="sd">                case when success &gt; 0 and error &gt; 0</span>
+<span class="sd">                         then 1.00 - round(cast(error as decimal) / cast(success as decimal),2)</span>
+<span class="sd">                     when error &gt; 0 or success = 0</span>
+<span class="sd">                         then 0</span>
+<span class="sd">                 else 1 end accuracy</span>
+<span class="sd">            from</span>
+<span class="sd">                (</span>
 <span class="sd">                    select</span>
-<span class="sd">                        1</span>
+<span class="sd">                        count(1) error</span>
+<span class="sd">                    from (</span>
+<span class="sd">                        select</span>
+<span class="sd">                            1</span>
+<span class="sd">                        from</span>
+<span class="sd">                            task_log t</span>
+<span class="sd">                        where</span>
+<span class="sd">                            status_date &gt; now() - interval '72 hour'</span>
+<span class="sd">                        and task_id is not null</span>
+<span class="sd">                        and job_id is not null</span>
+<span class="sd">                        and error=1</span>
+<span class="sd">                        group by task_id</span>
+<span class="sd">                    ) as t</span>
+<span class="sd">                ) as e</span>
+<span class="sd">                , (</span>
+<span class="sd">                    select</span>
+<span class="sd">                        count(1) success</span>
 <span class="sd">                    from</span>
 <span class="sd">                        task_log t</span>
 <span class="sd">                    where</span>
 <span class="sd">                        status_date &gt; now() - interval '72 hour'</span>
 <span class="sd">                    and task_id is not null</span>
 <span class="sd">                    and job_id is not null</span>
-<span class="sd">                    and error=1</span>
-<span class="sd">                    group by task_id</span>
-<span class="sd">                ) as t</span>
-<span class="sd">            ) as e</span>
-<span class="sd">            , (</span>
-<span class="sd">                select</span>
-<span class="sd">                    count(1) success</span>
-<span class="sd">                from</span>
-<span class="sd">                    task_log t</span>
-<span class="sd">                where</span>
-<span class="sd">                    status_date &gt; now() - interval '72 hour'</span>
-<span class="sd">                and task_id is not null</span>
-<span class="sd">                and job_id is not null</span>
-<span class="sd">                and message = 'Completed task.'</span>
-<span class="sd">                and status_id = 8 -- runner</span>
-<span class="sd">              ) as s</span>
-<span class="sd">        """</span>
-    <span class="p">)</span>
+<span class="sd">                    and message = 'Completed task.'</span>
+<span class="sd">                    and status_id = 8 -- runner</span>
+<span class="sd">                  ) as s</span>
+<span class="sd">            """</span>
+        <span class="p">)</span>
 
-    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">success</span><span class="p">]</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">success</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
-        <span class="s2">"pages/dashboard/gauge.html.j2"</span><span class="p">,</span>
-        <span class="n">value_value</span><span class="o">=</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-        <span class="n">value</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="s2">"%"</span><span class="p">,</span>
-        <span class="n">value_title</span><span class="o">=</span><span class="s2">"Successful Runs"</span><span class="p">,</span>
-        <span class="n">value_subtitle</span><span class="o">=</span><span class="s2">"(last 72 hrs)"</span><span class="p">,</span></div>
-    <span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+            <span class="s2">"pages/dashboard/gauge.html.j2"</span><span class="p">,</span>
+            <span class="n">value_value</span><span class="o">=</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">value</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="s2">"%"</span><span class="p">,</span>
+            <span class="n">value_title</span><span class="o">=</span><span class="s2">"Successful Runs"</span><span class="p">,</span>
+            <span class="n">value_subtitle</span><span class="o">=</span><span class="s2">"(last 72 hrs)"</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># pylint: disable=broad-except</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">""</span></div>
 
 
 <span class="nd">@dashboard_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/dash/runGauge"</span><span class="p">)</span>
@@ -428,30 +435,36 @@
 <span class="sd">    :url: /dash/runGauge</span>
 <span class="sd">    :returns: html webpage.</span>
 <span class="sd">    """</span>
-    <span class="n">runs</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="sd">"""</span>
-<span class="sd">        select</span>
-<span class="sd">            count(1)</span>
-<span class="sd">        from</span>
-<span class="sd">            task_log t</span>
-<span class="sd">        where</span>
-<span class="sd">            status_date &gt; now() - interval '72 hour'</span>
-<span class="sd">        and task_id is not null</span>
-<span class="sd">        and job_id is not null</span>
-<span class="sd">        and message = 'Completed task.'</span>
-<span class="sd">        and status_id = 8 -- runner</span>
-<span class="sd">        """</span>
-    <span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">runs</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="sd">"""</span>
+<span class="sd">            select</span>
+<span class="sd">                count(1)</span>
+<span class="sd">            from</span>
+<span class="sd">                task_log t</span>
+<span class="sd">            where</span>
+<span class="sd">                status_date &gt; now() - interval '72 hour'</span>
+<span class="sd">            and task_id is not null</span>
+<span class="sd">            and job_id is not null</span>
+<span class="sd">            and message = 'Completed task.'</span>
+<span class="sd">            and status_id = 8 -- runner</span>
+<span class="sd">            """</span>
+        <span class="p">)</span>
 
-    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">runs</span><span class="p">]</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">runs</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
-        <span class="s2">"pages/dashboard/gauge.html.j2"</span><span class="p">,</span>
-        <span class="n">value_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">value</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-        <span class="n">value_title</span><span class="o">=</span><span class="s2">"Total Runs"</span><span class="p">,</span>
-        <span class="n">value_subtitle</span><span class="o">=</span><span class="s2">"(last 72 hrs)"</span><span class="p">,</span></div>
-    <span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span>
+            <span class="s2">"pages/dashboard/gauge.html.j2"</span><span class="p">,</span>
+            <span class="n">value_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="n">value_title</span><span class="o">=</span><span class="s2">"Total Runs"</span><span class="p">,</span>
+            <span class="n">value_subtitle</span><span class="o">=</span><span class="s2">"(last 72 hrs)"</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1"># pylint: disable=W0703</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">""</span></div>
 
 
 <span class="nd">@dashboard_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/dash/orphans/delete"</span><span class="p">)</span>
