@@ -931,9 +931,9 @@
 
     <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span>
 
-<div class="viewcode-block" id="Task.est_duration"><a class="viewcode-back" href="../../autoapi/em_scheduler/model/index.html#em_scheduler.model.Task.est_duration">[docs]</a>    <span class="n">est_duration</span><span class="p">:</span> <span class="nb">int</span></div>
+    <span class="n">est_duration</span><span class="p">:</span> <span class="nb">int</span>
 
-    <span class="sd">""" general information """</span>
+    <span class="c1"># general information</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">project_id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span>

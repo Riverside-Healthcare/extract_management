@@ -289,12 +289,6 @@ Classes
 
    Table containing task details.
 
-   .. attribute:: est_duration
-      :annotation: :int
-
-      general information 
-
-
    .. attribute:: updater_id
       
 
