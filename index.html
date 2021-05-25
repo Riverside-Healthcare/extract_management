@@ -235,7 +235,7 @@
 <p>Tasks can run at any time and on any schedule.</p>
 <div class="section" id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
-<p>Check out our <a class="reference external" href="https://riverside-healthcare.github.io/extract_management/">documentation site</a>.</p>
+<p>Check out our <a class="reference external" href="https://docs.extract.management">documentation site</a>.</p>
 </div>
 <div class="section" id="demo">
 <h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
@@ -259,9 +259,9 @@ poetry install
 flask db init
 flask db migrate
 flask db upgrade
-flask seed
+flask cli seed
 <span class="c1"># if you want some basic demo information added</span>
-flask seed_demo
+flask cli seed_demo
 </pre></div>
 </div>
 <p>Finally, to run the three site, you will need to run each command in a separate termimal session:</p>

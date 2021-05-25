@@ -2208,6 +2208,7 @@
             <span class="p">)</span>
 
         <span class="c1"># otherwise, stream it.</span>
+        <span class="c1"># pylint: disable=R1732</span>
         <span class="n">file_handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span>  <span class="c1"># noqa:SIM115</span>
 
         <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
