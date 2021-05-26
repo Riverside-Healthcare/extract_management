@@ -546,7 +546,10 @@
         <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span>
             <span class="n">name</span><span class="o">=</span><span class="s2">"Task 1"</span><span class="p">,</span>
             <span class="n">source_type_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">source_code</span><span class="o">=</span><span class="s2">"select "</span> <span class="s2">"1"</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="n">source_code</span><span class="o">=</span><span class="s2">"Declare @Today Date = GetDate();</span><span class="se">\</span>
+<span class="s2">SELECT * </span><span class="se">\</span>
+<span class="s2">FROM Animals </span><span class="se">\</span>
+<span class="s2">WHERE @Today = 'Yesterday'; "</span><span class="p">,</span>
             <span class="n">destination_ftp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">destination_ftp_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">project_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -556,6 +559,7 @@
             <span class="n">destination_file_name</span><span class="o">=</span><span class="s2">"test_</span><span class="si">%d</span><span class="s2">_%m"</span><span class="p">,</span>
             <span class="n">destination_file_type_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
             <span class="n">destination_file_delimiter</span><span class="o">=</span><span class="s2">"|"</span><span class="p">,</span>
+            <span class="n">query_params</span><span class="o">=</span><span class="s2">"@Today = 'Yesterday'"</span><span class="p">,</span>
         <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
         <span class="ow">is</span> <span class="kc">None</span>
     <span class="p">):</span>
