@@ -31,9 +31,15 @@ Functions
 
 .. autoapisummary::
 
+   em_web.seed.get_or_create
    em_web.seed.seed
    em_web.seed.seed_demo
 
+
+
+.. function:: get_or_create(session, model, **kwargs)
+
+   Create model if not existing.
 
 
 .. function:: seed()

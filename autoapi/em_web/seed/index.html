@@ -240,14 +240,22 @@
 <col style="width: 90%"/>
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.seed.seed" title="em_web.seed.seed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seed</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.seed.get_or_create" title="em_web.seed.get_or_create"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_or_create</span></code></a>(session, model, **kwargs)</p></td>
+<td><p>Create model if not existing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#em_web.seed.seed" title="em_web.seed.seed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seed</span></code></a>()</p></td>
 <td><p>Insert seed records to database.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#em_web.seed.seed_demo" title="em_web.seed.seed_demo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seed_demo</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#em_web.seed.seed_demo" title="em_web.seed.seed_demo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seed_demo</span></code></a>()</p></td>
 <td><p>Seed info for demo.</p></td>
 </tr>
 </tbody>
 </table></div>
+<dl class="py function">
+<dt id="em_web.seed.get_or_create">
+<code class="sig-prename descclassname"><span class="pre">em_web.seed.</span></code><code class="sig-name descname"><span class="pre">get_or_create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/em_web/seed.html#get_or_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.seed.get_or_create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create model if not existing.</p>
+</dd></dl>
 <dl class="py function">
 <dt id="em_web.seed.seed">
 <code class="sig-prename descclassname"><span class="pre">em_web.seed.</span></code><code class="sig-name descname"><span class="pre">seed</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/em_web/seed.html#seed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#em_web.seed.seed" title="Permalink to this definition">¶</a></dt>
@@ -301,6 +309,7 @@
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">em_web.seed</span></code></a><ul>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#functions">Functions</a><ul>
+<li><a class="reference internal" href="#em_web.seed.get_or_create">get_or_create</a></li>
 <li><a class="reference internal" href="#em_web.seed.seed">seed</a></li>
 <li><a class="reference internal" href="#em_web.seed.seed_demo">seed_demo</a></li>
 </ul>

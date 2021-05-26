@@ -249,6 +249,8 @@
 <span class="c1"># You should have received a copy of the GNU General Public License</span>
 <span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
 
+<span class="c1"># pylint: disable=C0301</span>
+
 <span class="kn">from</span> <span class="nn">em_web.model</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Connection</span><span class="p">,</span>
     <span class="n">ConnectionDatabase</span><span class="p">,</span>
@@ -269,318 +271,276 @@
 <span class="kn">from</span> <span class="nn">.extensions</span> <span class="kn">import</span> <span class="n">db</span>
 
 
+<div class="viewcode-block" id="get_or_create"><a class="viewcode-back" href="../../autoapi/em_web/seed/index.html#em_web.seed.get_or_create">[docs]</a><span class="k">def</span> <span class="nf">get_or_create</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">"""Create model if not existing."""</span>
+    <span class="n">instance</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">instance</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="n">instance</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">instance</span></div>
+
+
 <div class="viewcode-block" id="seed"><a class="viewcode-back" href="../../autoapi/em_web/seed/index.html#em_web.seed.seed">[docs]</a><span class="k">def</span> <span class="nf">seed</span><span class="p">():</span>
     <span class="sd">"""Insert seed records to database."""</span>
     <span class="c1"># pylint: disable=too-many-branches</span>
     <span class="c1"># pylint: disable=too-many-statements</span>
     <span class="c1"># login types</span>
-    <span class="k">if</span> <span class="n">LoginType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"login"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LoginType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"login"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">LoginType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"logout"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LoginType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"logout"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">LoginType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"bad login"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LoginType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"bad login"</span><span class="p">))</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">LoginType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"login"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">LoginType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"logout"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">LoginType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"bad login"</span><span class="p">)</span>
 
     <span class="c1"># quote level</span>
-    <span class="k">if</span> <span class="n">QuoteLevel</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote None"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">QuoteLevel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote None"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">QuoteLevel</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote All"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">QuoteLevel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote All"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">QuoteLevel</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote Minimal (default)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">QuoteLevel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote Minimal (default)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">QuoteLevel</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote Non-numeric"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">QuoteLevel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Quote Non-numeric"</span><span class="p">))</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">QuoteLevel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Quote None"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">QuoteLevel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Quote All"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">QuoteLevel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Quote Minimal (default)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">QuoteLevel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Quote Non-numeric"</span><span class="p">)</span>
 
     <span class="c1"># task source type</span>
-    <span class="k">if</span> <span class="n">TaskSourceType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Database"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Database"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskSourceType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Network File (SMB Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Network File (SMB Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskSourceType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (SFTP Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (SFTP Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskSourceType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (FTP Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (FTP Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskSourceType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Python Script"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Python Script"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskSourceType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SSH Command"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SSH Command"</span><span class="p">))</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Database"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Network File (SMB Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File (SFTP Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File (FTP Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Python Script"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"SSH Command"</span><span class="p">)</span>
 
     <span class="c1"># task processing type</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskProcessingType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Network File (SMB Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskProcessingType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Network File (SMB Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskProcessingType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (SFTP Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskProcessingType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (SFTP Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskProcessingType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (FTP Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskProcessingType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File (FTP Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskProcessingType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Git URL"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskProcessingType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Git URL"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskProcessingType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Other URL (no auth)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskProcessingType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Other URL (no auth)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskProcessingType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Source Code"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskProcessingType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Source Code"</span><span class="p">))</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskProcessingType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Network File (SMB Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskProcessingType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File (SFTP Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskProcessingType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File (FTP Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskProcessingType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Git URL"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskProcessingType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Other URL (no auth)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskProcessingType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Source Code"</span><span class="p">)</span>
 
     <span class="c1"># task source query type</span>
-    <span class="k">if</span> <span class="n">TaskSourceQueryType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Git URL"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceQueryType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Git URL"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskSourceQueryType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File Path (SMB Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceQueryType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File Path (SMB Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskSourceQueryType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Other URL (no auth)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceQueryType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Other URL (no auth)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskSourceQueryType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Source Code"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceQueryType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Source Code"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskSourceQueryType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File Path (SFTP Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceQueryType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File Path (SFTP Connection)"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskSourceQueryType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File Path (FTP Connection)"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskSourceQueryType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File Path (FTP Connection)"</span><span class="p">))</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceQueryType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Git URL"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceQueryType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File Path (SMB Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceQueryType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Other URL (no auth)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceQueryType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Source Code"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceQueryType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File Path (SFTP Connection)"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskSourceQueryType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File Path (FTP Connection)"</span><span class="p">)</span>
 
     <span class="c1"># database type</span>
-    <span class="k">if</span> <span class="n">ConnectionDatabaseType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Postgres"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ConnectionDatabaseType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Postgres"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">ConnectionDatabaseType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SQL Sever"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ConnectionDatabaseType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SQL Sever"</span><span class="p">))</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">ConnectionDatabaseType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Postgres"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">ConnectionDatabaseType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"SQL Sever"</span><span class="p">)</span>
 
     <span class="c1"># file types</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskDestinationFileType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"CSV (.csv)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskDestinationFileType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"CSV (.csv)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskDestinationFileType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Text (.txt)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"txt"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskDestinationFileType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Text (.txt)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"txt"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskDestinationFileType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Excel (.csv)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskDestinationFileType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Excel (.csv)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">TaskDestinationFileType</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">"Other (specify in filename)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">""</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">TaskDestinationFileType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Other (specify in filename)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
-        <span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskDestinationFileType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"CSV (.csv)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskDestinationFileType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Text (.txt)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"txt"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskDestinationFileType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Excel (.csv)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">"csv"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskDestinationFileType</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Other (specify in filename)"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">""</span>
+    <span class="p">)</span>
 
     <span class="c1"># task status</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Running"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Running"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Errored"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Errored"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Stopped"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Stopped"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Completed"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Completed"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Starting"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Starting"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Scheduler"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Scheduler"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"User"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"User"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Runner"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Runner"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SFTP"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SFTP"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SMB"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SMB"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"File"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Email"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Email"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"FTP"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"FTP"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Py Processer"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Py Processer"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Git/Web Code"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Git/Web Code"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Date Parser"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Date Parser"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Cmd Runner"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Cmd Runner"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"System"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"System"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SSH"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SSH"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SQL Server"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"SQL Server"</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">TaskStatus</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Postgres"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TaskStatus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Postgres"</span><span class="p">))</span>
-
-    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Running"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Errored"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Stopped"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Completed"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Starting"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Scheduler"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"User"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Runner"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"SFTP"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"SMB"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"File"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Email"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"FTP"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Py Processer"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Git/Web Code"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Date Parser"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Cmd Runner"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"System"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"SSH"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"SQL Server"</span><span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">TaskStatus</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"Postgres"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="seed_demo"><a class="viewcode-back" href="../../autoapi/em_web/seed/index.html#em_web.seed.seed_demo">[docs]</a><span class="k">def</span> <span class="nf">seed_demo</span><span class="p">():</span>
     <span class="sd">"""Seed info for demo."""</span>
     <span class="c1"># demo user</span>
-    <span class="k">if</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">full_name</span><span class="o">=</span><span class="s2">"Mr Cool"</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">User</span><span class="p">(</span>
-                <span class="n">full_name</span><span class="o">=</span><span class="s2">"Mr Cool"</span><span class="p">,</span>
-                <span class="n">first_name</span><span class="o">=</span><span class="s2">"Mr"</span><span class="p">,</span>
-                <span class="n">account_name</span><span class="o">=</span><span class="s2">"mr-cool"</span><span class="p">,</span>
-                <span class="n">email</span><span class="o">=</span><span class="s2">"mr@co.ol"</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">User</span><span class="p">,</span>
+        <span class="n">full_name</span><span class="o">=</span><span class="s2">"Mr Cool"</span><span class="p">,</span>
+        <span class="n">first_name</span><span class="o">=</span><span class="s2">"Mr"</span><span class="p">,</span>
+        <span class="n">account_name</span><span class="o">=</span><span class="s2">"mr-cool"</span><span class="p">,</span>
+        <span class="n">email</span><span class="o">=</span><span class="s2">"mr@co.ol"</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="c1"># demo connection group</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">Connection</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">"Extract Organization"</span><span class="p">,</span>
-            <span class="n">description</span><span class="o">=</span><span class="s2">"The best place to send data."</span><span class="p">,</span>
-            <span class="n">address</span><span class="o">=</span><span class="s2">"Organization Extract"</span><span class="p">,</span>
-            <span class="n">primary_contact</span><span class="o">=</span><span class="s2">"Boss Man"</span><span class="p">,</span>
-            <span class="n">primary_contact_email</span><span class="o">=</span><span class="s2">"boss@ma.n"</span><span class="p">,</span>
-            <span class="n">primary_contact_phone</span><span class="o">=</span><span class="s2">"(000)-000-0000"</span><span class="p">,</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">Connection</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="s2">"Extract Organization"</span><span class="p">,</span>
-                <span class="n">description</span><span class="o">=</span><span class="s2">"The best place to send data."</span><span class="p">,</span>
-                <span class="n">address</span><span class="o">=</span><span class="s2">"Organization Extract"</span><span class="p">,</span>
-                <span class="n">primary_contact</span><span class="o">=</span><span class="s2">"Boss Man"</span><span class="p">,</span>
-                <span class="n">primary_contact_email</span><span class="o">=</span><span class="s2">"boss@ma.n"</span><span class="p">,</span>
-                <span class="n">primary_contact_phone</span><span class="o">=</span><span class="s2">"(000)-000-0000"</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">Connection</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"Extract Organization"</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">"The best place to send data."</span><span class="p">,</span>
+        <span class="n">address</span><span class="o">=</span><span class="s2">"Organization Extract"</span><span class="p">,</span>
+        <span class="n">primary_contact</span><span class="o">=</span><span class="s2">"Boss Man"</span><span class="p">,</span>
+        <span class="n">primary_contact_email</span><span class="o">=</span><span class="s2">"boss@ma.n"</span><span class="p">,</span>
+        <span class="n">primary_contact_phone</span><span class="o">=</span><span class="s2">"(000)-000-0000"</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="c1"># demo db</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">ConnectionDatabase</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">"Public Database"</span><span class="p">,</span>
-            <span class="n">type_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">connection_string</span><span class="o">=</span><span class="p">(</span>
-                <span class="s2">"host=hh-pgsql-public.ebi.ac.uk"</span>
-                <span class="o">+</span> <span class="s2">" dbname=pfmegrnargs user=reader password=NWDMCE5xdipIjRrp"</span>
-            <span class="p">),</span>
-            <span class="n">connection_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">ConnectionDatabase</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="s2">"Public Database"</span><span class="p">,</span>
-                <span class="n">type_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">connection_string</span><span class="o">=</span><span class="p">(</span>
-                    <span class="s2">"host=hh-pgsql-public.ebi.ac.uk"</span>
-                    <span class="o">+</span> <span class="s2">" dbname=pfmegrnargs user=reader password=NWDMCE5xdipIjRrp"</span>
-                <span class="p">),</span>
-                <span class="n">connection_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">ConnectionDatabase</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"Public Database"</span><span class="p">,</span>
+        <span class="n">type_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">connection_string</span><span class="o">=</span><span class="p">(</span>
+            <span class="s2">"host=hh-pgsql-public.ebi.ac.uk"</span>
+            <span class="o">+</span> <span class="s2">" dbname=pfmegrnargs user=reader password=NWDMCE5xdipIjRrp"</span>
+        <span class="p">),</span>
+        <span class="n">connection_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="c1"># demo ftp connection (ro)</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">ConnectionFtp</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span>  <span class="c1"># noqa: S106</span>
-            <span class="n">connection_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">"Speed Test Tele2"</span><span class="p">,</span>
-            <span class="n">address</span><span class="o">=</span><span class="s2">"speedtest.tele2.net/"</span><span class="p">,</span>
-            <span class="n">path</span><span class="o">=</span><span class="s2">"/upload/"</span><span class="p">,</span>
-            <span class="n">username</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="p">,</span>
-            <span class="n">password</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="p">,</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">ConnectionFtp</span><span class="p">(</span>  <span class="c1"># noqa: S106</span>
-                <span class="n">connection_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">name</span><span class="o">=</span><span class="s2">"Speed Test Tele2"</span><span class="p">,</span>
-                <span class="n">address</span><span class="o">=</span><span class="s2">"speedtest.tele2.net/"</span><span class="p">,</span>
-                <span class="n">path</span><span class="o">=</span><span class="s2">"/upload/"</span><span class="p">,</span>
-                <span class="n">username</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="p">,</span>
-                <span class="n">password</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+    <span class="n">get_or_create</span><span class="p">(</span>  <span class="c1"># noqa: S106</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">ConnectionFtp</span><span class="p">,</span>
+        <span class="n">connection_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"Speed Test Tele2"</span><span class="p">,</span>
+        <span class="n">address</span><span class="o">=</span><span class="s2">"speedtest.tele2.net/"</span><span class="p">,</span>
+        <span class="n">path</span><span class="o">=</span><span class="s2">"/upload/"</span><span class="p">,</span>
+        <span class="n">username</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="p">,</span>
+        <span class="n">password</span><span class="o">=</span><span class="s2">"anonymous"</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    <span class="c1"># demo project</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">Project</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">"Demo Project"</span><span class="p">,</span>
-            <span class="n">description</span><span class="o">=</span><span class="s2">"This description must be the best."</span><span class="p">,</span>
-            <span class="n">owner_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">creator_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">updater_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">intv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">intv_type</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span>
-            <span class="n">intv_value</span><span class="o">=</span><span class="s2">"1"</span><span class="p">,</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">Project</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="s2">"Demo Project"</span><span class="p">,</span>
-                <span class="n">description</span><span class="o">=</span><span class="s2">"This description must be the best."</span><span class="p">,</span>
-                <span class="n">owner_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">creator_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">updater_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">intv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">intv_type</span><span class="o">=</span><span class="s2">"m"</span><span class="p">,</span>
-                <span class="n">intv_value</span><span class="o">=</span><span class="s2">"1"</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+    <span class="c1"># ssh project</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">Project</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"SSH Project"</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">"Group of SSH tasks."</span><span class="p">,</span>
+        <span class="n">owner_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">creator_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">updater_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">intv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">intv_type</span><span class="o">=</span><span class="s2">"h"</span><span class="p">,</span>
+        <span class="n">intv_value</span><span class="o">=</span><span class="s2">"1"</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    <span class="c1"># demo task</span>
-    <span class="k">if</span> <span class="p">(</span>
-        <span class="n">Task</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">"Task 1"</span><span class="p">,</span>
-            <span class="n">source_type_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">source_code</span><span class="o">=</span><span class="s2">"Declare @Today Date = GetDate();</span><span class="se">\</span>
-<span class="s2">SELECT * </span><span class="se">\</span>
-<span class="s2">FROM Animals </span><span class="se">\</span>
-<span class="s2">WHERE @Today = 'Yesterday'; "</span><span class="p">,</span>
-            <span class="n">destination_ftp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">destination_ftp_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">project_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">source_query_type_id</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-            <span class="n">source_database_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-            <span class="n">destination_file_name</span><span class="o">=</span><span class="s2">"test_</span><span class="si">%d</span><span class="s2">_%m"</span><span class="p">,</span>
-            <span class="n">destination_file_type_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-            <span class="n">destination_file_delimiter</span><span class="o">=</span><span class="s2">"|"</span><span class="p">,</span>
-            <span class="n">query_params</span><span class="o">=</span><span class="s2">"@Today = 'Yesterday'"</span><span class="p">,</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-        <span class="ow">is</span> <span class="kc">None</span>
-    <span class="p">):</span>
-        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
-            <span class="n">Task</span><span class="p">(</span>
-                <span class="n">name</span><span class="o">=</span><span class="s2">"Task 1"</span><span class="p">,</span>
-                <span class="n">source_type_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">source_code</span><span class="o">=</span><span class="s2">"select "</span> <span class="s2">"1"</span> <span class="s2">""</span><span class="p">,</span>
-                <span class="n">destination_ftp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">destination_ftp_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">project_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">source_query_type_id</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-                <span class="n">source_database_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">destination_file_name</span><span class="o">=</span><span class="s2">"test_</span><span class="si">%d</span><span class="s2">_%m"</span><span class="p">,</span>
-                <span class="n">destination_file_type_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                <span class="n">destination_file_delimiter</span><span class="o">=</span><span class="s2">"|"</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+    <span class="c1"># sql project</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">Project</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"SQL Project"</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">"Group of SQL tasks."</span><span class="p">,</span>
+        <span class="n">owner_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">creator_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">updater_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">intv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">intv_type</span><span class="o">=</span><span class="s2">"h"</span><span class="p">,</span>
+        <span class="n">intv_value</span><span class="o">=</span><span class="s2">"1"</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+    <span class="c1"># python project</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">Project</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"Python Project"</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">"Group of Python tasks."</span><span class="p">,</span>
+        <span class="n">owner_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">creator_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">updater_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">intv</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">intv_type</span><span class="o">=</span><span class="s2">"h"</span><span class="p">,</span>
+        <span class="n">intv_value</span><span class="o">=</span><span class="s2">"1"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># demo ssh task</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">Task</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"SSH task 1 - check Windows Server CPU"</span><span class="p">,</span>
+        <span class="n">source_type_id</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+        <span class="n">source_code</span><span class="o">=</span><span class="s2">"""powershell  if ((gwmi -class Win32_Processor).LoadPercentage -gt 95){exit 1}"""</span><span class="p">,</span>
+        <span class="n">project_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">source_query_type_id</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># demo sql task</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">Task</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"Postgres task 1"</span><span class="p">,</span>
+        <span class="n">source_type_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">source_code</span><span class="o">=</span><span class="s2">"""SELECT</span>
+<span class="s2">  precomputed.id</span>
+<span class="s2">FROM rnc_rna_precomputed precomputed</span>
+<span class="s2">JOIN rnc_taxonomy tax</span>
+<span class="s2">ON</span>
+<span class="s2">  tax.id = precomputed.taxid</span>
+<span class="s2">WHERE</span>
+<span class="s2">  tax.lineage LIKE 'cellular organisms; Bacteria; %'</span>
+<span class="s2">  AND precomputed.is_active = true    -- exclude sequences without active cross-references</span>
+<span class="s2">  AND rna_type = 'rRNA'"""</span><span class="p">,</span>
+        <span class="n">destination_ftp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">destination_ftp_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">project_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">source_query_type_id</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">source_database_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">destination_file_name</span><span class="o">=</span><span class="s2">"test_</span><span class="si">%d</span><span class="s2">_%m"</span><span class="p">,</span>
+        <span class="n">destination_file_type_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">destination_file_delimiter</span><span class="o">=</span><span class="s2">"|"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># demo python task</span>
+    <span class="n">get_or_create</span><span class="p">(</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="p">,</span>
+        <span class="n">Task</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"Python task 1"</span><span class="p">,</span>
+        <span class="n">source_type_id</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">source_code</span><span class="o">=</span><span class="s2">"""</span>
+
+<span class="s2"># Copyright [2009-present] EMBL-European Bioinformatics Institute</span>
+<span class="s2"># Licensed under the Apache License, Version 2.0 (the "License");</span>
+<span class="s2"># you may not use this file except in compliance with the License.</span>
+<span class="s2"># You may obtain a copy of the License at</span>
+<span class="s2">#      http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="s2"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="s2"># distributed under the License is distributed on an "AS IS" BASIS,</span>
+<span class="s2"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="s2"># See the License for the specific language governing permissions and</span>
+<span class="s2"># limitations under the License.</span>
+<span class="s2"># An example Python script showing how to access the public RNAcentral Postgres database.</span>
+<span class="s2"># Usage:</span>
+<span class="s2"># python example-rnacentral-postgres-script.py</span>
+
+
+
+<span class="s2">import psycopg2</span>
+<span class="s2">import psycopg2.extras</span>
+
+
+<span class="s2">def main():</span>
+<span class="s2">    conn_string = "host='hh-pgsql-public.ebi.ac.uk' dbname='pfmegrnargs' user='reader' password='NWDMCE5xdipIjRrp'"</span>
+<span class="s2">    conn = psycopg2.connect(conn_string)</span>
+<span class="s2">    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)</span>
+
+<span class="s2">    # retrieve a list of RNAcentral databases</span>
+<span class="s2">    query = "SELECT * FROM rnc_database"</span>
+
+<span class="s2">    cursor.execute(query)</span>
+<span class="s2">    for row in cursor:</span>
+<span class="s2">        print(row)</span>
+
+
+<span class="s2">if __name__ == "__main__":</span>
+<span class="s2">    main())</span>
+<span class="s2">"""</span><span class="p">,</span>
+        <span class="n">destination_ftp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">destination_ftp_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">project_id</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">source_query_type_id</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">enabled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">destination_file_name</span><span class="o">=</span><span class="s2">"test_</span><span class="si">%d</span><span class="s2">_%m"</span><span class="p">,</span>
+        <span class="n">destination_file_type_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">destination_file_delimiter</span><span class="o">=</span><span class="s2">"|"</span><span class="p">,</span></div>
+    <span class="p">)</span>
 </pre></div>
       </article>
       <footer>
