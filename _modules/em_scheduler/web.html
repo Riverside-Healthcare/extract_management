@@ -290,9 +290,17 @@
         <span class="n">hour_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">now_int</span><span class="p">,</span> <span class="s2">"%-H:00"</span><span class="p">))</span>
 
     <span class="n">active_schedule</span> <span class="o">=</span> <span class="p">[]</span>
+
     <span class="k">for</span> <span class="n">job</span> <span class="ow">in</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">get_jobs</span><span class="p">():</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="s2">"next_run_time"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">job</span><span class="o">.</span><span class="n">next_run_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">job</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">job</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="s2">"job_sync"</span>
+            <span class="ow">or</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="s2">"next_run_time"</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="n">job</span><span class="o">.</span><span class="n">next_run_time</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="n">job</span><span class="o">.</span><span class="n">args</span>
+        <span class="p">):</span>
             <span class="k">continue</span>
+
         <span class="n">job_date</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">next_run_time</span>
 
         <span class="k">while</span> <span class="n">job_date</span> <span class="ow">and</span> <span class="n">job_date</span> <span class="o">&lt;</span> <span class="n">tomorrow</span><span class="p">:</span>
